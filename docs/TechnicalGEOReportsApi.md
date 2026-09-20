@@ -1,20 +1,20 @@
-# llmpulse.CollectionsApi
+# llmpulse.TechnicalGEOReportsApi
 
 All URIs are relative to *https://api.llmpulse.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_collection**](CollectionsApi.md#create_collection) | **POST** /collections | Create a tag
-[**delete_collection**](CollectionsApi.md#delete_collection) | **DELETE** /collections/{id} | Delete a tag
-[**update_collection**](CollectionsApi.md#update_collection) | **PATCH** /collections/{id} | Update a tag
+[**create_technical_geo_reports**](TechnicalGEOReportsApi.md#create_technical_geo_reports) | **POST** /technical_geo_reports | Run technical GEO analysis
+[**get_technical_geo_report**](TechnicalGEOReportsApi.md#get_technical_geo_report) | **GET** /technical_geo_reports/{id} | Get a technical GEO report
+[**list_technical_geo_reports**](TechnicalGEOReportsApi.md#list_technical_geo_reports) | **GET** /technical_geo_reports | List technical GEO reports
 
 
-# **create_collection**
-> create_collection(create_collection_request)
+# **create_technical_geo_reports**
+> create_technical_geo_reports(create_technical_geo_reports_request)
 
-Create a tag
+Run technical GEO analysis
 
-Creates a tag (Collection) in a project. Optional `prompt_ids` attaches existing prompts in the same call. Tag name must be unique per project (case-insensitive). Requires a `read_write` scope API key.
+Launches the full technical GEO analysis bundle (crawlability, schema, content readiness, discoverability, site structure, robots.txt, agent readiness, llms.txt, AI visibility) for a URL + country. Each report runs in a background job. Requires a `read_write` scope API key.
 
 ### Example
 
@@ -22,7 +22,7 @@ Creates a tag (Collection) in a project. Optional `prompt_ids` attaches existing
 
 ```python
 import llmpulse
-from llmpulse.models.create_collection_request import CreateCollectionRequest
+from llmpulse.models.create_technical_geo_reports_request import CreateTechnicalGeoReportsRequest
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -45,14 +45,14 @@ configuration = llmpulse.Configuration(
 # Enter a context with an instance of the API client
 with llmpulse.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = llmpulse.CollectionsApi(api_client)
-    create_collection_request = llmpulse.CreateCollectionRequest() # CreateCollectionRequest | 
+    api_instance = llmpulse.TechnicalGEOReportsApi(api_client)
+    create_technical_geo_reports_request = llmpulse.CreateTechnicalGeoReportsRequest() # CreateTechnicalGeoReportsRequest | 
 
     try:
-        # Create a tag
-        api_instance.create_collection(create_collection_request)
+        # Run technical GEO analysis
+        api_instance.create_technical_geo_reports(create_technical_geo_reports_request)
     except Exception as e:
-        print("Exception when calling CollectionsApi->create_collection: %s\n" % e)
+        print("Exception when calling TechnicalGEOReportsApi->create_technical_geo_reports: %s\n" % e)
 ```
 
 
@@ -62,7 +62,7 @@ with llmpulse.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_collection_request** | [**CreateCollectionRequest**](CreateCollectionRequest.md)|  | 
+ **create_technical_geo_reports_request** | [**CreateTechnicalGeoReportsRequest**](CreateTechnicalGeoReportsRequest.md)|  | 
 
 ### Return type
 
@@ -87,12 +87,12 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_collection**
-> delete_collection(project_id, id)
+# **get_technical_geo_report**
+> get_technical_geo_report(project_id, report_type, id)
 
-Delete a tag
+Get a technical GEO report
 
-Deletes a tag/collection. The prompts inside it are NOT deleted; only the grouping disappears. Requires a `read_write` scope API key.
+Returns the current status and the full result_data once the report is completed. While it is running, result_data is null and poll_after_seconds tells clients when to check again.
 
 ### Example
 
@@ -122,15 +122,16 @@ configuration = llmpulse.Configuration(
 # Enter a context with an instance of the API client
 with llmpulse.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = llmpulse.CollectionsApi(api_client)
+    api_instance = llmpulse.TechnicalGEOReportsApi(api_client)
     project_id = 56 # int | Project ID
-    id = 56 # int | 
+    report_type = 'report_type_example' # str | 
+    id = 56 # int | Report id returned by POST /technical_geo_reports or GET /technical_geo_reports
 
     try:
-        # Delete a tag
-        api_instance.delete_collection(project_id, id)
+        # Get a technical GEO report
+        api_instance.get_technical_geo_report(project_id, report_type, id)
     except Exception as e:
-        print("Exception when calling CollectionsApi->delete_collection: %s\n" % e)
+        print("Exception when calling TechnicalGEOReportsApi->get_technical_geo_report: %s\n" % e)
 ```
 
 
@@ -141,7 +142,8 @@ with llmpulse.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
- **id** | **int**|  | 
+ **report_type** | **str**|  | 
+ **id** | **int**| Report id returned by POST /technical_geo_reports or GET /technical_geo_reports | 
 
 ### Return type
 
@@ -160,18 +162,18 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Deleted |  -  |
-**403** | API key lacks write permission |  -  |
+**200** | Report status and completed result data |  -  |
 **404** | Resource not found |  -  |
+**422** | Invalid parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_collection**
-> update_collection(id, update_collection_request)
+# **list_technical_geo_reports**
+> list_technical_geo_reports(project_id, report_type, status=status, batch_id=batch_id, page=page, per_page=per_page)
 
-Update a tag
+List technical GEO reports
 
-Renames a tag/collection or changes its description. Prompt membership is managed via POST /prompts/assign_tags, not here. Requires a `read_write` scope API key.
+Lists reports of one technical GEO type for a project, newest first. Use agent_readiness for the AI/Agent Readiness report.
 
 ### Example
 
@@ -179,7 +181,6 @@ Renames a tag/collection or changes its description. Prompt membership is manage
 
 ```python
 import llmpulse
-from llmpulse.models.update_collection_request import UpdateCollectionRequest
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -202,15 +203,19 @@ configuration = llmpulse.Configuration(
 # Enter a context with an instance of the API client
 with llmpulse.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = llmpulse.CollectionsApi(api_client)
-    id = 56 # int | 
-    update_collection_request = llmpulse.UpdateCollectionRequest() # UpdateCollectionRequest | 
+    api_instance = llmpulse.TechnicalGEOReportsApi(api_client)
+    project_id = 56 # int | Project ID
+    report_type = 'report_type_example' # str | 
+    status = 'status_example' # str | Optional status filter; valid values depend on report_type (optional)
+    batch_id = 56 # int | Optional batch id returned when the report bundle was created (optional)
+    page = 1 # int |  (optional) (default to 1)
+    per_page = 20 # int |  (optional) (default to 20)
 
     try:
-        # Update a tag
-        api_instance.update_collection(id, update_collection_request)
+        # List technical GEO reports
+        api_instance.list_technical_geo_reports(project_id, report_type, status=status, batch_id=batch_id, page=page, per_page=per_page)
     except Exception as e:
-        print("Exception when calling CollectionsApi->update_collection: %s\n" % e)
+        print("Exception when calling TechnicalGEOReportsApi->list_technical_geo_reports: %s\n" % e)
 ```
 
 
@@ -220,8 +225,12 @@ with llmpulse.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **update_collection_request** | [**UpdateCollectionRequest**](UpdateCollectionRequest.md)|  | 
+ **project_id** | **int**| Project ID | 
+ **report_type** | **str**|  | 
+ **status** | **str**| Optional status filter; valid values depend on report_type | [optional] 
+ **batch_id** | **int**| Optional batch id returned when the report bundle was created | [optional] 
+ **page** | **int**|  | [optional] [default to 1]
+ **per_page** | **int**|  | [optional] [default to 20]
 
 ### Return type
 
@@ -233,16 +242,14 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Updated |  -  |
-**403** | API key lacks write permission |  -  |
-**404** | Resource not found |  -  |
+**200** | Paginated technical GEO report summaries |  -  |
 **422** | Invalid parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

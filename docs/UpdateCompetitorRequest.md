@@ -7,8 +7,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **project_id** | **int** |  | 
 **brand_name** | **str** |  | [optional] 
+**domain** | **str** | Website domain or host used for citation matching. A full URL is accepted and normalised to its host. | [optional] 
 **matching_names** | **List[str]** |  | [optional] 
 **color** | **str** | Hex color, e.g. #1a2b3c | [optional] 
+**citation_match_mode** | **str** |  | [optional] 
+**citation_match_path** | **str** | Required when changing citation_match_mode to path_prefix | [optional] 
 
 ## Example
 

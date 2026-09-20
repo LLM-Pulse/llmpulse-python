@@ -48,12 +48,12 @@ with llmpulse.ApiClient(configuration) as api_client:
     project_id = 56 # int | Project ID
     range = 56 # int | Number of days to look back (alternative to from/to) (optional)
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    to = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     granularity = 'granularity_example' # str |  (optional)
-    collection_id = 56 # int |  (optional)
-    country_code = 'country_code_example' # str | ISO country code (e.g. US, GB, DE) (optional)
-    language_code = 'language_code_example' # str | ISO language code (e.g. en, es, de) (optional)
-    prompt_type = 'prompt_type_example' # str | Filter by prompt type (search intent) (optional)
+    collection_id = llmpulse.GetTimeseriesCollectionIdParameter() # GetTimeseriesCollectionIdParameter | One collection/tag ID or a comma-separated list of IDs (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
     brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
     competitors = 'competitors_example' # str | Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) (optional)
 
@@ -74,12 +74,12 @@ Name | Type | Description  | Notes
  **project_id** | **int**| Project ID | 
  **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
  **var_from** | **datetime**|  | [optional] 
- **to** | **datetime**|  | [optional] 
+ **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **granularity** | **str**|  | [optional] 
- **collection_id** | **int**|  | [optional] 
- **country_code** | **str**| ISO country code (e.g. US, GB, DE) | [optional] 
- **language_code** | **str**| ISO language code (e.g. en, es, de) | [optional] 
- **prompt_type** | **str**| Filter by prompt type (search intent) | [optional] 
+ **collection_id** | [**GetTimeseriesCollectionIdParameter**](.md)| One collection/tag ID or a comma-separated list of IDs | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
  **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
  **competitors** | **str**| Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) | [optional] 
 
@@ -141,12 +141,12 @@ with llmpulse.ApiClient(configuration) as api_client:
     project_id = 56 # int | Project ID
     range = 56 # int | Number of days to look back (alternative to from/to) (optional)
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    to = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     granularity = 'granularity_example' # str |  (optional)
-    collection_id = 56 # int |  (optional)
-    country_code = 'country_code_example' # str | ISO country code (e.g. US, GB, DE) (optional)
-    language_code = 'language_code_example' # str | ISO language code (e.g. en, es, de) (optional)
-    prompt_type = 'prompt_type_example' # str | Filter by prompt type (search intent) (optional)
+    collection_id = llmpulse.GetTimeseriesCollectionIdParameter() # GetTimeseriesCollectionIdParameter | One collection/tag ID or a comma-separated list of IDs (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
     brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
     model = 'model_example' # str | Filter by AI model. Models the API key's user has not enabled are silently dropped. (optional)
     brand1 = 56 # int | Competitor ID for the first comparison brand (omit to compare project brand) (optional)
@@ -169,12 +169,12 @@ Name | Type | Description  | Notes
  **project_id** | **int**| Project ID | 
  **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
  **var_from** | **datetime**|  | [optional] 
- **to** | **datetime**|  | [optional] 
+ **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **granularity** | **str**|  | [optional] 
- **collection_id** | **int**|  | [optional] 
- **country_code** | **str**| ISO country code (e.g. US, GB, DE) | [optional] 
- **language_code** | **str**| ISO language code (e.g. en, es, de) | [optional] 
- **prompt_type** | **str**| Filter by prompt type (search intent) | [optional] 
+ **collection_id** | [**GetTimeseriesCollectionIdParameter**](.md)| One collection/tag ID or a comma-separated list of IDs | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
  **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
  **model** | **str**| Filter by AI model. Models the API key&#39;s user has not enabled are silently dropped. | [optional] 
  **brand1** | **int**| Competitor ID for the first comparison brand (omit to compare project brand) | [optional] 
@@ -238,12 +238,12 @@ with llmpulse.ApiClient(configuration) as api_client:
     project_id = 56 # int | Project ID
     range = 56 # int | Number of days to look back (alternative to from/to) (optional)
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    to = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     granularity = 'granularity_example' # str |  (optional)
-    collection_id = 56 # int |  (optional)
-    country_code = 'country_code_example' # str | ISO country code (e.g. US, GB, DE) (optional)
-    language_code = 'language_code_example' # str | ISO language code (e.g. en, es, de) (optional)
-    prompt_type = 'prompt_type_example' # str | Filter by prompt type (search intent) (optional)
+    collection_id = llmpulse.GetTimeseriesCollectionIdParameter() # GetTimeseriesCollectionIdParameter | One collection/tag ID or a comma-separated list of IDs (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
     brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
     page = 1 # int |  (optional) (default to 1)
     per_page = 20 # int |  (optional) (default to 20)
@@ -265,12 +265,12 @@ Name | Type | Description  | Notes
  **project_id** | **int**| Project ID | 
  **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
  **var_from** | **datetime**|  | [optional] 
- **to** | **datetime**|  | [optional] 
+ **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **granularity** | **str**|  | [optional] 
- **collection_id** | **int**|  | [optional] 
- **country_code** | **str**| ISO country code (e.g. US, GB, DE) | [optional] 
- **language_code** | **str**| ISO language code (e.g. en, es, de) | [optional] 
- **prompt_type** | **str**| Filter by prompt type (search intent) | [optional] 
+ **collection_id** | [**GetTimeseriesCollectionIdParameter**](.md)| One collection/tag ID or a comma-separated list of IDs | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
  **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
  **page** | **int**|  | [optional] [default to 1]
  **per_page** | **int**|  | [optional] [default to 20]

@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_answers**
-> list_answers(project_id, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, mention_filter=mention_filter, citation_filter=citation_filter, competitors=competitors, var_from=var_from, to=to, page=page, per_page=per_page, query=query)
+> list_answers(project_id, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, mention_filter=mention_filter, citation_filter=citation_filter, competitors=competitors, var_from=var_from, to=to, page=page, per_page=per_page, query=query, no_result=no_result)
 
 List AI responses
 
@@ -129,22 +129,23 @@ with llmpulse.ApiClient(configuration) as api_client:
     api_instance = llmpulse.AnswersApi(api_client)
     project_id = 56 # int | Project ID
     model = 'model_example' # str | Filter by AI model. Models the API key's user has not enabled are silently dropped. (optional)
-    collection_id = 56 # int |  (optional)
-    country_code = 'country_code_example' # str | ISO country code (e.g. US, GB, DE) (optional)
-    language_code = 'language_code_example' # str | ISO language code (e.g. en, es, de) (optional)
+    collection_id = llmpulse.GetTimeseriesCollectionIdParameter() # GetTimeseriesCollectionIdParameter | One collection/tag ID or a comma-separated list of IDs (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
     prompt = 56 # int | Filter by prompt ID (optional)
     mention_filter = 'mention_filter_example' # str | Filter by which brands are mentioned, as a two-axis matrix (your brand x competitors): mentions_you / not_mentions_you, mentions_competitor / not_mentions_competitor, and the four combined cells you_and_competitor, competitor_not_you (a rival wins and you are absent), you_not_competitor, no_brands (no tracked brand appears, i.e. open space). Combine with 'competitors' to narrow the competitor side to specific rivals; on a negative cell that reads 'none of these'. On /dimensions/sources it applies to the crawled content of each cited page instead of the answer text. The legacy value 'competitors_only' is still accepted as an alias of competitor_not_you. (optional)
     citation_filter = 'citation_filter_example' # str | Same two-axis matrix applied to the domains cited in the answer instead of the brands named in it. Independent of mention_filter; pass both to intersect them (e.g. mentions_you + not_cites_you finds answers that talk about you without linking to you). (optional)
     competitors = 'competitors_example' # str | Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) (optional)
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    to = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     page = 1 # int |  (optional) (default to 1)
     per_page = 20 # int |  (optional) (default to 20)
     query = 'query_example' # str | Case-insensitive full-text search inside AI response texts. Switches items to snippet + match_count mode. (optional)
+    no_result = True # bool | Filter sentinel non-answers (provider returned nothing after retries; excluded from platform metrics). false = only real answers, true = only sentinels, omit = both. Every item carries its own no_result flag. (optional)
 
     try:
         # List AI responses
-        api_instance.list_answers(project_id, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, mention_filter=mention_filter, citation_filter=citation_filter, competitors=competitors, var_from=var_from, to=to, page=page, per_page=per_page, query=query)
+        api_instance.list_answers(project_id, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, mention_filter=mention_filter, citation_filter=citation_filter, competitors=competitors, var_from=var_from, to=to, page=page, per_page=per_page, query=query, no_result=no_result)
     except Exception as e:
         print("Exception when calling AnswersApi->list_answers: %s\n" % e)
 ```
@@ -158,18 +159,19 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
  **model** | **str**| Filter by AI model. Models the API key&#39;s user has not enabled are silently dropped. | [optional] 
- **collection_id** | **int**|  | [optional] 
- **country_code** | **str**| ISO country code (e.g. US, GB, DE) | [optional] 
- **language_code** | **str**| ISO language code (e.g. en, es, de) | [optional] 
+ **collection_id** | [**GetTimeseriesCollectionIdParameter**](.md)| One collection/tag ID or a comma-separated list of IDs | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
  **prompt** | **int**| Filter by prompt ID | [optional] 
  **mention_filter** | **str**| Filter by which brands are mentioned, as a two-axis matrix (your brand x competitors): mentions_you / not_mentions_you, mentions_competitor / not_mentions_competitor, and the four combined cells you_and_competitor, competitor_not_you (a rival wins and you are absent), you_not_competitor, no_brands (no tracked brand appears, i.e. open space). Combine with &#39;competitors&#39; to narrow the competitor side to specific rivals; on a negative cell that reads &#39;none of these&#39;. On /dimensions/sources it applies to the crawled content of each cited page instead of the answer text. The legacy value &#39;competitors_only&#39; is still accepted as an alias of competitor_not_you. | [optional] 
  **citation_filter** | **str**| Same two-axis matrix applied to the domains cited in the answer instead of the brands named in it. Independent of mention_filter; pass both to intersect them (e.g. mentions_you + not_cites_you finds answers that talk about you without linking to you). | [optional] 
  **competitors** | **str**| Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) | [optional] 
  **var_from** | **datetime**|  | [optional] 
- **to** | **datetime**|  | [optional] 
+ **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **page** | **int**|  | [optional] [default to 1]
  **per_page** | **int**|  | [optional] [default to 20]
  **query** | **str**| Case-insensitive full-text search inside AI response texts. Switches items to snippet + match_count mode. | [optional] 
+ **no_result** | **bool**| Filter sentinel non-answers (provider returned nothing after retries; excluded from platform metrics). false &#x3D; only real answers, true &#x3D; only sentinels, omit &#x3D; both. Every item carries its own no_result flag. | [optional] 
 
 ### Return type
 

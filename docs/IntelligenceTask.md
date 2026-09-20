@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 **estimated_time** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **processed_at** | **datetime** |  | [optional] 
+**manually_edited_at** | **datetime** | When the content was last edited by hand; null while the output is as generated | [optional] 
+**edited_by_user_id** | **int** | User behind the last manual edit; null for an unedited task or an edit made from an embedded portal | [optional] 
 **request_id** | **str** |  | [optional] 
 
 ## Example

@@ -4,194 +4,12 @@ All URIs are relative to *https://api.llmpulse.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_agent_traffic**](MetricsApi.md#get_agent_traffic) | **GET** /metrics/agent_traffic | AI bot crawler traffic (Scale+, Beta)
-[**get_ai_traffic**](MetricsApi.md#get_ai_traffic) | **GET** /metrics/ai_traffic | AI referral traffic (Scale+)
 [**get_prompt_summary**](MetricsApi.md#get_prompt_summary) | **GET** /metrics/prompt_summary | Per-prompt metrics summary
 [**get_share_of_voice**](MetricsApi.md#get_share_of_voice) | **GET** /metrics/sov | Share of Voice
 [**get_summary**](MetricsApi.md#get_summary) | **GET** /metrics/summary | Aggregated metrics summary
 [**get_timeseries**](MetricsApi.md#get_timeseries) | **GET** /metrics/timeseries | Time-series metrics
 [**get_top_sources**](MetricsApi.md#get_top_sources) | **GET** /metrics/top_sources | Top cited sources
 
-
-# **get_agent_traffic**
-> AgentTrafficResponse get_agent_traffic(project_id, range=range, var_from=var_from, to=to, bot=bot, company=company, group_by=group_by, granularity=granularity)
-
-AI bot crawler traffic (Scale+, Beta)
-
-Aggregated AI bot traffic hitting the project's origin server (GPTBot, PerplexityBot, ClaudeBot, OAI-SearchBot, Google-Extended, etc.). Sourced from Cloudflare or CSV uploads. Requires the Scale plan; lower tiers receive ERR_PLAN_REQUIRED.
-
-### Example
-
-* Bearer Authentication (BearerAuth):
-
-```python
-import llmpulse
-from llmpulse.models.agent_traffic_response import AgentTrafficResponse
-from llmpulse.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.llmpulse.ai/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = llmpulse.Configuration(
-    host = "https://api.llmpulse.ai/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: BearerAuth
-configuration = llmpulse.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with llmpulse.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = llmpulse.MetricsApi(api_client)
-    project_id = 56 # int | Project ID
-    range = 56 # int | Number of days to look back (alternative to from/to) (optional)
-    var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    to = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    bot = 'bot_example' # str | Filter by bot slug (e.g. gptbot, claudebot, perplexitybot) (optional)
-    company = 'company_example' # str | Filter by company (e.g. openai, anthropic, google) (optional)
-    group_by = 'bot' # str |  (optional) (default to 'bot')
-    granularity = 'granularity_example' # str |  (optional)
-
-    try:
-        # AI bot crawler traffic (Scale+, Beta)
-        api_response = api_instance.get_agent_traffic(project_id, range=range, var_from=var_from, to=to, bot=bot, company=company, group_by=group_by, granularity=granularity)
-        print("The response of MetricsApi->get_agent_traffic:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling MetricsApi->get_agent_traffic: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Project ID | 
- **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
- **var_from** | **datetime**|  | [optional] 
- **to** | **datetime**|  | [optional] 
- **bot** | **str**| Filter by bot slug (e.g. gptbot, claudebot, perplexitybot) | [optional] 
- **company** | **str**| Filter by company (e.g. openai, anthropic, google) | [optional] 
- **group_by** | **str**|  | [optional] [default to &#39;bot&#39;]
- **granularity** | **str**|  | [optional] 
-
-### Return type
-
-[**AgentTrafficResponse**](AgentTrafficResponse.md)
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Agent traffic data |  -  |
-**403** | Endpoint requires a higher plan tier |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_ai_traffic**
-> get_ai_traffic(project_id, range=range, var_from=var_from, to=to, source=source, granularity=granularity)
-
-AI referral traffic (Scale+)
-
-AI referral traffic for a project: human visits arriving from AI assistants (ChatGPT, Perplexity, Gemini, Claude, etc.), measured from the connected web analytics provider (Google Analytics 4, Adobe Analytics, PostHog, Plausible or Piano). Returns per-source users, sessions and conversions with totals and a conversion rate. Requires a connected provider and the Scale plan; otherwise returns ERR_AI_TRAFFIC_NOT_CONNECTED or ERR_PLAN_REQUIRED.
-
-### Example
-
-* Bearer Authentication (BearerAuth):
-
-```python
-import llmpulse
-from llmpulse.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.llmpulse.ai/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = llmpulse.Configuration(
-    host = "https://api.llmpulse.ai/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: BearerAuth
-configuration = llmpulse.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with llmpulse.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = llmpulse.MetricsApi(api_client)
-    project_id = 56 # int | Project ID
-    range = 56 # int | Number of days to look back (alternative to from/to) (optional)
-    var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    to = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    source = 'source_example' # str | Filter by a single AI source slug (e.g. chatgpt, perplexity, gemini, claude) (optional)
-    granularity = 'granularity_example' # str |  (optional)
-
-    try:
-        # AI referral traffic (Scale+)
-        api_instance.get_ai_traffic(project_id, range=range, var_from=var_from, to=to, source=source, granularity=granularity)
-    except Exception as e:
-        print("Exception when calling MetricsApi->get_ai_traffic: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Project ID | 
- **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
- **var_from** | **datetime**|  | [optional] 
- **to** | **datetime**|  | [optional] 
- **source** | **str**| Filter by a single AI source slug (e.g. chatgpt, perplexity, gemini, claude) | [optional] 
- **granularity** | **str**|  | [optional] 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | AI referral traffic data |  -  |
-**403** | Endpoint requires a higher plan tier |  -  |
-**404** | Resource not found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_prompt_summary**
 > PromptSummaryResponse get_prompt_summary(project_id, range=range, var_from=var_from, to=to, breakdown=breakdown, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, sort=sort, sort_dir=sort_dir, page=page, per_page=per_page, output=output)
@@ -233,14 +51,14 @@ with llmpulse.ApiClient(configuration) as api_client:
     project_id = 56 # int | Project ID
     range = 56 # int | Number of days to look back (alternative to from/to) (optional)
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    to = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     breakdown = 'breakdown_example' # str | Add per-(prompt, model) rows to the output (optional)
     model = 'model_example' # str | Filter by AI model. Models the API key's user has not enabled are silently dropped. (optional)
-    collection_id = 56 # int |  (optional)
-    country_code = 'country_code_example' # str | ISO country code (e.g. US, GB, DE) (optional)
-    language_code = 'language_code_example' # str | ISO language code (e.g. en, es, de) (optional)
+    collection_id = llmpulse.GetTimeseriesCollectionIdParameter() # GetTimeseriesCollectionIdParameter | One collection/tag ID or a comma-separated list of IDs (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
     prompt = 56 # int | Filter by prompt ID (optional)
-    prompt_type = 'prompt_type_example' # str | Filter by prompt type (search intent) (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
     brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
     sort = 'responses' # str |  (optional) (default to 'responses')
     sort_dir = 'desc' # str |  (optional) (default to 'desc')
@@ -267,14 +85,14 @@ Name | Type | Description  | Notes
  **project_id** | **int**| Project ID | 
  **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
  **var_from** | **datetime**|  | [optional] 
- **to** | **datetime**|  | [optional] 
+ **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **breakdown** | **str**| Add per-(prompt, model) rows to the output | [optional] 
  **model** | **str**| Filter by AI model. Models the API key&#39;s user has not enabled are silently dropped. | [optional] 
- **collection_id** | **int**|  | [optional] 
- **country_code** | **str**| ISO country code (e.g. US, GB, DE) | [optional] 
- **language_code** | **str**| ISO language code (e.g. en, es, de) | [optional] 
+ **collection_id** | [**GetTimeseriesCollectionIdParameter**](.md)| One collection/tag ID or a comma-separated list of IDs | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
  **prompt** | **int**| Filter by prompt ID | [optional] 
- **prompt_type** | **str**| Filter by prompt type (search intent) | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
  **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
  **sort** | **str**|  | [optional] [default to &#39;responses&#39;]
  **sort_dir** | **str**|  | [optional] [default to &#39;desc&#39;]
@@ -344,13 +162,13 @@ with llmpulse.ApiClient(configuration) as api_client:
     project_id = 56 # int | Project ID
     range = 56 # int | Number of days to look back (alternative to from/to) (optional)
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    to = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     granularity = 'granularity_example' # str |  (optional)
     competitors = 'competitors_example' # str | Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) (optional)
     model = 'model_example' # str | Filter by AI model. Models the API key's user has not enabled are silently dropped. (optional)
-    collection_id = 56 # int |  (optional)
+    collection_id = llmpulse.GetTimeseriesCollectionIdParameter() # GetTimeseriesCollectionIdParameter | One collection/tag ID or a comma-separated list of IDs (optional)
     prompt = 56 # int | Filter by prompt ID (optional)
-    prompt_type = 'prompt_type_example' # str | Filter by prompt type (search intent) (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
     brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
     view = 'over_time' # str | Which Share of Voice projection to flatten. Only valid together with 'output'. 'over_time' (default) is one row per date and actor, 'current' the ranked snapshot, 'breakdown' the Top 4 plus Others. (optional) (default to 'over_time')
@@ -374,13 +192,13 @@ Name | Type | Description  | Notes
  **project_id** | **int**| Project ID | 
  **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
  **var_from** | **datetime**|  | [optional] 
- **to** | **datetime**|  | [optional] 
+ **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **granularity** | **str**|  | [optional] 
  **competitors** | **str**| Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) | [optional] 
  **model** | **str**| Filter by AI model. Models the API key&#39;s user has not enabled are silently dropped. | [optional] 
- **collection_id** | **int**|  | [optional] 
+ **collection_id** | [**GetTimeseriesCollectionIdParameter**](.md)| One collection/tag ID or a comma-separated list of IDs | [optional] 
  **prompt** | **int**| Filter by prompt ID | [optional] 
- **prompt_type** | **str**| Filter by prompt type (search intent) | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
  **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
  **view** | **str**| Which Share of Voice projection to flatten. Only valid together with &#39;output&#39;. &#39;over_time&#39; (default) is one row per date and actor, &#39;current&#39; the ranked snapshot, &#39;breakdown&#39; the Top 4 plus Others. | [optional] [default to &#39;over_time&#39;]
@@ -448,12 +266,12 @@ with llmpulse.ApiClient(configuration) as api_client:
     granularity = 'granularity_example' # str |  (optional)
     range = 56 # int | Number of days to look back (alternative to from/to) (optional)
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    to = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     competitors = 'competitors_example' # str | Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) (optional)
     model = 'model_example' # str | Filter by AI model. Models the API key's user has not enabled are silently dropped. (optional)
-    collection_id = 56 # int |  (optional)
+    collection_id = llmpulse.GetTimeseriesCollectionIdParameter() # GetTimeseriesCollectionIdParameter | One collection/tag ID or a comma-separated list of IDs (optional)
     prompt = 56 # int | Filter by prompt ID (optional)
-    prompt_type = 'prompt_type_example' # str | Filter by prompt type (search intent) (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
     brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
 
@@ -478,12 +296,12 @@ Name | Type | Description  | Notes
  **granularity** | **str**|  | [optional] 
  **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
  **var_from** | **datetime**|  | [optional] 
- **to** | **datetime**|  | [optional] 
+ **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **competitors** | **str**| Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) | [optional] 
  **model** | **str**| Filter by AI model. Models the API key&#39;s user has not enabled are silently dropped. | [optional] 
- **collection_id** | **int**|  | [optional] 
+ **collection_id** | [**GetTimeseriesCollectionIdParameter**](.md)| One collection/tag ID or a comma-separated list of IDs | [optional] 
  **prompt** | **int**| Filter by prompt ID | [optional] 
- **prompt_type** | **str**| Filter by prompt type (search intent) | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
  **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
 
@@ -552,14 +370,14 @@ with llmpulse.ApiClient(configuration) as api_client:
     granularity = 'granularity_example' # str |  (optional)
     range = 56 # int | Number of days to look back (alternative to from/to) (optional)
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    to = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     competitors = 'competitors_example' # str | Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) (optional)
     model = 'model_example' # str | Filter by AI model. Models the API key's user has not enabled are silently dropped. (optional)
-    collection_id = 56 # int |  (optional)
-    country_code = 'country_code_example' # str | ISO country code (e.g. US, GB, DE) (optional)
-    language_code = 'language_code_example' # str | ISO language code (e.g. en, es, de) (optional)
+    collection_id = llmpulse.GetTimeseriesCollectionIdParameter() # GetTimeseriesCollectionIdParameter | One collection/tag ID or a comma-separated list of IDs (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
     prompt = 56 # int | Filter by prompt ID (optional)
-    prompt_type = 'prompt_type_example' # str | Filter by prompt type (search intent) (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
     brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
     include_project = True # bool |  (optional) (default to True)
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
@@ -585,14 +403,14 @@ Name | Type | Description  | Notes
  **granularity** | **str**|  | [optional] 
  **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
  **var_from** | **datetime**|  | [optional] 
- **to** | **datetime**|  | [optional] 
+ **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **competitors** | **str**| Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) | [optional] 
  **model** | **str**| Filter by AI model. Models the API key&#39;s user has not enabled are silently dropped. | [optional] 
- **collection_id** | **int**|  | [optional] 
- **country_code** | **str**| ISO country code (e.g. US, GB, DE) | [optional] 
- **language_code** | **str**| ISO language code (e.g. en, es, de) | [optional] 
+ **collection_id** | [**GetTimeseriesCollectionIdParameter**](.md)| One collection/tag ID or a comma-separated list of IDs | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
  **prompt** | **int**| Filter by prompt ID | [optional] 
- **prompt_type** | **str**| Filter by prompt type (search intent) | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
  **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
  **include_project** | **bool**|  | [optional] [default to True]
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
@@ -661,13 +479,13 @@ with llmpulse.ApiClient(configuration) as api_client:
     project_id = 56 # int | Project ID
     range = 56 # int | Number of days to look back (alternative to from/to) (optional)
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    to = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     model = 'model_example' # str | Filter by AI model. Models the API key's user has not enabled are silently dropped. (optional)
-    collection_id = 56 # int |  (optional)
-    country_code = 'country_code_example' # str | ISO country code (e.g. US, GB, DE) (optional)
-    language_code = 'language_code_example' # str | ISO language code (e.g. en, es, de) (optional)
+    collection_id = llmpulse.GetTimeseriesCollectionIdParameter() # GetTimeseriesCollectionIdParameter | One collection/tag ID or a comma-separated list of IDs (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
     prompt = 56 # int | Filter by prompt ID (optional)
-    prompt_type = 'prompt_type_example' # str | Filter by prompt type (search intent) (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
     brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
     sort = 'total_responses' # str |  (optional) (default to 'total_responses')
     query = 'query_example' # str | Filter domains by case-insensitive partial match (optional)
@@ -694,13 +512,13 @@ Name | Type | Description  | Notes
  **project_id** | **int**| Project ID | 
  **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
  **var_from** | **datetime**|  | [optional] 
- **to** | **datetime**|  | [optional] 
+ **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **model** | **str**| Filter by AI model. Models the API key&#39;s user has not enabled are silently dropped. | [optional] 
- **collection_id** | **int**|  | [optional] 
- **country_code** | **str**| ISO country code (e.g. US, GB, DE) | [optional] 
- **language_code** | **str**| ISO language code (e.g. en, es, de) | [optional] 
+ **collection_id** | [**GetTimeseriesCollectionIdParameter**](.md)| One collection/tag ID or a comma-separated list of IDs | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
  **prompt** | **int**| Filter by prompt ID | [optional] 
- **prompt_type** | **str**| Filter by prompt type (search intent) | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
  **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
  **sort** | **str**|  | [optional] [default to &#39;total_responses&#39;]
  **query** | **str**| Filter domains by case-insensitive partial match | [optional] 
