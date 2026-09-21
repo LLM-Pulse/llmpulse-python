@@ -18,7 +18,7 @@ from typing_extensions import Annotated
 
 from datetime import datetime
 from pydantic import Field, StrictInt, StrictStr, field_validator
-from typing import Any, Optional
+from typing import Optional
 from typing_extensions import Annotated
 from llmpulse.models.prompts_create_request import PromptsCreateRequest
 from llmpulse.models.prompts_create_response import PromptsCreateResponse
@@ -612,7 +612,7 @@ class PromptsApi:
         page: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         per_page: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = None,
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         prompt: Annotated[Optional[StrictInt], Field(description="Filter by prompt ID")] = None,
@@ -646,8 +646,8 @@ class PromptsApi:
         :type per_page: int
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
@@ -730,7 +730,7 @@ class PromptsApi:
         page: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         per_page: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = None,
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         prompt: Annotated[Optional[StrictInt], Field(description="Filter by prompt ID")] = None,
@@ -764,8 +764,8 @@ class PromptsApi:
         :type per_page: int
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
@@ -848,7 +848,7 @@ class PromptsApi:
         page: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         per_page: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = None,
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         prompt: Annotated[Optional[StrictInt], Field(description="Filter by prompt ID")] = None,
@@ -882,8 +882,8 @@ class PromptsApi:
         :type per_page: int
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
@@ -1104,7 +1104,7 @@ class PromptsApi:
         page: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         per_page: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = None,
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         prompt_type: Annotated[Optional[StrictStr], Field(description="One prompt type or a comma-separated list: informational, navigational, commercial, transactional")] = None,
@@ -1136,8 +1136,8 @@ class PromptsApi:
         :type per_page: int
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
@@ -1214,7 +1214,7 @@ class PromptsApi:
         page: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         per_page: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = None,
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         prompt_type: Annotated[Optional[StrictStr], Field(description="One prompt type or a comma-separated list: informational, navigational, commercial, transactional")] = None,
@@ -1246,8 +1246,8 @@ class PromptsApi:
         :type per_page: int
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
@@ -1324,7 +1324,7 @@ class PromptsApi:
         page: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         per_page: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = None,
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         prompt_type: Annotated[Optional[StrictStr], Field(description="One prompt type or a comma-separated list: informational, navigational, commercial, transactional")] = None,
@@ -1356,8 +1356,8 @@ class PromptsApi:
         :type per_page: int
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
@@ -1566,7 +1566,7 @@ class PromptsApi:
         direction: Optional[StrictStr] = None,
         query: Annotated[Optional[StrictStr], Field(description="Case-insensitive substring filter on the sub-query text")] = None,
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         prompt: Annotated[Optional[StrictInt], Field(description="Filter by prompt ID")] = None,
@@ -1609,8 +1609,8 @@ class PromptsApi:
         :type query: str
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
@@ -1702,7 +1702,7 @@ class PromptsApi:
         direction: Optional[StrictStr] = None,
         query: Annotated[Optional[StrictStr], Field(description="Case-insensitive substring filter on the sub-query text")] = None,
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         prompt: Annotated[Optional[StrictInt], Field(description="Filter by prompt ID")] = None,
@@ -1745,8 +1745,8 @@ class PromptsApi:
         :type query: str
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
@@ -1838,7 +1838,7 @@ class PromptsApi:
         direction: Optional[StrictStr] = None,
         query: Annotated[Optional[StrictStr], Field(description="Case-insensitive substring filter on the sub-query text")] = None,
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         prompt: Annotated[Optional[StrictInt], Field(description="Filter by prompt ID")] = None,
@@ -1881,8 +1881,8 @@ class PromptsApi:
         :type query: str
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)

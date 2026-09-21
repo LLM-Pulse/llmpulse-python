@@ -38,7 +38,6 @@ docs/GetAccount200Response.md
 docs/GetAccount200ResponseLimits.md
 docs/GetAccount200ResponseRateLimits.md
 docs/GetAccount200ResponseSubscription.md
-docs/GetTimeseriesCollectionIdParameter.md
 docs/HealthApi.md
 docs/IntelligenceTask.md
 docs/IntelligenceTaskCreateRequest.md
@@ -156,7 +155,6 @@ llmpulse/models/get_account200_response.py
 llmpulse/models/get_account200_response_limits.py
 llmpulse/models/get_account200_response_rate_limits.py
 llmpulse/models/get_account200_response_subscription.py
-llmpulse/models/get_timeseries_collection_id_parameter.py
 llmpulse/models/intelligence_task.py
 llmpulse/models/intelligence_task_create_request.py
 llmpulse/models/intelligence_task_update_request.py

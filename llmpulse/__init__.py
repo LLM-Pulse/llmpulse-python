@@ -76,7 +76,6 @@ __all__ = [
     "GetAccount200ResponseLimits",
     "GetAccount200ResponseRateLimits",
     "GetAccount200ResponseSubscription",
-    "GetTimeseriesCollectionIdParameter",
     "IntelligenceTask",
     "IntelligenceTaskCreateRequest",
     "IntelligenceTaskUpdateRequest",
@@ -188,7 +187,6 @@ from llmpulse.models.get_account200_response import GetAccount200Response as Get
 from llmpulse.models.get_account200_response_limits import GetAccount200ResponseLimits as GetAccount200ResponseLimits
 from llmpulse.models.get_account200_response_rate_limits import GetAccount200ResponseRateLimits as GetAccount200ResponseRateLimits
 from llmpulse.models.get_account200_response_subscription import GetAccount200ResponseSubscription as GetAccount200ResponseSubscription
-from llmpulse.models.get_timeseries_collection_id_parameter import GetTimeseriesCollectionIdParameter as GetTimeseriesCollectionIdParameter
 from llmpulse.models.intelligence_task import IntelligenceTask as IntelligenceTask
 from llmpulse.models.intelligence_task_create_request import IntelligenceTaskCreateRequest as IntelligenceTaskCreateRequest
 from llmpulse.models.intelligence_task_update_request import IntelligenceTaskUpdateRequest as IntelligenceTaskUpdateRequest

@@ -18,7 +18,7 @@ from typing_extensions import Annotated
 
 from datetime import datetime
 from pydantic import Field, StrictBool, StrictInt, StrictStr, field_validator
-from typing import Any, Optional
+from typing import Optional
 from typing_extensions import Annotated
 
 from llmpulse.api_client import ApiClient, RequestSerialized
@@ -320,7 +320,7 @@ class SentimentsApi:
         brand_only: Optional[StrictBool] = None,
         analysis: Annotated[Optional[StrictStr], Field(description="One sentiment level or a comma-separated list: very_positive, positive, neutral, negative, very_negative")] = None,
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         var_from: Optional[datetime] = None,
@@ -353,8 +353,8 @@ class SentimentsApi:
         :type analysis: str
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
@@ -431,7 +431,7 @@ class SentimentsApi:
         brand_only: Optional[StrictBool] = None,
         analysis: Annotated[Optional[StrictStr], Field(description="One sentiment level or a comma-separated list: very_positive, positive, neutral, negative, very_negative")] = None,
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         var_from: Optional[datetime] = None,
@@ -464,8 +464,8 @@ class SentimentsApi:
         :type analysis: str
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
@@ -542,7 +542,7 @@ class SentimentsApi:
         brand_only: Optional[StrictBool] = None,
         analysis: Annotated[Optional[StrictStr], Field(description="One sentiment level or a comma-separated list: very_positive, positive, neutral, negative, very_negative")] = None,
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         var_from: Optional[datetime] = None,
@@ -575,8 +575,8 @@ class SentimentsApi:
         :type analysis: str
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)

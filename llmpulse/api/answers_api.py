@@ -18,7 +18,7 @@ from typing_extensions import Annotated
 
 from datetime import datetime
 from pydantic import Field, StrictBool, StrictInt, StrictStr, field_validator
-from typing import Any, Optional
+from typing import Optional
 from typing_extensions import Annotated
 from llmpulse.models.answer_details import AnswerDetails
 
@@ -343,7 +343,7 @@ class AnswersApi:
         self,
         project_id: Annotated[StrictInt, Field(description="Project ID")],
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         prompt: Annotated[Optional[StrictInt], Field(description="Filter by prompt ID")] = None,
@@ -377,8 +377,8 @@ class AnswersApi:
         :type project_id: int
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
@@ -467,7 +467,7 @@ class AnswersApi:
         self,
         project_id: Annotated[StrictInt, Field(description="Project ID")],
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         prompt: Annotated[Optional[StrictInt], Field(description="Filter by prompt ID")] = None,
@@ -501,8 +501,8 @@ class AnswersApi:
         :type project_id: int
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
@@ -591,7 +591,7 @@ class AnswersApi:
         self,
         project_id: Annotated[StrictInt, Field(description="Project ID")],
         model: Annotated[Optional[StrictStr], Field(description="Filter by AI model. Models the API key's user has not enabled are silently dropped.")] = None,
-        collection_id: Annotated[Optional[Any], Field(description="One collection/tag ID or a comma-separated list of IDs")] = None,
+        collection_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.")] = None,
         country_code: Annotated[Optional[StrictStr], Field(description="One ISO country code or a comma-separated list (e.g. US,GB,DE)")] = None,
         language_code: Annotated[Optional[StrictStr], Field(description="One ISO language code or a comma-separated list (e.g. en,es,de)")] = None,
         prompt: Annotated[Optional[StrictInt], Field(description="Filter by prompt ID")] = None,
@@ -625,8 +625,8 @@ class AnswersApi:
         :type project_id: int
         :param model: Filter by AI model. Models the API key's user has not enabled are silently dropped.
         :type model: str
-        :param collection_id: One collection/tag ID or a comma-separated list of IDs
-        :type collection_id: GetTimeseriesCollectionIdParameter
+        :param collection_id: One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize.
+        :type collection_id: str
         :param country_code: One ISO country code or a comma-separated list (e.g. US,GB,DE)
         :type country_code: str
         :param language_code: One ISO language code or a comma-separated list (e.g. en,es,de)
