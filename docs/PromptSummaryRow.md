@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **citation_rate** | **float** |  | [optional] 
 **avg_mention_position** | **float** |  | [optional] 
 **avg_position** | **float** |  | [optional] 
+**app_url** | **str** | Opens this prompt in the app. The link names its project, so it opens there for any user with access to that project | [optional] 
 
 ## Example
 

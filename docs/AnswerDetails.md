@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **brand_entities** | **List[object]** |  | [optional] 
 **local_businesses** | **List[object]** |  | [optional] 
 **locale** | [**AnswerDetailsLocale**](AnswerDetailsLocale.md) |  | [optional] 
+**app_url** | **str** | Opens this answer in the app. The link names its project, so it opens there for any user with access to that project | [optional] 
 
 ## Example
 
