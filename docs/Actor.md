@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **competitor_id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
-**domain** | **str** | Bare (scheme-less) domain | [optional] 
+**domain** | **str** | Bare (scheme-less) domain. Null for the project actor when the project has no URL. | [optional] 
 
 ## Example
 

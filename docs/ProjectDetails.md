@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **name** | **str** | Internal project label (sidebar, settings, admin) | [optional] 
-**brand_name** | **str** | LLM-facing brand label (used in prompts and customer-facing charts). Defaults to &#x60;name&#x60; when not set. | [optional] 
+**brand_name** | **str** | LLM-facing brand label (used in prompts and customer-facing charts). Null when not set, in which case prompts and charts use &#x60;name&#x60;. | [optional] 
 **url** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **matching_names** | **List[str]** |  | [optional] 

@@ -1,6 +1,6 @@
 [project]
 name = "llmpulse"
-version = "1.50.0"
+version = "1.51.0"
 description = "LLM Pulse API"
 authors = [
   {name = "LLM Pulse Support",email = "info@llmpulse.ai"},

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **user_instructions** | **str** |  | [optional] 
 **output_language_code** | **str** |  | [optional] 
 **word_count** | **int** |  | [optional] 
-**result_data** | **object** | Only present when status&#x3D;&#39;completed&#39; | [optional] 
+**result_data** | **object** | The generated content once status is completed; null before that | [optional] 
 **error_message** | **str** |  | [optional] 
 **estimated_time** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 

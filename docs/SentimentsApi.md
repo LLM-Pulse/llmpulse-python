@@ -4,16 +4,16 @@ All URIs are relative to *https://api.llmpulse.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_sentiment_categories**](SentimentsApi.md#list_sentiment_categories) | **GET** /dimensions/sentiments | List sentiment categories
-[**list_sentiment_records**](SentimentsApi.md#list_sentiment_records) | **GET** /sentiments | List sentiment records
+[**list_sentiment_categories**](SentimentsApi.md#list_sentiment_categories) | **GET** /dimensions/sentiments | List sentiment categories (Growth plan or above)
+[**list_sentiment_records**](SentimentsApi.md#list_sentiment_records) | **GET** /sentiments | List sentiment records (Growth plan or above)
 
 
 # **list_sentiment_categories**
 > list_sentiment_categories(project_id, output=output)
 
-List sentiment categories
+List sentiment categories (Growth plan or above)
 
-Sentiment metric keys + labels + colors. For records, use /sentiments.
+Sentiment metric keys + labels + colors. For records, use /sentiments. Requires the Growth plan; lower tiers receive ERR_PLAN_REQUIRED.
 
 ### Example
 
@@ -48,7 +48,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
 
     try:
-        # List sentiment categories
+        # List sentiment categories (Growth plan or above)
         api_instance.list_sentiment_categories(project_id, output=output)
     except Exception as e:
         print("Exception when calling SentimentsApi->list_sentiment_categories: %s\n" % e)
@@ -75,20 +75,23 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Sentiment buckets |  -  |
+**403** | Endpoint requires the Growth plan or above |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_sentiment_records**
 > list_sentiment_records(project_id, competitor_id=competitor_id, brand_only=brand_only, analysis=analysis, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, var_from=var_from, to=to, page=page, per_page=per_page)
 
-List sentiment records
+List sentiment records (Growth plan or above)
+
+Requires the Growth plan; lower tiers receive ERR_PLAN_REQUIRED.
 
 ### Example
 
@@ -133,7 +136,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     per_page = 20 # int |  (optional) (default to 20)
 
     try:
-        # List sentiment records
+        # List sentiment records (Growth plan or above)
         api_instance.list_sentiment_records(project_id, competitor_id=competitor_id, brand_only=brand_only, analysis=analysis, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, var_from=var_from, to=to, page=page, per_page=per_page)
     except Exception as e:
         print("Exception when calling SentimentsApi->list_sentiment_records: %s\n" % e)
@@ -177,6 +180,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Paginated sentiments |  -  |
+**403** | Endpoint requires the Growth plan or above |  -  |
 **422** | Invalid parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
