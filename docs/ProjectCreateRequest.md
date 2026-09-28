@@ -6,12 +6,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **website_url** | **str** | Public HTTP(S) URL with a DNS hostname or public IP address. Credentials, private and special IP addresses, localhost and internal hostnames are rejected. | 
-**name** | **str** |  | 
+**name** | **str** | Project name, as plain text. It can be changed later with PATCH /projects/{id} | 
 **main_country** | **str** |  | 
 **main_language** | **str** |  | 
 **brand_name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-**industry** | **List[str]** |  | [optional] 
+**industry** | **List[str]** | Industry keys, case-insensitive; a single key string is also accepted. An unknown key returns ERR_INVALID_PARAM listing the valid keys (the same list as the in-app industry picker, e.g. TECHNOLOGY, SAAS, ECOMMERCE) | [optional] 
 **business_model** | **str** | Business model key (e.g. B2B_SAAS, MARKETPLACE); unknown keys are rejected | [optional] 
 **business_model_other** | **str** | Free-text business model, only accepted when business_model is OTHER; rejected against any other key | [optional] 
 **target_audience** | **str** | Who the brand sells to. Context for Recommendations and GEO Writer (Brand Book) | [optional] 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **primary_products** | **List[str]** | Main products or services | [optional] 
 **matching_names** | **List[str]** |  | [optional] 
 **prompts** | **List[str]** |  | [optional] 
+**collections** | [**List[ProjectCreateRequestCollectionsInner]**](ProjectCreateRequestCollectionsInner.md) | Collections (prompt tags) created with the project, each tagging prompts of this request by their exact text, so no separate tagging calls are needed. A text that is not in prompts returns ERR_INVALID_PARAM. A team member also needs Tags: Create permission. | [optional] 
 **competitors** | [**List[ProjectCreateRequestCompetitorsInner]**](ProjectCreateRequestCompetitorsInner.md) |  | [optional] 
 **owned_media** | [**ProjectCreateRequestOwnedMedia**](ProjectCreateRequestOwnedMedia.md) |  | [optional] 
 **use_subdomain** | **bool** |  | [optional] [default to False]

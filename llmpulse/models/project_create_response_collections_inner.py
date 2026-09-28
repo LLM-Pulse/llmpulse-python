@@ -18,30 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ApiErrorError(BaseModel):
+class ProjectCreateResponseCollectionsInner(BaseModel):
     """
-    ApiErrorError
+    ProjectCreateResponseCollectionsInner
     """ # noqa: E501
-    code: Optional[StrictStr] = None
-    message: Optional[StrictStr] = None
-    meta: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["code", "message", "meta"]
-
-    @field_validator('code')
-    def code_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['ERR_MISSING_AUTH', 'ERR_INVALID_API_KEY', 'ERR_REVOKED_API_KEY', 'ERR_INSUFFICIENT_SCOPE', 'ERR_INSUFFICIENT_PERMISSION', 'ERR_PLAN_REQUIRED', 'ERR_ACCOUNT_INACTIVE', 'ERR_DRAFT_NOT_FOUND', 'ERR_DRAFT_STATE', 'ERR_PROJECT_NOT_FOUND', 'ERR_NOT_FOUND', 'ERR_SEARCH_CONSOLE_NOT_CONNECTED', 'ERR_SEARCH_CONSOLE_ACCESS_REVOKED', 'ERR_SEARCH_CONSOLE_UPSTREAM', 'ERR_AI_TRAFFIC_NOT_CONNECTED', 'ERR_AGENT_TRAFFIC_NOT_CONNECTED', 'ERR_INVALID_PARAM', 'ERR_INVALID_RANGE', 'ERR_LIMIT_REACHED', 'ERR_QUOTA_EXCEEDED', 'ERR_RATE_LIMITED']):
-            raise ValueError("must be one of enum values ('ERR_MISSING_AUTH', 'ERR_INVALID_API_KEY', 'ERR_REVOKED_API_KEY', 'ERR_INSUFFICIENT_SCOPE', 'ERR_INSUFFICIENT_PERMISSION', 'ERR_PLAN_REQUIRED', 'ERR_ACCOUNT_INACTIVE', 'ERR_DRAFT_NOT_FOUND', 'ERR_DRAFT_STATE', 'ERR_PROJECT_NOT_FOUND', 'ERR_NOT_FOUND', 'ERR_SEARCH_CONSOLE_NOT_CONNECTED', 'ERR_SEARCH_CONSOLE_ACCESS_REVOKED', 'ERR_SEARCH_CONSOLE_UPSTREAM', 'ERR_AI_TRAFFIC_NOT_CONNECTED', 'ERR_AGENT_TRAFFIC_NOT_CONNECTED', 'ERR_INVALID_PARAM', 'ERR_INVALID_RANGE', 'ERR_LIMIT_REACHED', 'ERR_QUOTA_EXCEEDED', 'ERR_RATE_LIMITED')")
-        return value
+    id: Optional[StrictInt] = None
+    name: Optional[StrictStr] = None
+    prompts_attached: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "prompts_attached"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -61,7 +51,7 @@ class ApiErrorError(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ApiErrorError from a JSON string"""
+        """Create an instance of ProjectCreateResponseCollectionsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -86,7 +76,7 @@ class ApiErrorError(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ApiErrorError from a dict"""
+        """Create an instance of ProjectCreateResponseCollectionsInner from a dict"""
         if obj is None:
             return None
 
@@ -94,9 +84,9 @@ class ApiErrorError(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "code": obj.get("code"),
-            "message": obj.get("message"),
-            "meta": obj.get("meta")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "prompts_attached": obj.get("prompts_attached")
         })
         return _obj
 

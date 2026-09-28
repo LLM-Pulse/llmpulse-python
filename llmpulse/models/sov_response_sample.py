@@ -18,30 +18,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from datetime import date
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ApiErrorError(BaseModel):
+class SovResponseSample(BaseModel):
     """
-    ApiErrorError
+    The period the current shares were computed on (the last one with mentions), same shape as a periods item; null when the window has no mentions.
     """ # noqa: E501
-    code: Optional[StrictStr] = None
-    message: Optional[StrictStr] = None
-    meta: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["code", "message", "meta"]
-
-    @field_validator('code')
-    def code_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['ERR_MISSING_AUTH', 'ERR_INVALID_API_KEY', 'ERR_REVOKED_API_KEY', 'ERR_INSUFFICIENT_SCOPE', 'ERR_INSUFFICIENT_PERMISSION', 'ERR_PLAN_REQUIRED', 'ERR_ACCOUNT_INACTIVE', 'ERR_DRAFT_NOT_FOUND', 'ERR_DRAFT_STATE', 'ERR_PROJECT_NOT_FOUND', 'ERR_NOT_FOUND', 'ERR_SEARCH_CONSOLE_NOT_CONNECTED', 'ERR_SEARCH_CONSOLE_ACCESS_REVOKED', 'ERR_SEARCH_CONSOLE_UPSTREAM', 'ERR_AI_TRAFFIC_NOT_CONNECTED', 'ERR_AGENT_TRAFFIC_NOT_CONNECTED', 'ERR_INVALID_PARAM', 'ERR_INVALID_RANGE', 'ERR_LIMIT_REACHED', 'ERR_QUOTA_EXCEEDED', 'ERR_RATE_LIMITED']):
-            raise ValueError("must be one of enum values ('ERR_MISSING_AUTH', 'ERR_INVALID_API_KEY', 'ERR_REVOKED_API_KEY', 'ERR_INSUFFICIENT_SCOPE', 'ERR_INSUFFICIENT_PERMISSION', 'ERR_PLAN_REQUIRED', 'ERR_ACCOUNT_INACTIVE', 'ERR_DRAFT_NOT_FOUND', 'ERR_DRAFT_STATE', 'ERR_PROJECT_NOT_FOUND', 'ERR_NOT_FOUND', 'ERR_SEARCH_CONSOLE_NOT_CONNECTED', 'ERR_SEARCH_CONSOLE_ACCESS_REVOKED', 'ERR_SEARCH_CONSOLE_UPSTREAM', 'ERR_AI_TRAFFIC_NOT_CONNECTED', 'ERR_AGENT_TRAFFIC_NOT_CONNECTED', 'ERR_INVALID_PARAM', 'ERR_INVALID_RANGE', 'ERR_LIMIT_REACHED', 'ERR_QUOTA_EXCEEDED', 'ERR_RATE_LIMITED')")
-        return value
+    var_date: Optional[date] = Field(default=None, alias="date")
+    mentions: Optional[StrictInt] = None
+    partial: Optional[StrictBool] = None
+    confidence: Optional[StrictStr] = None
+    margin_of_error: Optional[Union[StrictFloat, StrictInt]] = None
+    __properties: ClassVar[List[str]] = ["date", "mentions", "partial", "confidence", "margin_of_error"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -61,7 +54,7 @@ class ApiErrorError(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ApiErrorError from a JSON string"""
+        """Create an instance of SovResponseSample from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,11 +75,16 @@ class ApiErrorError(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if margin_of_error (nullable) is None
+        # and model_fields_set contains the field
+        if self.margin_of_error is None and "margin_of_error" in self.model_fields_set:
+            _dict['margin_of_error'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ApiErrorError from a dict"""
+        """Create an instance of SovResponseSample from a dict"""
         if obj is None:
             return None
 
@@ -94,9 +92,11 @@ class ApiErrorError(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "code": obj.get("code"),
-            "message": obj.get("message"),
-            "meta": obj.get("meta")
+            "date": obj.get("date"),
+            "mentions": obj.get("mentions"),
+            "partial": obj.get("partial"),
+            "confidence": obj.get("confidence"),
+            "margin_of_error": obj.get("margin_of_error")
         })
         return _obj
 
