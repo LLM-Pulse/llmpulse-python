@@ -48,6 +48,8 @@ docs/ListCompetitors200Response.md
 docs/ListProjects200Response.md
 docs/ListWebhooks200Response.md
 docs/ListWebhooks200ResponseDataInner.md
+docs/LlmsTxtTechnicalGeoReport.md
+docs/LlmsTxtTechnicalGeoReportResultData.md
 docs/MentionsCitationsApi.md
 docs/MetricsApi.md
 docs/OwnedMediaCommunitiesApi.md
@@ -92,6 +94,10 @@ docs/SummaryResponse.md
 docs/SummaryResponseAllOfPositionDistribution.md
 docs/SummaryResponseAllOfSummaryValueInner.md
 docs/TechnicalGEOReportsApi.md
+docs/TechnicalGeoReportContentRevertRequest.md
+docs/TechnicalGeoReportContentUpdateRequest.md
+docs/TechnicalGeoReportContentUpdateRequestEdits.md
+docs/TechnicalGeoReportContentUpdateResponse.md
 docs/TimeseriesPoint.md
 docs/TimeseriesResponse.md
 docs/TimeseriesSeries.md
@@ -168,6 +174,8 @@ llmpulse/models/list_competitors200_response.py
 llmpulse/models/list_projects200_response.py
 llmpulse/models/list_webhooks200_response.py
 llmpulse/models/list_webhooks200_response_data_inner.py
+llmpulse/models/llms_txt_technical_geo_report.py
+llmpulse/models/llms_txt_technical_geo_report_result_data.py
 llmpulse/models/ping200_response.py
 llmpulse/models/project.py
 llmpulse/models/project_create_request.py
@@ -200,6 +208,10 @@ llmpulse/models/sov_response_sample.py
 llmpulse/models/summary_response.py
 llmpulse/models/summary_response_all_of_position_distribution.py
 llmpulse/models/summary_response_all_of_summary_value_inner.py
+llmpulse/models/technical_geo_report_content_revert_request.py
+llmpulse/models/technical_geo_report_content_update_request.py
+llmpulse/models/technical_geo_report_content_update_request_edits.py
+llmpulse/models/technical_geo_report_content_update_response.py
 llmpulse/models/timeseries_point.py
 llmpulse/models/timeseries_response.py
 llmpulse/models/timeseries_series.py
