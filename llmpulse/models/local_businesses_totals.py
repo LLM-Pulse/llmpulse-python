@@ -18,32 +18,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class Competitor(BaseModel):
+class LocalBusinessesTotals(BaseModel):
     """
-    Competitor
+    LocalBusinessesTotals
     """ # noqa: E501
-    id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
-    domain: Optional[StrictStr] = Field(default=None, description="Bare (scheme-less) domain. Null only on the own-brand row (include_project_brand=true) when the project has no URL.")
-    actor_type: Optional[StrictStr] = Field(default=None, description="Only present when include_project_brand=true")
-    is_own: Optional[StrictBool] = Field(default=None, description="Only present when include_project_brand=true")
-    __properties: ClassVar[List[str]] = ["id", "name", "domain", "actor_type", "is_own"]
-
-    @field_validator('actor_type')
-    def actor_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['project', 'competitor']):
-            raise ValueError("must be one of enum values ('project', 'competitor')")
-        return value
+    businesses: Optional[StrictInt] = None
+    your_businesses: Optional[StrictInt] = None
+    appearances: Optional[StrictInt] = None
+    avg_rating: Optional[Union[StrictFloat, StrictInt]] = None
+    executions_with_local_businesses: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["businesses", "your_businesses", "appearances", "avg_rating", "executions_with_local_businesses"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -63,7 +53,7 @@ class Competitor(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Competitor from a JSON string"""
+        """Create an instance of LocalBusinessesTotals from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -84,16 +74,16 @@ class Competitor(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if domain (nullable) is None
+        # set to None if avg_rating (nullable) is None
         # and model_fields_set contains the field
-        if self.domain is None and "domain" in self.model_fields_set:
-            _dict['domain'] = None
+        if self.avg_rating is None and "avg_rating" in self.model_fields_set:
+            _dict['avg_rating'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Competitor from a dict"""
+        """Create an instance of LocalBusinessesTotals from a dict"""
         if obj is None:
             return None
 
@@ -101,11 +91,11 @@ class Competitor(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "domain": obj.get("domain"),
-            "actor_type": obj.get("actor_type"),
-            "is_own": obj.get("is_own")
+            "businesses": obj.get("businesses"),
+            "your_businesses": obj.get("your_businesses"),
+            "appearances": obj.get("appearances"),
+            "avg_rating": obj.get("avg_rating"),
+            "executions_with_local_businesses": obj.get("executions_with_local_businesses")
         })
         return _obj
 

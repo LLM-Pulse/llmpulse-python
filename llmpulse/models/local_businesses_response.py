@@ -18,32 +18,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from llmpulse.models.local_business import LocalBusiness
+from llmpulse.models.local_businesses_totals import LocalBusinessesTotals
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class Competitor(BaseModel):
+class LocalBusinessesResponse(BaseModel):
     """
-    Competitor
+    LocalBusinessesResponse
     """ # noqa: E501
-    id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
-    domain: Optional[StrictStr] = Field(default=None, description="Bare (scheme-less) domain. Null only on the own-brand row (include_project_brand=true) when the project has no URL.")
-    actor_type: Optional[StrictStr] = Field(default=None, description="Only present when include_project_brand=true")
-    is_own: Optional[StrictBool] = Field(default=None, description="Only present when include_project_brand=true")
-    __properties: ClassVar[List[str]] = ["id", "name", "domain", "actor_type", "is_own"]
-
-    @field_validator('actor_type')
-    def actor_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['project', 'competitor']):
-            raise ValueError("must be one of enum values ('project', 'competitor')")
-        return value
+    project_id: Optional[StrictInt] = None
+    page: Optional[StrictInt] = None
+    per_page: Optional[StrictInt] = None
+    total: Optional[StrictInt] = None
+    totals: Optional[LocalBusinessesTotals] = None
+    data: Optional[List[LocalBusiness]] = None
+    request_id: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["project_id", "page", "per_page", "total", "totals", "data", "request_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -63,7 +57,7 @@ class Competitor(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Competitor from a JSON string"""
+        """Create an instance of LocalBusinessesResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -84,16 +78,21 @@ class Competitor(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if domain (nullable) is None
-        # and model_fields_set contains the field
-        if self.domain is None and "domain" in self.model_fields_set:
-            _dict['domain'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of totals
+        if self.totals:
+            _dict['totals'] = self.totals.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
+        _items = []
+        if self.data:
+            for _item_data in self.data:
+                if _item_data:
+                    _items.append(_item_data.to_dict())
+            _dict['data'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Competitor from a dict"""
+        """Create an instance of LocalBusinessesResponse from a dict"""
         if obj is None:
             return None
 
@@ -101,11 +100,13 @@ class Competitor(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "domain": obj.get("domain"),
-            "actor_type": obj.get("actor_type"),
-            "is_own": obj.get("is_own")
+            "project_id": obj.get("project_id"),
+            "page": obj.get("page"),
+            "per_page": obj.get("per_page"),
+            "total": obj.get("total"),
+            "totals": LocalBusinessesTotals.from_dict(obj["totals"]) if obj.get("totals") is not None else None,
+            "data": [LocalBusiness.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
+            "request_id": obj.get("request_id")
         })
         return _obj
 
