@@ -21,6 +21,7 @@ from llmpulse.api.search_console_api import SearchConsoleApi
 from llmpulse.api.sentiments_api import SentimentsApi
 from llmpulse.api.shopping_ads_api import ShoppingAdsApi
 from llmpulse.api.sources_citation_intelligence_api import SourcesCitationIntelligenceApi
+from llmpulse.api.store_integrations_api import StoreIntegrationsApi
 from llmpulse.api.technical_geo_reports_api import TechnicalGEOReportsApi
 from llmpulse.api.webhooks_api import WebhooksApi
 
