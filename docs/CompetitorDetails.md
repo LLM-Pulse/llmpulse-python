@@ -12,8 +12,16 @@ Name | Type | Description | Notes
 **matching_names** | **List[str]** |  | [optional] 
 **google_play_id** | **str** |  | [optional] 
 **app_store_id** | **str** |  | [optional] 
+**citation_match_mode** | [**CitationMatchMode**](CitationMatchMode.md) |  | [optional] 
+**citation_match_path** | **str** | Set only when citation_match_mode is path_prefix | [optional] 
+**google_play_name** | **str** | English app name on Google Play, when the competitor has an Android app | [optional] 
+**app_store_name** | **str** | English app name on the App Store, when the competitor has an iOS app | [optional] 
+**google_play_icon_url** | **str** |  | [optional] 
+**app_store_icon_url** | **str** |  | [optional] 
 **color** | **str** |  | [optional] 
+**processing** | **bool** | True while the competitor&#39;s historical mentions are being recalculated | [optional] 
 **created_at** | **datetime** |  | [optional] 
+**request_id** | **str** |  | [optional] 
 
 ## Example
 

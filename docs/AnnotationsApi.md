@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create_annotation**
-> create_annotation(create_annotation_request)
+> AnnotationCreateResponse create_annotation(create_annotation_request)
 
 Create a timeline annotation
 
@@ -23,6 +23,7 @@ Marks a date in the project timeseries with a title + description. Available on 
 
 ```python
 import llmpulse
+from llmpulse.models.annotation_create_response import AnnotationCreateResponse
 from llmpulse.models.create_annotation_request import CreateAnnotationRequest
 from llmpulse.rest import ApiException
 from pprint import pprint
@@ -51,7 +52,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Create a timeline annotation
-        api_instance.create_annotation(create_annotation_request)
+        api_response = api_instance.create_annotation(create_annotation_request)
+        print("The response of AnnotationsApi->create_annotation:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AnnotationsApi->create_annotation: %s\n" % e)
 ```
@@ -67,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AnnotationCreateResponse**](AnnotationCreateResponse.md)
 
 ### Authorization
 

@@ -87,7 +87,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_sentiment_records**
-> list_sentiment_records(project_id, competitor_id=competitor_id, brand_only=brand_only, analysis=analysis, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, var_from=var_from, to=to, page=page, per_page=per_page)
+> SentimentsResponse list_sentiment_records(project_id, competitor_id=competitor_id, brand_only=brand_only, analysis=analysis, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, var_from=var_from, to=to, page=page, per_page=per_page)
 
 List sentiment records (Growth plan or above)
 
@@ -99,6 +99,7 @@ Requires the Growth plan; lower tiers receive ERR_PLAN_REQUIRED.
 
 ```python
 import llmpulse
+from llmpulse.models.sentiments_response import SentimentsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -137,7 +138,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List sentiment records (Growth plan or above)
-        api_instance.list_sentiment_records(project_id, competitor_id=competitor_id, brand_only=brand_only, analysis=analysis, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, var_from=var_from, to=to, page=page, per_page=per_page)
+        api_response = api_instance.list_sentiment_records(project_id, competitor_id=competitor_id, brand_only=brand_only, analysis=analysis, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, var_from=var_from, to=to, page=page, per_page=per_page)
+        print("The response of SentimentsApi->list_sentiment_records:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling SentimentsApi->list_sentiment_records: %s\n" % e)
 ```
@@ -164,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SentimentsResponse**](SentimentsResponse.md)
 
 ### Authorization
 

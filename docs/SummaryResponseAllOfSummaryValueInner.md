@@ -6,7 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **actor** | [**Actor**](Actor.md) |  | [optional] 
+**metric** | **str** |  | [optional] 
 **total** | **float** |  | [optional] 
+**aggregation** | **str** | How total combines the buckets | [optional] 
 **min** | **float** |  | [optional] 
 **max** | **float** |  | [optional] 
 **last** | **float** |  | [optional] 

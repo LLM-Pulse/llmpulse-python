@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **executed_at** | **datetime** |  | [optional] 
 **duration_ms** | **float** | Milliseconds, rounded to one decimal place | [optional] 
 **success** | **bool** | Null while the answer is still pending | [optional] 
+**no_result** | **bool** | True for a sentinel non-answer (the provider returned nothing after retries); excluded from platform metrics | [optional] 
 **fan_out_queries** | **List[str]** |  | [optional] 
 **mentions** | **List[object]** |  | [optional] 
 **citations** | **List[object]** |  | [optional] 
@@ -26,6 +27,7 @@ Name | Type | Description | Notes
 **local_businesses** | **List[object]** |  | [optional] 
 **locale** | [**AnswerDetailsLocale**](AnswerDetailsLocale.md) |  | [optional] 
 **app_url** | **str** | Opens this answer in the app. The link names its project, so it opens there for any user with access to that project | [optional] 
+**request_id** | **str** |  | [optional] 
 
 ## Example
 

@@ -199,7 +199,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_citations**
-> list_citations(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output)
+> CitationsResponse list_citations(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output)
 
 List brand citations
 
@@ -211,6 +211,7 @@ Includes visible citations and background source references. Background referenc
 
 ```python
 import llmpulse
+from llmpulse.models.citations_response import CitationsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -248,7 +249,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List brand citations
-        api_instance.list_citations(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output)
+        api_response = api_instance.list_citations(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output)
+        print("The response of MentionsCitationsApi->list_citations:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling MentionsCitationsApi->list_citations: %s\n" % e)
 ```
@@ -274,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CitationsResponse**](CitationsResponse.md)
 
 ### Authorization
 
@@ -283,7 +286,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -387,7 +390,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_competitor_mentions**
-> list_competitor_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output)
+> CompetitorMentionsResponse list_competitor_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output)
 
 List competitor mentions
 
@@ -397,6 +400,7 @@ List competitor mentions
 
 ```python
 import llmpulse
+from llmpulse.models.competitor_mentions_response import CompetitorMentionsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -433,7 +437,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List competitor mentions
-        api_instance.list_competitor_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output)
+        api_response = api_instance.list_competitor_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output)
+        print("The response of MentionsCitationsApi->list_competitor_mentions:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling MentionsCitationsApi->list_competitor_mentions: %s\n" % e)
 ```
@@ -458,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CompetitorMentionsResponse**](CompetitorMentionsResponse.md)
 
 ### Authorization
 
@@ -467,7 +473,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -478,7 +484,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_mentions**
-> list_mentions(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output)
+> MentionsResponse list_mentions(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output)
 
 List brand mentions
 
@@ -488,6 +494,7 @@ List brand mentions
 
 ```python
 import llmpulse
+from llmpulse.models.mentions_response import MentionsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -525,7 +532,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List brand mentions
-        api_instance.list_mentions(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output)
+        api_response = api_instance.list_mentions(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output)
+        print("The response of MentionsCitationsApi->list_mentions:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling MentionsCitationsApi->list_mentions: %s\n" % e)
 ```
@@ -551,7 +560,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**MentionsResponse**](MentionsResponse.md)
 
 ### Authorization
 
@@ -560,7 +569,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 

@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **domain** | **str** | Bare (scheme-less) domain. Null only on the own-brand row (include_project_brand&#x3D;true) when the project has no URL. | [optional] 
+**matching_names** | **List[str]** | Alternative names matched as this competitor. Absent on the own-brand row | [optional] 
+**citation_match_mode** | [**CitationMatchMode**](CitationMatchMode.md) |  | [optional] 
+**citation_match_path** | **str** | Set only when citation_match_mode is path_prefix | [optional] 
 **actor_type** | **str** | Only present when include_project_brand&#x3D;true | [optional] 
 **is_own** | **bool** | Only present when include_project_brand&#x3D;true | [optional] 
 

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **assign_prompt_tags**
-> assign_prompt_tags(assign_prompt_tags_request)
+> PromptTagsAssignResponse assign_prompt_tags(assign_prompt_tags_request)
 
 Bulk-attach tags to prompts
 
@@ -26,6 +26,7 @@ Idempotent bulk assignment of tags (Collections) to existing prompts. Tags can b
 ```python
 import llmpulse
 from llmpulse.models.assign_prompt_tags_request import AssignPromptTagsRequest
+from llmpulse.models.prompt_tags_assign_response import PromptTagsAssignResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -53,7 +54,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Bulk-attach tags to prompts
-        api_instance.assign_prompt_tags(assign_prompt_tags_request)
+        api_response = api_instance.assign_prompt_tags(assign_prompt_tags_request)
+        print("The response of CollectionsTagsApi->assign_prompt_tags:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling CollectionsTagsApi->assign_prompt_tags: %s\n" % e)
 ```
@@ -69,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**PromptTagsAssignResponse**](PromptTagsAssignResponse.md)
 
 ### Authorization
 
@@ -91,7 +94,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_collection**
-> create_collection(create_collection_request)
+> CollectionCreateResponse create_collection(create_collection_request)
 
 Create a tag
 
@@ -103,6 +106,7 @@ Creates a tag (Collection) in a project. Optional `prompt_ids` attaches existing
 
 ```python
 import llmpulse
+from llmpulse.models.collection_create_response import CollectionCreateResponse
 from llmpulse.models.create_collection_request import CreateCollectionRequest
 from llmpulse.rest import ApiException
 from pprint import pprint
@@ -131,7 +135,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Create a tag
-        api_instance.create_collection(create_collection_request)
+        api_response = api_instance.create_collection(create_collection_request)
+        print("The response of CollectionsTagsApi->create_collection:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling CollectionsTagsApi->create_collection: %s\n" % e)
 ```
@@ -147,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CollectionCreateResponse**](CollectionCreateResponse.md)
 
 ### Authorization
 
@@ -248,7 +254,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_collections**
-> list_collections(project_id, output=output)
+> CollectionsResponse list_collections(project_id, output=output)
 
 List tags/collections
 
@@ -258,6 +264,7 @@ List tags/collections
 
 ```python
 import llmpulse
+from llmpulse.models.collections_response import CollectionsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -286,7 +293,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List tags/collections
-        api_instance.list_collections(project_id, output=output)
+        api_response = api_instance.list_collections(project_id, output=output)
+        print("The response of CollectionsTagsApi->list_collections:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling CollectionsTagsApi->list_collections: %s\n" % e)
 ```
@@ -303,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CollectionsResponse**](CollectionsResponse.md)
 
 ### Authorization
 
@@ -312,7 +321,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -323,7 +332,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tags**
-> list_tags(project_id, output=output)
+> CollectionsResponse list_tags(project_id, output=output)
 
 List tags (alias for /collections)
 
@@ -333,6 +342,7 @@ List tags (alias for /collections)
 
 ```python
 import llmpulse
+from llmpulse.models.collections_response import CollectionsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -361,7 +371,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List tags (alias for /collections)
-        api_instance.list_tags(project_id, output=output)
+        api_response = api_instance.list_tags(project_id, output=output)
+        print("The response of CollectionsTagsApi->list_tags:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling CollectionsTagsApi->list_tags: %s\n" % e)
 ```
@@ -378,7 +390,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CollectionsResponse**](CollectionsResponse.md)
 
 ### Authorization
 
@@ -387,7 +399,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 

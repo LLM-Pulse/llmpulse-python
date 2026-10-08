@@ -8,11 +8,13 @@ Name | Type | Description | Notes
 **project_id** | **int** |  | [optional] 
 **var_from** | **datetime** |  | [optional] 
 **to** | **datetime** |  | [optional] 
+**filters** | [**MetricsFiltersEcho**](MetricsFiltersEcho.md) |  | [optional] 
 **sort** | **str** |  | [optional] 
 **page** | **int** |  | [optional] 
 **per_page** | **int** |  | [optional] 
 **total** | **int** |  | [optional] 
 **data** | [**List[TopSourcesResponseDataInner]**](TopSourcesResponseDataInner.md) |  | [optional] 
+**request_id** | **str** |  | [optional] 
 
 ## Example
 

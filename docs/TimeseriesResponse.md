@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **project_id** | **int** |  | [optional] 
 **var_from** | **datetime** |  | [optional] 
 **to** | **datetime** |  | [optional] 
-**granularity** | **str** |  | [optional] 
-**filters** | **object** |  | [optional] 
+**granularity** | **str** | day, week or month | [optional] 
+**filters** | [**MetricsFiltersEcho**](MetricsFiltersEcho.md) |  | [optional] 
 **series** | **Dict[str, List[TimeseriesSeries]]** |  | [optional] 
 **request_id** | **str** |  | [optional] 
 

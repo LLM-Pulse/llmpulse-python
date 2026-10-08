@@ -168,7 +168,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_recommendations**
-> list_recommendations(project_id, recommendation_type=recommendation_type, status=status, page=page, per_page=per_page)
+> RecommendationsResponse list_recommendations(project_id, recommendation_type=recommendation_type, status=status, page=page, per_page=per_page)
 
 List recommendation runs
 
@@ -178,6 +178,7 @@ List recommendation runs
 
 ```python
 import llmpulse
+from llmpulse.models.recommendations_response import RecommendationsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -209,7 +210,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List recommendation runs
-        api_instance.list_recommendations(project_id, recommendation_type=recommendation_type, status=status, page=page, per_page=per_page)
+        api_response = api_instance.list_recommendations(project_id, recommendation_type=recommendation_type, status=status, page=page, per_page=per_page)
+        print("The response of RecommendationsApi->list_recommendations:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling RecommendationsApi->list_recommendations: %s\n" % e)
 ```
@@ -229,7 +232,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**RecommendationsResponse**](RecommendationsResponse.md)
 
 ### Authorization
 
@@ -238,7 +241,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 

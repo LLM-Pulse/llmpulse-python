@@ -172,7 +172,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_prompt_executions**
-> list_prompt_executions(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, mention_filter=mention_filter, citation_filter=citation_filter, competitors=competitors, output=output)
+> PromptExecutionsResponse list_prompt_executions(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, mention_filter=mention_filter, citation_filter=citation_filter, competitors=competitors, output=output)
 
 List prompt executions
 
@@ -182,6 +182,7 @@ List prompt executions
 
 ```python
 import llmpulse
+from llmpulse.models.prompt_executions_response import PromptExecutionsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -222,7 +223,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List prompt executions
-        api_instance.list_prompt_executions(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, mention_filter=mention_filter, citation_filter=citation_filter, competitors=competitors, output=output)
+        api_response = api_instance.list_prompt_executions(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, mention_filter=mention_filter, citation_filter=citation_filter, competitors=competitors, output=output)
+        print("The response of PromptsApi->list_prompt_executions:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling PromptsApi->list_prompt_executions: %s\n" % e)
 ```
@@ -251,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**PromptExecutionsResponse**](PromptExecutionsResponse.md)
 
 ### Authorization
 
@@ -260,7 +263,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -271,7 +274,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_prompts**
-> list_prompts(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, var_from=var_from, to=to, output=output)
+> PromptsResponse list_prompts(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, var_from=var_from, to=to, output=output)
 
 List prompts
 
@@ -281,6 +284,7 @@ List prompts
 
 ```python
 import llmpulse
+from llmpulse.models.prompts_response import PromptsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -319,7 +323,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List prompts
-        api_instance.list_prompts(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, var_from=var_from, to=to, output=output)
+        api_response = api_instance.list_prompts(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, var_from=var_from, to=to, output=output)
+        print("The response of PromptsApi->list_prompts:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling PromptsApi->list_prompts: %s\n" % e)
 ```
@@ -346,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**PromptsResponse**](PromptsResponse.md)
 
 ### Authorization
 
@@ -355,7 +361,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 

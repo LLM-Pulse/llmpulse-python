@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create_competitor**
-> create_competitor(create_competitor_request)
+> CompetitorCreateResponse create_competitor(create_competitor_request)
 
 Add a competitor
 
@@ -24,6 +24,7 @@ Adds a competitor with its own citation URL matching rule. Honours the per-plan 
 
 ```python
 import llmpulse
+from llmpulse.models.competitor_create_response import CompetitorCreateResponse
 from llmpulse.models.create_competitor_request import CreateCompetitorRequest
 from llmpulse.rest import ApiException
 from pprint import pprint
@@ -52,7 +53,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Add a competitor
-        api_instance.create_competitor(create_competitor_request)
+        api_response = api_instance.create_competitor(create_competitor_request)
+        print("The response of CompetitorsApi->create_competitor:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling CompetitorsApi->create_competitor: %s\n" % e)
 ```
@@ -68,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CompetitorCreateResponse**](CompetitorCreateResponse.md)
 
 ### Authorization
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **project_id** | **int** |  | [optional] 
 **var_from** | **datetime** |  | [optional] 
 **to** | **datetime** |  | [optional] 
-**filters** | **object** |  | [optional] 
+**filters** | [**MetricsFiltersEcho**](MetricsFiltersEcho.md) |  | [optional] 
 **breakdown** | **str** |  | [optional] 
 **sort** | **str** |  | [optional] 
 **sort_dir** | **str** |  | [optional] 

@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_intelligence_tasks**
-> list_intelligence_tasks(project_id, task_type=task_type, status=status, page=page, per_page=per_page)
+> IntelligenceTasksResponse list_intelligence_tasks(project_id, task_type=task_type, status=status, page=page, per_page=per_page)
 
 List GEO Writer tasks
 
@@ -181,6 +181,7 @@ List GEO Writer tasks
 
 ```python
 import llmpulse
+from llmpulse.models.intelligence_tasks_response import IntelligenceTasksResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -212,7 +213,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List GEO Writer tasks
-        api_instance.list_intelligence_tasks(project_id, task_type=task_type, status=status, page=page, per_page=per_page)
+        api_response = api_instance.list_intelligence_tasks(project_id, task_type=task_type, status=status, page=page, per_page=per_page)
+        print("The response of GEOWriterApi->list_intelligence_tasks:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling GEOWriterApi->list_intelligence_tasks: %s\n" % e)
 ```
@@ -232,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IntelligenceTasksResponse**](IntelligenceTasksResponse.md)
 
 ### Authorization
 
@@ -241,7 +244,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 

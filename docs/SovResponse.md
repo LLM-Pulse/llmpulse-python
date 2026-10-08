@@ -6,12 +6,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **project_id** | **int** |  | [optional] 
+**var_from** | **datetime** |  | [optional] 
+**to** | **datetime** |  | [optional] 
+**granularity** | **str** | day, week or month | [optional] 
+**filters** | [**MetricsFiltersEcho**](MetricsFiltersEcho.md) |  | [optional] 
 **periods** | [**List[SovResponsePeriodsInner]**](SovResponsePeriodsInner.md) | Per-bucket sample size and completeness: mentions is the total the shares were computed on (1-3 mentions produce the 100/50/33.33 low-sample patterns); partial marks buckets still collecting data or clipped by the requested window; confidence and margin_of_error read the sample size. | [optional] 
 **sample** | [**SovResponseSample**](SovResponseSample.md) |  | [optional] 
 **over_time** | [**List[SovResponseOverTimeInner]**](SovResponseOverTimeInner.md) |  | [optional] 
 **current** | [**List[SovResponseCurrentInner]**](SovResponseCurrentInner.md) |  | [optional] 
 **breakdown** | [**List[SovResponseBreakdownInner]**](SovResponseBreakdownInner.md) |  | [optional] 
-**others** | **List[object]** |  | [optional] 
+**others** | [**List[SovResponseOthersInner]**](SovResponseOthersInner.md) | Actors ranked fifth and below, folded into the Others share of breakdown | [optional] 
+**request_id** | **str** |  | [optional] 
 
 ## Example
 

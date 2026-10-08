@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **last_delivered_at** | **datetime** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **secret** | **str** | HMAC signing secret (whsec_...). Only returned on create. | [optional] 
+**request_id** | **str** |  | [optional] 
 
 ## Example
 

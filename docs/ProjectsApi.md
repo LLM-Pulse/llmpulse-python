@@ -415,7 +415,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_locales**
-> list_locales(project_id)
+> LocalesResponse list_locales(project_id)
 
 List locales with data
 
@@ -425,6 +425,7 @@ List locales with data
 
 ```python
 import llmpulse
+from llmpulse.models.locales_response import LocalesResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -452,7 +453,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List locales with data
-        api_instance.list_locales(project_id)
+        api_response = api_instance.list_locales(project_id)
+        print("The response of ProjectsApi->list_locales:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ProjectsApi->list_locales: %s\n" % e)
 ```
@@ -468,7 +471,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**LocalesResponse**](LocalesResponse.md)
 
 ### Authorization
 
@@ -477,7 +480,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -488,7 +491,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_models**
-> list_models(project_id)
+> ModelsResponse list_models(project_id)
 
 List models with data
 
@@ -498,6 +501,7 @@ List models with data
 
 ```python
 import llmpulse
+from llmpulse.models.models_response import ModelsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -525,7 +529,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List models with data
-        api_instance.list_models(project_id)
+        api_response = api_instance.list_models(project_id)
+        print("The response of ProjectsApi->list_models:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ProjectsApi->list_models: %s\n" % e)
 ```
@@ -541,7 +547,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ModelsResponse**](ModelsResponse.md)
 
 ### Authorization
 
@@ -550,7 +556,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 

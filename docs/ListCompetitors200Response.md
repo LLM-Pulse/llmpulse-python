@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **project_id** | **int** |  | [optional] 
 **competitors** | [**List[Competitor]**](Competitor.md) |  | [optional] 
+**request_id** | **str** |  | [optional] 
 
 ## Example
 

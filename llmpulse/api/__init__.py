@@ -8,6 +8,7 @@ from llmpulse.api.annotations_api import AnnotationsApi
 from llmpulse.api.answers_api import AnswersApi
 from llmpulse.api.collections_tags_api import CollectionsTagsApi
 from llmpulse.api.competitors_api import CompetitorsApi
+from llmpulse.api.geo_audits_api import GEOAuditsApi
 from llmpulse.api.geo_writer_api import GEOWriterApi
 from llmpulse.api.health_api import HealthApi
 from llmpulse.api.mentions_citations_api import MentionsCitationsApi

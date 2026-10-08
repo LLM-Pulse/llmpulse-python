@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **app_store_id** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **stats** | [**ProjectDetailsAllOfStats**](ProjectDetailsAllOfStats.md) |  | [optional] 
+**data_coverage** | [**ProjectDetailsAllOfDataCoverage**](ProjectDetailsAllOfDataCoverage.md) |  | [optional] 
+**request_id** | **str** |  | [optional] 
 
 ## Example
 
