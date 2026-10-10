@@ -149,6 +149,7 @@ docs/PromptsCreateRequest.md
 docs/PromptsCreateResponse.md
 docs/PromptsCreateResponseDataInner.md
 docs/PromptsResponse.md
+docs/QueryWebAnalyticsRequest.md
 docs/RecommendationSummary.md
 docs/RecommendationSummarySummary.md
 docs/RecommendationsApi.md
@@ -194,6 +195,9 @@ docs/UpdateCollectionRequest.md
 docs/UpdateCompetitorRequest.md
 docs/UpdateProjectDraftRequest.md
 docs/UpdateProjectRequest.md
+docs/WebAnalyticsQueryResponse.md
+docs/WebAnalyticsQueryResponseColumnsInner.md
+docs/WebAnalyticsSchemaResponse.md
 docs/WebhooksApi.md
 git_push.sh
 llmpulse/__init__.py
@@ -357,6 +361,7 @@ llmpulse/models/prompts_create_request.py
 llmpulse/models/prompts_create_response.py
 llmpulse/models/prompts_create_response_data_inner.py
 llmpulse/models/prompts_response.py
+llmpulse/models/query_web_analytics_request.py
 llmpulse/models/recommendation_summary.py
 llmpulse/models/recommendation_summary_summary.py
 llmpulse/models/recommendations_response.py
@@ -394,6 +399,9 @@ llmpulse/models/update_collection_request.py
 llmpulse/models/update_competitor_request.py
 llmpulse/models/update_project_draft_request.py
 llmpulse/models/update_project_request.py
+llmpulse/models/web_analytics_query_response.py
+llmpulse/models/web_analytics_query_response_columns_inner.py
+llmpulse/models/web_analytics_schema_response.py
 llmpulse/py.typed
 llmpulse/rest.py
 pyproject.toml
