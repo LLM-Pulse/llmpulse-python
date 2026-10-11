@@ -1,0 +1,42 @@
+# SearchConsoleRowsResponse
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**project_id** | **int** |  | [optional] 
+**var_property** | [**SearchConsoleProperty**](SearchConsoleProperty.md) |  | [optional] 
+**var_from** | **date** |  | [optional] 
+**to** | **date** |  | [optional] 
+**data_through** | **date** | Latest date Google has published for the property (it lags 2-3 days). Later days are missing, not zero. | [optional] 
+**page** | **int** |  | [optional] 
+**per_page** | **int** |  | [optional] 
+**total** | **int** | Rows in this window (one Google request, at most 25,000) | [optional] 
+**sort** | **str** |  | [optional] 
+**start_row** | **int** | Present when start_row was set | [optional] 
+**truncated** | **bool** | Present (true) when Google returned 25,000 rows, so more rows exist past this window | [optional] 
+**dimensions** | **List[str]** |  | [optional] 
+**data** | [**List[SearchConsoleRowsResponseDataInner]**](SearchConsoleRowsResponseDataInner.md) | One row per combination; only the requested dimensions are present | [optional] 
+**request_id** | **str** |  | [optional] 
+
+## Example
+
+```python
+from llmpulse.models.search_console_rows_response import SearchConsoleRowsResponse
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of SearchConsoleRowsResponse from a JSON string
+search_console_rows_response_instance = SearchConsoleRowsResponse.from_json(json)
+# print the JSON string representation of the object
+print(SearchConsoleRowsResponse.to_json())
+
+# convert the object into a dict
+search_console_rows_response_dict = search_console_rows_response_instance.to_dict()
+# create an instance of SearchConsoleRowsResponse from a dict
+search_console_rows_response_from_dict = SearchConsoleRowsResponse.from_dict(search_console_rows_response_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

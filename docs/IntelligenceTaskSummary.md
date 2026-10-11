@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **manually_edited_at** | **datetime** | When the content was last edited by hand; null while the output is as generated | 
 **created_at** | **datetime** |  | 
 **processed_at** | **datetime** |  | 
+**result_version** | **str** | Concurrency token for content edits: send it back as result_version on PATCH /intelligence_tasks/{id} so an edit composed before a regeneration is refused with ERR_STALE_CONTENT (409). It is \&quot;0\&quot; until the task first completes, then changes each time a generation or regeneration replaces result_data, never on a manual edit or a revert. Treat it as opaque text | 
 
 ## Example
 

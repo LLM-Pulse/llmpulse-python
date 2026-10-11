@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **created_at** | **datetime** |  | [optional] 
 **stats** | [**ProjectDetailsAllOfStats**](ProjectDetailsAllOfStats.md) |  | [optional] 
 **data_coverage** | [**ProjectDetailsAllOfDataCoverage**](ProjectDetailsAllOfDataCoverage.md) |  | [optional] 
+**search_console** | [**ProjectDetailsAllOfSearchConsole**](ProjectDetailsAllOfSearchConsole.md) |  | [optional] 
 **request_id** | **str** |  | [optional] 
 
 ## Example
