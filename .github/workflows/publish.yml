@@ -1,0 +1,27 @@
+# Publishes this SDK when its release tag is pushed. Switched off until the
+# registry's trusted publisher is configured: set the repository variable
+# REGISTRY_PUBLISH=true then. A version already on the registry is skipped.
+name: Publish
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  pypi:
+    if: vars.REGISTRY_PUBLISH == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade build && python -m build
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          skip-existing: true
