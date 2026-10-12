@@ -263,7 +263,7 @@ void (empty response body)
 
 Project details
 
-Detailed info for one project: matching_names, industry, business model, primary products, target audience, brand voice, locale, app store IDs, stats (incl. prompts_by_brand_kind counts) and data_coverage (models, countries and languages with data).
+Detailed info for one project: matching_names, additional_owned_domains, industry, business model, primary products, target audience, brand voice, locale, app store IDs, stats (incl. prompts_by_brand_kind counts) and data_coverage (models, countries and languages with data).
 
 ### Example
 
@@ -645,11 +645,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_project**
-> update_project(id, update_project_request)
+> ProjectUpdateResponse update_project(id, update_project_request)
 
 Update a project profile (Brand Book)
 
-Updates the project name and profile, the same fields as Project Settings: name, brand_name, description, industry, business_model (plus business_model_other when it is OTHER), target_audience, brand_voice, goals, primary_products, matching_names. Send only the fields to change; unknown fields are rejected. All seven Brand Book fields feed every GEO Writer task and prompt suggestions; only industry, description, and target_audience help Recommendations. A matching_names change re-runs mention/citation matching over the project history in the background (rematching=true); further edits are rejected while that runs. Requires a `read_write` scope API key.
+Updates the project name and profile, the same fields as Project Settings: name, brand_name, description, industry, business_model (plus business_model_other when it is OTHER), target_audience, brand_voice, goals, primary_products, matching_names, and the additional owned domains (additional_owned_domains). Send only the fields to change; unknown fields are rejected, and a request is applied whole or not at all. All seven Brand Book fields feed every GEO Writer task and prompt suggestions; only industry, description, and target_audience help Recommendations. A matching_names change re-runs mention/citation matching over the project history in the background, and an additional_owned_domains change reprocesses the past answers that cite an added or removed domain (rematching=true); further edits are rejected while that runs. Only the account owner can send additional_owned_domains: a team member key gets ERR_INSUFFICIENT_PERMISSION and nothing is applied. Requires a `read_write` scope API key.
 
 ### Example
 
@@ -657,6 +657,7 @@ Updates the project name and profile, the same fields as Project Settings: name,
 
 ```python
 import llmpulse
+from llmpulse.models.project_update_response import ProjectUpdateResponse
 from llmpulse.models.update_project_request import UpdateProjectRequest
 from llmpulse.rest import ApiException
 from pprint import pprint
@@ -686,7 +687,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Update a project profile (Brand Book)
-        api_instance.update_project(id, update_project_request)
+        api_response = api_instance.update_project(id, update_project_request)
+        print("The response of ProjectsApi->update_project:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ProjectsApi->update_project: %s\n" % e)
 ```
@@ -703,7 +706,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ProjectUpdateResponse**](ProjectUpdateResponse.md)
 
 ### Authorization
 
@@ -718,8 +721,8 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Updated: { project, updated_fields, rematching, note, request_id } |  -  |
-**403** | API key lacks write permission |  -  |
+**200** | Updated |  -  |
+**403** | A write with a read-only key answers ERR_INSUFFICIENT_SCOPE. A team member whose permissions do not grant Projects update, or who sends additional_owned_domains, answers ERR_INSUFFICIENT_PERMISSION, with the same status |  -  |
 **404** | Resource not found |  -  |
 **422** | Invalid parameters |  -  |
 

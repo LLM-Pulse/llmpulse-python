@@ -142,6 +142,8 @@ docs/ProjectDetailsAllOfDataCoverage.md
 docs/ProjectDetailsAllOfSearchConsole.md
 docs/ProjectDetailsAllOfStats.md
 docs/ProjectDetailsAllOfStatsPromptsByBrandKind.md
+docs/ProjectProfile.md
+docs/ProjectUpdateResponse.md
 docs/ProjectsApi.md
 docs/PromptExecutionRecord.md
 docs/PromptExecutionsResponse.md
@@ -378,6 +380,8 @@ llmpulse/models/project_details_all_of_data_coverage.py
 llmpulse/models/project_details_all_of_search_console.py
 llmpulse/models/project_details_all_of_stats.py
 llmpulse/models/project_details_all_of_stats_prompts_by_brand_kind.py
+llmpulse/models/project_profile.py
+llmpulse/models/project_update_response.py
 llmpulse/models/prompt_execution_record.py
 llmpulse/models/prompt_executions_response.py
 llmpulse/models/prompt_record.py

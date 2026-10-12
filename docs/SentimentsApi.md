@@ -127,7 +127,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     competitor_id = 56 # int |  (optional)
     brand_only = True # bool |  (optional)
     analysis = 'analysis_example' # str | One sentiment level or a comma-separated list: very_positive, positive, neutral, negative, very_negative (optional)
-    model = 'model_example' # str | Filter by AI model. Models the API key's user has not enabled are silently dropped. (optional)
+    model = 'model_example' # str | Filter by one AI model. Here an unknown value, or a model the API key's user has not enabled, is ignored rather than rejected: the request succeeds and returns the records of every enabled model, as if model were omitted. (optional)
     collection_id = '12,34' # str | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. (optional)
     country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
     language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
  **competitor_id** | **int**|  | [optional] 
  **brand_only** | **bool**|  | [optional] 
  **analysis** | **str**| One sentiment level or a comma-separated list: very_positive, positive, neutral, negative, very_negative | [optional] 
- **model** | **str**| Filter by AI model. Models the API key&#39;s user has not enabled are silently dropped. | [optional] 
+ **model** | **str**| Filter by one AI model. Here an unknown value, or a model the API key&#39;s user has not enabled, is ignored rather than rejected: the request succeeds and returns the records of every enabled model, as if model were omitted. | [optional] 
  **collection_id** | **str**| One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. | [optional] 
  **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
  **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 

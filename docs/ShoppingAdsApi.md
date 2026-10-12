@@ -53,7 +53,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     order = 'order_example' # str | Sort field; the allowed set depends on view (optional)
     direction = 'direction_example' # str | Sort direction for view=advertisers. Defaults to desc, except avg_position and domain which default to asc. (optional)
     query = 'query_example' # str | Case-insensitive substring filter on the ad title, domain or snippet (optional)
-    model = 'model_example' # str | Filter by AI model. Models the API key's user has not enabled are silently dropped. (optional)
+    model = 'model_example' # str | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. (optional)
     collection_id = '12,34' # str | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. (optional)
     country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
     language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
  **order** | **str**| Sort field; the allowed set depends on view | [optional] 
  **direction** | **str**| Sort direction for view&#x3D;advertisers. Defaults to desc, except avg_position and domain which default to asc. | [optional] 
  **query** | **str**| Case-insensitive substring filter on the ad title, domain or snippet | [optional] 
- **model** | **str**| Filter by AI model. Models the API key&#39;s user has not enabled are silently dropped. | [optional] 
+ **model** | **str**| Filter by one AI model. It must be a model enabled for the API key&#39;s user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. | [optional] 
  **collection_id** | **str**| One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. | [optional] 
  **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
  **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
@@ -165,7 +165,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     order = 'appearances' # str | Sort field (optional) (default to 'appearances')
     direction = 'desc' # str |  (optional) (default to 'desc')
     query = 'query_example' # str | Case-insensitive substring filter on the business name or address (optional)
-    model = 'model_example' # str | Filter by AI model. Models the API key's user has not enabled are silently dropped. (optional)
+    model = 'model_example' # str | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. (optional)
     collection_id = '12,34' # str | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. (optional)
     country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
     language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
  **order** | **str**| Sort field | [optional] [default to &#39;appearances&#39;]
  **direction** | **str**|  | [optional] [default to &#39;desc&#39;]
  **query** | **str**| Case-insensitive substring filter on the business name or address | [optional] 
- **model** | **str**| Filter by AI model. Models the API key&#39;s user has not enabled are silently dropped. | [optional] 
+ **model** | **str**| Filter by one AI model. It must be a model enabled for the API key&#39;s user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. | [optional] 
  **collection_id** | **str**| One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. | [optional] 
  **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
  **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
@@ -278,7 +278,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     order = 'order_example' # str | Sort field; the allowed set depends on view (optional)
     direction = 'desc' # str |  (optional) (default to 'desc')
     query = 'query_example' # str | Case-insensitive substring filter on the product title (optional)
-    model = 'model_example' # str | Filter by AI model. Models the API key's user has not enabled are silently dropped. (optional)
+    model = 'model_example' # str | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. (optional)
     collection_id = '12,34' # str | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. (optional)
     country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
     language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
  **order** | **str**| Sort field; the allowed set depends on view | [optional] 
  **direction** | **str**|  | [optional] [default to &#39;desc&#39;]
  **query** | **str**| Case-insensitive substring filter on the product title | [optional] 
- **model** | **str**| Filter by AI model. Models the API key&#39;s user has not enabled are silently dropped. | [optional] 
+ **model** | **str**| Filter by one AI model. It must be a model enabled for the API key&#39;s user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. | [optional] 
  **collection_id** | **str**| One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. | [optional] 
  **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
  **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 

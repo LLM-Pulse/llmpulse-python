@@ -311,7 +311,7 @@ configuration = llmpulse.Configuration(
 with llmpulse.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = llmpulse.AIAgentTrafficApi(api_client)
-    project_id = 56 # int | Project ID
+    project_id = 56 # int | Accepted for compatibility and ignored. The catalog is the same for every project, so any value returns the same list and the project is not checked.
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
 
     try:
@@ -330,7 +330,7 @@ with llmpulse.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Project ID | 
+ **project_id** | **int**| Accepted for compatibility and ignored. The catalog is the same for every project, so any value returns the same list and the project is not checked. | 
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
 
 ### Return type
