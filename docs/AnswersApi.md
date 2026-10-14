@@ -141,7 +141,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     page = 1 # int |  (optional) (default to 1)
     per_page = 20 # int |  (optional) (default to 20)
     query = 'query_example' # str | Case-insensitive full-text search inside AI response texts. Switches items to snippet + match_count mode. (optional)
-    no_result = True # bool | Filter sentinel non-answers (provider returned nothing after retries; excluded from platform metrics). false = only real answers, true = only sentinels, omit = both. Every item carries its own no_result flag. (optional)
+    no_result = True # bool | Filter sentinel non-answers (the provider returned nothing after all retries, or the model declined to answer, today only Gemini; excluded from platform metrics). false = only real answers, true = only sentinels, omit = both. Every item carries its own no_result flag. (optional)
 
     try:
         # List AI responses
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
  **page** | **int**|  | [optional] [default to 1]
  **per_page** | **int**|  | [optional] [default to 20]
  **query** | **str**| Case-insensitive full-text search inside AI response texts. Switches items to snippet + match_count mode. | [optional] 
- **no_result** | **bool**| Filter sentinel non-answers (provider returned nothing after retries; excluded from platform metrics). false &#x3D; only real answers, true &#x3D; only sentinels, omit &#x3D; both. Every item carries its own no_result flag. | [optional] 
+ **no_result** | **bool**| Filter sentinel non-answers (the provider returned nothing after all retries, or the model declined to answer, today only Gemini; excluded from platform metrics). false &#x3D; only real answers, true &#x3D; only sentinels, omit &#x3D; both. Every item carries its own no_result flag. | [optional] 
 
 ### Return type
 
