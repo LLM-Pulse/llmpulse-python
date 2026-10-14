@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **failure_count** | **int** |  | [optional] 
 **last_delivered_at** | **datetime** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
-**secret** | **str** | HMAC signing secret (whsec_...). Only returned on create. | [optional] 
+**secret** | **str** | HMAC signing secret (whsec_...). Returned when the subscription is created, and on a re-post only to the API key or OAuth connection that created it; absent for any other credential. | [optional] 
 **request_id** | **str** |  | [optional] 
 
 ## Example
