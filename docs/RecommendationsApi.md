@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**get_recommendation**](RecommendationsApi.md#get_recommendation) | **GET** /recommendations/{id} | Get recommendation run with items
 [**launch_recommendations**](RecommendationsApi.md#launch_recommendations) | **POST** /recommendations | Launch a recommendations generation
 [**list_recommendations**](RecommendationsApi.md#list_recommendations) | **GET** /recommendations | List recommendation runs
+[**update_recommendation_item**](RecommendationsApi.md#update_recommendation_item) | **PATCH** /recommendations/{id}/items/{item_id} | Complete, archive or restore a recommendation item
 
 
 # **get_recommendation**
@@ -248,6 +249,92 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Paginated recommendations |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_recommendation_item**
+> RecommendationItemUpdateResponse update_recommendation_item(id, item_id, update_recommendation_item_request)
+
+Complete, archive or restore a recommendation item
+
+Moves one item of a recommendation run between `active`, `completed` and `archived`, exactly like the complete, archive and restore buttons on the Recommendations page, and stamps `status_changed_at`. Returns the item in the shape `GET /recommendations/{id}` lists items. Requires a `read_write` scope API key and, for team members, create permission on Recommendations (the permission the page uses for these buttons).
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import llmpulse
+from llmpulse.models.recommendation_item_update_response import RecommendationItemUpdateResponse
+from llmpulse.models.update_recommendation_item_request import UpdateRecommendationItemRequest
+from llmpulse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.llmpulse.ai/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmpulse.Configuration(
+    host = "https://api.llmpulse.ai/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = llmpulse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmpulse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmpulse.RecommendationsApi(api_client)
+    id = 56 # int | Recommendation run id
+    item_id = 56 # int | Item id, from the items of GET /recommendations/{id}
+    update_recommendation_item_request = llmpulse.UpdateRecommendationItemRequest() # UpdateRecommendationItemRequest | 
+
+    try:
+        # Complete, archive or restore a recommendation item
+        api_response = api_instance.update_recommendation_item(id, item_id, update_recommendation_item_request)
+        print("The response of RecommendationsApi->update_recommendation_item:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling RecommendationsApi->update_recommendation_item: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Recommendation run id | 
+ **item_id** | **int**| Item id, from the items of GET /recommendations/{id} | 
+ **update_recommendation_item_request** | [**UpdateRecommendationItemRequest**](UpdateRecommendationItemRequest.md)|  | 
+
+### Return type
+
+[**RecommendationItemUpdateResponse**](RecommendationItemUpdateResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The updated item |  -  |
+**403** | API key lacks write permission |  -  |
+**404** | Resource not found |  -  |
+**422** | Invalid parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_competitor**](CompetitorsApi.md#create_competitor) | **POST** /competitors | Add a competitor
 [**delete_competitor**](CompetitorsApi.md#delete_competitor) | **DELETE** /competitors/{id} | Delete a competitor
 [**get_competitor_details**](CompetitorsApi.md#get_competitor_details) | **GET** /dimensions/competitors/{id} | Competitor details
+[**list_competitor_suggestions**](CompetitorsApi.md#list_competitor_suggestions) | **GET** /competitors/suggestions | List competitor suggestions
 [**list_competitors**](CompetitorsApi.md#list_competitors) | **GET** /dimensions/competitors | List competitors
 [**update_competitor**](CompetitorsApi.md#update_competitor) | **PATCH** /competitors/{id} | Update a competitor
 
@@ -246,6 +247,95 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Competitor details |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_competitor_suggestions**
+> CompetitorSuggestionsResponse list_competitor_suggestions(project_id, basis=basis, query=query, page=page, per_page=per_page, output=output)
+
+List competitor suggestions
+
+The two lists of the Suggested tab of the Competitors page. `basis=brands` (default) returns the competing brands the AI discovery proposed that are not tracked or rejected yet, with the names it would match and, when counted, how many answers name it (`mentions`). `basis=citations` returns the domains AI answers cite most that are not your own or tracked yet, with how many answers cite each (`citations`). `discovery` tells whether a discovery run is still loading. Read-only: it never starts a discovery run, which the page starts from its Discover button. Add a suggestion with POST /competitors.
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import llmpulse
+from llmpulse.models.competitor_suggestions_response import CompetitorSuggestionsResponse
+from llmpulse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.llmpulse.ai/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmpulse.Configuration(
+    host = "https://api.llmpulse.ai/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = llmpulse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmpulse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmpulse.CompetitorsApi(api_client)
+    project_id = 56 # int | Project ID
+    basis = 'brands' # str |  (optional) (default to 'brands')
+    query = 'query_example' # str | Only suggestions whose brand name or domain contains this text (optional)
+    page = 1 # int |  (optional) (default to 1)
+    per_page = 20 # int |  (optional) (default to 20)
+    output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
+
+    try:
+        # List competitor suggestions
+        api_response = api_instance.list_competitor_suggestions(project_id, basis=basis, query=query, page=page, per_page=per_page, output=output)
+        print("The response of CompetitorsApi->list_competitor_suggestions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CompetitorsApi->list_competitor_suggestions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Project ID | 
+ **basis** | **str**|  | [optional] [default to &#39;brands&#39;]
+ **query** | **str**| Only suggestions whose brand name or domain contains this text | [optional] 
+ **page** | **int**|  | [optional] [default to 1]
+ **per_page** | **int**|  | [optional] [default to 20]
+ **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
+
+### Return type
+
+[**CompetitorSuggestionsResponse**](CompetitorSuggestionsResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Paginated suggestions |  -  |
+**422** | Invalid parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
