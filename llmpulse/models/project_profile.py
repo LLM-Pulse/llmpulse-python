@@ -41,7 +41,7 @@ class ProjectProfile(BaseModel):
     goals: Optional[StrictStr] = None
     matching_names: List[StrictStr]
     additional_owned_domains: List[StrictStr] = Field(description="Other domains the brand owns (at most 10, each a website's own domain covering its subdomains), whose citations count as owned like the project website. Empty when none")
-    prompt_limit: Optional[StrictInt] = Field(description="Maximum number of active prompts this project may hold; null when only the account quota applies")
+    prompt_limit: Optional[StrictInt] = Field(description="The most prompts this project can hold, set by the account owner or a co-owner (Account Settings > Prompt Limits). Null when the project has no limit of its own; the account's plan allowance applies either way")
     __properties: ClassVar[List[str]] = ["id", "name", "brand_name", "description", "industry", "business_model", "business_model_other", "target_audience", "primary_products", "brand_voice", "goals", "matching_names", "additional_owned_domains", "prompt_limit"]
 
     model_config = ConfigDict(

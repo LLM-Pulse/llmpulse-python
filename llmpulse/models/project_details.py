@@ -52,7 +52,7 @@ class ProjectDetails(BaseModel):
     google_play_id: Optional[StrictStr] = None
     app_store_id: Optional[StrictStr] = None
     created_at: Optional[datetime] = None
-    prompt_limit: Optional[StrictInt] = Field(default=None, description="Maximum number of active prompts this project may hold, set by the account owner or a co-owner in Account Settings > Prompt Limits; null when the project has no limit of its own and only the account quota applies")
+    prompt_limit: Optional[StrictInt] = Field(default=None, description="The most prompts this project can hold, set by the account owner or a co-owner (Account Settings > Prompt Limits). Null when the project has no limit of its own; the account's plan allowance applies either way")
     stats: Optional[ProjectDetailsAllOfStats] = None
     data_coverage: Optional[ProjectDetailsAllOfDataCoverage] = None
     search_console: Optional[ProjectDetailsAllOfSearchConsole] = None

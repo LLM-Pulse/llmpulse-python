@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **goals** | **str** |  | [optional] 
 **matching_names** | **List[str]** |  | 
 **additional_owned_domains** | **List[str]** | Other domains the brand owns (at most 10, each a website&#39;s own domain covering its subdomains), whose citations count as owned like the project website. Empty when none | 
-**prompt_limit** | **int** | Maximum number of active prompts this project may hold; null when only the account quota applies | 
+**prompt_limit** | **int** | The most prompts this project can hold, set by the account owner or a co-owner (Account Settings &gt; Prompt Limits). Null when the project has no limit of its own; the account&#39;s plan allowance applies either way | 
 
 ## Example
 

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**list_locales**](ProjectsApi.md#list_locales) | **GET** /dimensions/locales | List locales with data
 [**list_models**](ProjectsApi.md#list_models) | **GET** /dimensions/models | List models with data
 [**list_projects**](ProjectsApi.md#list_projects) | **GET** /dimensions/projects | List projects
-[**update_project**](ProjectsApi.md#update_project) | **PATCH** /projects/{id} | Update a project profile (Brand Book) or prompt limit
+[**update_project**](ProjectsApi.md#update_project) | **PATCH** /projects/{id} | Update a project profile (Brand Book)
 [**update_project_draft**](ProjectsApi.md#update_project_draft) | **PATCH** /project_drafts/{id} | Submit a wizard step
 
 
@@ -263,7 +263,7 @@ void (empty response body)
 
 Project details
 
-Detailed info for one project: matching_names, additional_owned_domains, industry, business model, primary products, target audience, brand voice, locale, app store IDs, prompt_limit (the project's own prompt cap, null when none), stats (incl. prompts_by_brand_kind counts and prompts_available, what can still be added under the project and account limits) and data_coverage (models, countries and languages with data).
+Detailed info for one project: matching_names, additional_owned_domains, industry, business model, primary products, target audience, brand voice, locale, app store IDs, prompt_limit (the project's own prompt cap, null without one), stats (incl. prompts_by_brand_kind counts and prompts_available, how many prompts can still be added: the lower of the project's free slots and the account's remaining prompts, null when neither caps it) and data_coverage (models, countries and languages with data).
 
 ### Example
 
@@ -647,9 +647,9 @@ Name | Type | Description  | Notes
 # **update_project**
 > ProjectUpdateResponse update_project(id, update_project_request)
 
-Update a project profile (Brand Book) or prompt limit
+Update a project profile (Brand Book)
 
-Updates the project name and profile, the same fields as Project Settings: name, brand_name, description, industry, business_model (plus business_model_other when it is OTHER), target_audience, brand_voice, goals, primary_products, matching_names, the additional owned domains (additional_owned_domains) and the project prompt limit of Account Settings > Prompt Limits (prompt_limit). Send only the fields to change; unknown fields are rejected, and a request is applied whole or not at all. All seven Brand Book fields feed every GEO Writer task and prompt suggestions; only industry, description, and target_audience help Recommendations. A matching_names change re-runs mention/citation matching over the project history in the background, and an additional_owned_domains change reprocesses the past answers that cite an added or removed domain (rematching=true); further edits are rejected while that runs. Only the account owner can send additional_owned_domains, and only the account owner or a co-owner can send prompt_limit: a team member key gets ERR_INSUFFICIENT_PERMISSION, a key limited to some projects sending prompt_limit gets ERR_KEY_PROJECT_SCOPED, and nothing is applied. A prompt_limit alone is saved even while a recalculation runs. Requires a `read_write` scope API key.
+Updates the project name and profile, the same fields as Project Settings: name, brand_name, description, industry, business_model (plus business_model_other when it is OTHER), target_audience, brand_voice, goals, primary_products, matching_names, and the additional owned domains (additional_owned_domains). Send only the fields to change; unknown fields are rejected, and a request is applied whole or not at all. All seven Brand Book fields feed every GEO Writer task and prompt suggestions; only industry, description, and target_audience help Recommendations. A matching_names change re-runs mention/citation matching over the project history in the background, and an additional_owned_domains change reprocesses the past answers that cite an added or removed domain (rematching=true); further edits are rejected while that runs. Only the account owner can send additional_owned_domains: a team member key gets ERR_INSUFFICIENT_PERMISSION and nothing is applied. prompt_limit sets or (null) removes the project's own prompt cap, as in Account Settings > Prompt Limits. Only the account owner or a co-owner whose permissions grant Projects update can send it (Account Settings > Prompt Limits lets any co-owner change it; here a co-owner, like every team member, also needs Projects update): any other team member gets ERR_INSUFFICIENT_PERMISSION, and a key limited to some projects ERR_KEY_PROJECT_SCOPED, with nothing applied. A request that sends only prompt_limit is applied even while a rematch runs. Requires a `read_write` scope API key.
 
 ### Example
 
@@ -686,7 +686,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     update_project_request = llmpulse.UpdateProjectRequest() # UpdateProjectRequest | 
 
     try:
-        # Update a project profile (Brand Book) or prompt limit
+        # Update a project profile (Brand Book)
         api_response = api_instance.update_project(id, update_project_request)
         print("The response of ProjectsApi->update_project:\n")
         pprint(api_response)
@@ -722,7 +722,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Updated |  -  |
-**403** | A write with a read-only key answers ERR_INSUFFICIENT_SCOPE. A team member whose permissions do not grant Projects update, or who sends additional_owned_domains or prompt_limit, answers ERR_INSUFFICIENT_PERMISSION, and a key limited to some projects that sends prompt_limit answers ERR_KEY_PROJECT_SCOPED, with the same status |  -  |
+**403** | A write with a read-only key answers ERR_INSUFFICIENT_SCOPE. A team member whose permissions do not grant Projects update (a co-owner included), who sends additional_owned_domains, or who sends prompt_limit without being a co-owner answers ERR_INSUFFICIENT_PERMISSION. A key limited to some projects that sends prompt_limit answers ERR_KEY_PROJECT_SCOPED. All with the same status, and nothing in the request is applied |  -  |
 **404** | Resource not found |  -  |
 **422** | Invalid parameters |  -  |
 

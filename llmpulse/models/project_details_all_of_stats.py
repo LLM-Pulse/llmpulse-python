@@ -29,12 +29,12 @@ class ProjectDetailsAllOfStats(BaseModel):
     """
     ProjectDetailsAllOfStats
     """ # noqa: E501
-    prompts_count: Optional[StrictInt] = Field(default=None, description="Active prompts in the project")
-    prompts_available: Optional[StrictInt] = Field(default=None, description="Prompts that can still be added to this project, the lower of its free slots under prompt_limit and the prompts left in the account quota; null when neither caps it")
+    prompts_count: Optional[StrictInt] = None
     prompts_by_brand_kind: Optional[ProjectDetailsAllOfStatsPromptsByBrandKind] = None
     competitors_count: Optional[StrictInt] = None
     collections_count: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["prompts_count", "prompts_available", "prompts_by_brand_kind", "competitors_count", "collections_count"]
+    prompts_available: Optional[StrictInt] = Field(default=None, description="How many prompts can still be added to this project now, the same number the Prompts page offers. The lower of the project's free slots under prompt_limit and the account's remaining prompts; 0 when either is full (a project over its limit keeps its prompts). Null when neither caps it")
+    __properties: ClassVar[List[str]] = ["prompts_count", "prompts_by_brand_kind", "competitors_count", "collections_count", "prompts_available"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -96,10 +96,10 @@ class ProjectDetailsAllOfStats(BaseModel):
 
         _obj = cls.model_validate({
             "prompts_count": obj.get("prompts_count"),
-            "prompts_available": obj.get("prompts_available"),
             "prompts_by_brand_kind": ProjectDetailsAllOfStatsPromptsByBrandKind.from_dict(obj["prompts_by_brand_kind"]) if obj.get("prompts_by_brand_kind") is not None else None,
             "competitors_count": obj.get("competitors_count"),
-            "collections_count": obj.get("collections_count")
+            "collections_count": obj.get("collections_count"),
+            "prompts_available": obj.get("prompts_available")
         })
         return _obj
 
