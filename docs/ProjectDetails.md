@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **google_play_id** | **str** |  | [optional] 
 **app_store_id** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
+**prompt_limit** | **int** | The most prompts this project can hold, set by the account owner or a co-owner (Account Settings &gt; Prompt Limits). Null when the project has no limit of its own; the account&#39;s plan allowance applies either way | [optional] 
 **stats** | [**ProjectDetailsAllOfStats**](ProjectDetailsAllOfStats.md) |  | [optional] 
 **data_coverage** | [**ProjectDetailsAllOfDataCoverage**](ProjectDetailsAllOfDataCoverage.md) |  | [optional] 
 **search_console** | [**ProjectDetailsAllOfSearchConsole**](ProjectDetailsAllOfSearchConsole.md) |  | [optional] 
