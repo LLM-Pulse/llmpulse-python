@@ -789,7 +789,7 @@ class OwnedMediaCommunitiesApi:
     ) -> OwnedMediaListResponse:
         """List owned-media citations
 
-        Which owned-media content AI answers cite, by platform. `provider` is required. Each row carries a `yours` flag so you can compare your own presence against everyone else cited on the same platform. Video, post, channel and profile rows also carry their image (thumbnail_url or avatar_url, our cached copy where one exists), their average position in the answers and, on YouTube, the video id, the channel handle and URL, and the channel key that /dimensions/owned_media/citing_prompts accepts. view=own_citations returns the raw citations of the connected profile only and stays empty until a profile is connected. For Reddit use /dimensions/reddit. Requires the Growth plan or above.
+        Which owned-media content AI answers cite, by platform. `provider` is required. Each row carries a `yours` flag so you can compare your own presence against everyone else cited on the same platform. Video, post, channel and profile rows also carry their image (thumbnail_url or avatar_url, our cached copy where one exists), their average position in the answers and, on YouTube, the video id, the channel handle and URL, and the channel key that /dimensions/owned_media/citing_prompts accepts. view=own_citations returns the raw citations of the connected profile only and stays empty until a profile is connected. For Reddit use /dimensions/reddit. A team member also needs the YouTube Intelligence permission for provider=youtube. Requires the Growth plan or above.
 
         :param project_id: Project ID (required)
         :type project_id: int
@@ -870,6 +870,7 @@ class OwnedMediaCommunitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OwnedMediaListResponse",
+            '403': "ApiError",
             '422': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -917,7 +918,7 @@ class OwnedMediaCommunitiesApi:
     ) -> ApiResponse[OwnedMediaListResponse]:
         """List owned-media citations
 
-        Which owned-media content AI answers cite, by platform. `provider` is required. Each row carries a `yours` flag so you can compare your own presence against everyone else cited on the same platform. Video, post, channel and profile rows also carry their image (thumbnail_url or avatar_url, our cached copy where one exists), their average position in the answers and, on YouTube, the video id, the channel handle and URL, and the channel key that /dimensions/owned_media/citing_prompts accepts. view=own_citations returns the raw citations of the connected profile only and stays empty until a profile is connected. For Reddit use /dimensions/reddit. Requires the Growth plan or above.
+        Which owned-media content AI answers cite, by platform. `provider` is required. Each row carries a `yours` flag so you can compare your own presence against everyone else cited on the same platform. Video, post, channel and profile rows also carry their image (thumbnail_url or avatar_url, our cached copy where one exists), their average position in the answers and, on YouTube, the video id, the channel handle and URL, and the channel key that /dimensions/owned_media/citing_prompts accepts. view=own_citations returns the raw citations of the connected profile only and stays empty until a profile is connected. For Reddit use /dimensions/reddit. A team member also needs the YouTube Intelligence permission for provider=youtube. Requires the Growth plan or above.
 
         :param project_id: Project ID (required)
         :type project_id: int
@@ -998,6 +999,7 @@ class OwnedMediaCommunitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OwnedMediaListResponse",
+            '403': "ApiError",
             '422': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1045,7 +1047,7 @@ class OwnedMediaCommunitiesApi:
     ) -> RESTResponseType:
         """List owned-media citations
 
-        Which owned-media content AI answers cite, by platform. `provider` is required. Each row carries a `yours` flag so you can compare your own presence against everyone else cited on the same platform. Video, post, channel and profile rows also carry their image (thumbnail_url or avatar_url, our cached copy where one exists), their average position in the answers and, on YouTube, the video id, the channel handle and URL, and the channel key that /dimensions/owned_media/citing_prompts accepts. view=own_citations returns the raw citations of the connected profile only and stays empty until a profile is connected. For Reddit use /dimensions/reddit. Requires the Growth plan or above.
+        Which owned-media content AI answers cite, by platform. `provider` is required. Each row carries a `yours` flag so you can compare your own presence against everyone else cited on the same platform. Video, post, channel and profile rows also carry their image (thumbnail_url or avatar_url, our cached copy where one exists), their average position in the answers and, on YouTube, the video id, the channel handle and URL, and the channel key that /dimensions/owned_media/citing_prompts accepts. view=own_citations returns the raw citations of the connected profile only and stays empty until a profile is connected. For Reddit use /dimensions/reddit. A team member also needs the YouTube Intelligence permission for provider=youtube. Requires the Growth plan or above.
 
         :param project_id: Project ID (required)
         :type project_id: int
@@ -1126,6 +1128,7 @@ class OwnedMediaCommunitiesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OwnedMediaListResponse",
+            '403': "ApiError",
             '422': "ApiError",
         }
         response_data = self.api_client.call_api(
