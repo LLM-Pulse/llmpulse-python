@@ -175,6 +175,8 @@ docs/ProjectCreateResponseLimits.md
 docs/ProjectCreateResponsePrompts.md
 docs/ProjectCreateResponseSameDomainProjectsInner.md
 docs/ProjectDetails.md
+docs/ProjectDetailsAllOfAgentTraffic.md
+docs/ProjectDetailsAllOfAiTraffic.md
 docs/ProjectDetailsAllOfDataCoverage.md
 docs/ProjectDetailsAllOfSearchConsole.md
 docs/ProjectDetailsAllOfStats.md
@@ -482,6 +484,8 @@ llmpulse/models/project_create_response_limits.py
 llmpulse/models/project_create_response_prompts.py
 llmpulse/models/project_create_response_same_domain_projects_inner.py
 llmpulse/models/project_details.py
+llmpulse/models/project_details_all_of_agent_traffic.py
+llmpulse/models/project_details_all_of_ai_traffic.py
 llmpulse/models/project_details_all_of_data_coverage.py
 llmpulse/models/project_details_all_of_search_console.py
 llmpulse/models/project_details_all_of_stats.py
