@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **source_language_code** | **str** |  | [optional] 
 **min_words** | **int** |  | [optional] 
 **all_countries** | **bool** |  | [optional] 
+**var_property** | **str** |  | [optional] 
 
 ## Example
 

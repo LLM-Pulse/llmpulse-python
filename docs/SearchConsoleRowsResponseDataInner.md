@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **clicks** | **int** |  | [optional] 
 **ctr** | **float** | 0..1 fraction | [optional] 
 **position** | **float** | Impression-weighted average position | [optional] 
+**var_property** | **str** | Present when grouped by property | [optional] 
 
 ## Example
 
