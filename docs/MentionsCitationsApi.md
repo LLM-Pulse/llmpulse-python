@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **list_all_citations**
-> list_all_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output)
+> list_all_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
 
 List all citations (brand + competitor)
 
@@ -58,10 +58,15 @@ with llmpulse.ApiClient(configuration) as api_client:
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
     to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
+    brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
+    range = 56 # int | Number of days to look back (alternative to from/to) (optional)
 
     try:
         # List all citations (brand + competitor)
-        api_instance.list_all_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output)
+        api_instance.list_all_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
     except Exception as e:
         print("Exception when calling MentionsCitationsApi->list_all_citations: %s\n" % e)
 ```
@@ -83,6 +88,11 @@ Name | Type | Description  | Notes
  **var_from** | **datetime**|  | [optional] 
  **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
+ **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
+ **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
 
 ### Return type
 
@@ -106,7 +116,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_all_mentions**
-> list_all_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output)
+> list_all_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
 
 List all mentions (brand + competitor)
 
@@ -151,10 +161,15 @@ with llmpulse.ApiClient(configuration) as api_client:
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
     to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
+    brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
+    range = 56 # int | Number of days to look back (alternative to from/to) (optional)
 
     try:
         # List all mentions (brand + competitor)
-        api_instance.list_all_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output)
+        api_instance.list_all_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
     except Exception as e:
         print("Exception when calling MentionsCitationsApi->list_all_mentions: %s\n" % e)
 ```
@@ -176,6 +191,11 @@ Name | Type | Description  | Notes
  **var_from** | **datetime**|  | [optional] 
  **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
+ **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
+ **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
 
 ### Return type
 
@@ -199,7 +219,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_citations**
-> CitationsResponse list_citations(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output)
+> CitationsResponse list_citations(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
 
 List brand citations
 
@@ -246,10 +266,13 @@ with llmpulse.ApiClient(configuration) as api_client:
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
     to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
+    brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
+    range = 56 # int | Number of days to look back (alternative to from/to) (optional)
 
     try:
         # List brand citations
-        api_response = api_instance.list_citations(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output)
+        api_response = api_instance.list_citations(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
         print("The response of MentionsCitationsApi->list_citations:\n")
         pprint(api_response)
     except Exception as e:
@@ -274,6 +297,9 @@ Name | Type | Description  | Notes
  **var_from** | **datetime**|  | [optional] 
  **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
+ **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
+ **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
 
 ### Return type
 
@@ -297,7 +323,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_competitor_citations**
-> list_competitor_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output)
+> list_competitor_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
 
 List competitor citations
 
@@ -342,10 +368,15 @@ with llmpulse.ApiClient(configuration) as api_client:
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
     to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
+    brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
+    range = 56 # int | Number of days to look back (alternative to from/to) (optional)
 
     try:
         # List competitor citations
-        api_instance.list_competitor_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output)
+        api_instance.list_competitor_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
     except Exception as e:
         print("Exception when calling MentionsCitationsApi->list_competitor_citations: %s\n" % e)
 ```
@@ -367,6 +398,11 @@ Name | Type | Description  | Notes
  **var_from** | **datetime**|  | [optional] 
  **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
+ **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
+ **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
 
 ### Return type
 
@@ -390,7 +426,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_competitor_mentions**
-> CompetitorMentionsResponse list_competitor_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output)
+> CompetitorMentionsResponse list_competitor_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
 
 List competitor mentions
 
@@ -434,10 +470,15 @@ with llmpulse.ApiClient(configuration) as api_client:
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
     to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
+    brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
+    range = 56 # int | Number of days to look back (alternative to from/to) (optional)
 
     try:
         # List competitor mentions
-        api_response = api_instance.list_competitor_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output)
+        api_response = api_instance.list_competitor_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
         print("The response of MentionsCitationsApi->list_competitor_mentions:\n")
         pprint(api_response)
     except Exception as e:
@@ -461,6 +502,11 @@ Name | Type | Description  | Notes
  **var_from** | **datetime**|  | [optional] 
  **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
+ **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
+ **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
 
 ### Return type
 
@@ -484,7 +530,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_mentions**
-> MentionsResponse list_mentions(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output)
+> MentionsResponse list_mentions(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
 
 List brand mentions
 
@@ -529,10 +575,13 @@ with llmpulse.ApiClient(configuration) as api_client:
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
     to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
+    prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
+    brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
+    range = 56 # int | Number of days to look back (alternative to from/to) (optional)
 
     try:
         # List brand mentions
-        api_response = api_instance.list_mentions(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output)
+        api_response = api_instance.list_mentions(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, output=output, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
         print("The response of MentionsCitationsApi->list_mentions:\n")
         pprint(api_response)
     except Exception as e:
@@ -557,6 +606,9 @@ Name | Type | Description  | Notes
  **var_from** | **datetime**|  | [optional] 
  **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
+ **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
+ **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
+ **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
 
 ### Return type
 

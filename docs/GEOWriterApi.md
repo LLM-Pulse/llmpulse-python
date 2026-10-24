@@ -207,7 +207,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     api_instance = llmpulse.GEOWriterApi(api_client)
     project_id = 56 # int | Project ID
     task_type = 'task_type_example' # str |  (optional)
-    status = 'status_example' # str |  (optional)
+    status = 'status_example' # str | Keep only the tasks in this status. Discarded tasks are never listed, so discarded returns an empty page. (optional)
     page = 1 # int |  (optional) (default to 1)
     per_page = 20 # int |  (optional) (default to 20)
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
  **task_type** | **str**|  | [optional] 
- **status** | **str**|  | [optional] 
+ **status** | **str**| Keep only the tasks in this status. Discarded tasks are never listed, so discarded returns an empty page. | [optional] 
  **page** | **int**|  | [optional] [default to 1]
  **per_page** | **int**|  | [optional] [default to 20]
 

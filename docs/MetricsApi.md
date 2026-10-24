@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_share_of_voice**
-> SovResponse get_share_of_voice(project_id, range=range, var_from=var_from, to=to, granularity=granularity, competitors=competitors, model=model, collection_id=collection_id, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, output=output, view=view)
+> SovResponse get_share_of_voice(project_id, range=range, var_from=var_from, to=to, granularity=granularity, competitors=competitors, model=model, collection_id=collection_id, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, output=output, view=view, country_code=country_code, language_code=language_code, include_project=include_project)
 
 Share of Voice
 
@@ -172,10 +172,13 @@ with llmpulse.ApiClient(configuration) as api_client:
     brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
     view = 'over_time' # str | Which Share of Voice projection to flatten. Only valid together with 'output'. 'over_time' (default) is one row per date and actor, 'current' the ranked snapshot, 'breakdown' the Top 4 plus Others. (optional) (default to 'over_time')
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
+    include_project = True # bool |  (optional) (default to True)
 
     try:
         # Share of Voice
-        api_response = api_instance.get_share_of_voice(project_id, range=range, var_from=var_from, to=to, granularity=granularity, competitors=competitors, model=model, collection_id=collection_id, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, output=output, view=view)
+        api_response = api_instance.get_share_of_voice(project_id, range=range, var_from=var_from, to=to, granularity=granularity, competitors=competitors, model=model, collection_id=collection_id, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, output=output, view=view, country_code=country_code, language_code=language_code, include_project=include_project)
         print("The response of MetricsApi->get_share_of_voice:\n")
         pprint(api_response)
     except Exception as e:
@@ -202,6 +205,9 @@ Name | Type | Description  | Notes
  **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
  **view** | **str**| Which Share of Voice projection to flatten. Only valid together with &#39;output&#39;. &#39;over_time&#39; (default) is one row per date and actor, &#39;current&#39; the ranked snapshot, &#39;breakdown&#39; the Top 4 plus Others. | [optional] [default to &#39;over_time&#39;]
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
+ **include_project** | **bool**|  | [optional] [default to True]
 
 ### Return type
 
@@ -225,7 +231,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_summary**
-> SummaryResponse get_summary(project_id, metrics=metrics, granularity=granularity, range=range, var_from=var_from, to=to, competitors=competitors, model=model, collection_id=collection_id, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, output=output)
+> SummaryResponse get_summary(project_id, metrics=metrics, granularity=granularity, range=range, var_from=var_from, to=to, competitors=competitors, model=model, collection_id=collection_id, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, output=output, country_code=country_code, language_code=language_code, include_project=include_project)
 
 Aggregated metrics summary
 
@@ -274,10 +280,13 @@ with llmpulse.ApiClient(configuration) as api_client:
     prompt_type = 'prompt_type_example' # str | One prompt type or a comma-separated list: informational, navigational, commercial, transactional (optional)
     brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
+    include_project = True # bool |  (optional) (default to True)
 
     try:
         # Aggregated metrics summary
-        api_response = api_instance.get_summary(project_id, metrics=metrics, granularity=granularity, range=range, var_from=var_from, to=to, competitors=competitors, model=model, collection_id=collection_id, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, output=output)
+        api_response = api_instance.get_summary(project_id, metrics=metrics, granularity=granularity, range=range, var_from=var_from, to=to, competitors=competitors, model=model, collection_id=collection_id, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, output=output, country_code=country_code, language_code=language_code, include_project=include_project)
         print("The response of MetricsApi->get_summary:\n")
         pprint(api_response)
     except Exception as e:
@@ -304,6 +313,9 @@ Name | Type | Description  | Notes
  **prompt_type** | **str**| One prompt type or a comma-separated list: informational, navigational, commercial, transactional | [optional] 
  **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
+ **include_project** | **bool**|  | [optional] [default to True]
 
 ### Return type
 
@@ -440,7 +452,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_top_sources**
-> TopSourcesResponse get_top_sources(project_id, range=range, var_from=var_from, to=to, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, sort=sort, query=query, page=page, per_page=per_page, output=output)
+> TopSourcesResponse get_top_sources(project_id, range=range, var_from=var_from, to=to, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, sort=sort, query=query, page=page, per_page=per_page, output=output, collection_ids=collection_ids, domains=domains)
 
 Top cited sources
 
@@ -492,10 +504,12 @@ with llmpulse.ApiClient(configuration) as api_client:
     page = 1 # int |  (optional) (default to 1)
     per_page = 20 # int |  (optional) (default to 20)
     output = 'output_example' # str | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. (optional)
+    collection_ids = [56] # List[int] | Tags (collections) to include at once, as a union: one ID or a comma-separated list, e.g. collection_ids=12,15 (collection_ids[]=12&collection_ids[]=15 is also accepted). Combines with collection_id. An ID outside the project returns 422 ERR_INVALID_PARAM. (optional)
+    domains = ['domains_example'] # List[str] | Restrict the result to these exact domains, case-insensitive: one domain or a comma-separated list, e.g. domains=wikipedia.org,reddit.com. The bracket form domains[]=wikipedia.org&domains[]=reddit.com is also accepted. (optional)
 
     try:
         # Top cited sources
-        api_response = api_instance.get_top_sources(project_id, range=range, var_from=var_from, to=to, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, sort=sort, query=query, page=page, per_page=per_page, output=output)
+        api_response = api_instance.get_top_sources(project_id, range=range, var_from=var_from, to=to, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, sort=sort, query=query, page=page, per_page=per_page, output=output, collection_ids=collection_ids, domains=domains)
         print("The response of MetricsApi->get_top_sources:\n")
         pprint(api_response)
     except Exception as e:
@@ -525,6 +539,8 @@ Name | Type | Description  | Notes
  **page** | **int**|  | [optional] [default to 1]
  **per_page** | **int**|  | [optional] [default to 20]
  **output** | **str**| Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. &#39;flat&#39; returns the same metadata plus &#39;columns&#39; and &#39;rows&#39;; &#39;csv&#39; returns those rows as text/csv. Errors are always returned as JSON. | [optional] 
+ **collection_ids** | [**List[int]**](int.md)| Tags (collections) to include at once, as a union: one ID or a comma-separated list, e.g. collection_ids&#x3D;12,15 (collection_ids[]&#x3D;12&amp;collection_ids[]&#x3D;15 is also accepted). Combines with collection_id. An ID outside the project returns 422 ERR_INVALID_PARAM. | [optional] 
+ **domains** | [**List[str]**](str.md)| Restrict the result to these exact domains, case-insensitive: one domain or a comma-separated list, e.g. domains&#x3D;wikipedia.org,reddit.com. The bracket form domains[]&#x3D;wikipedia.org&amp;domains[]&#x3D;reddit.com is also accepted. | [optional] 
 
 ### Return type
 
