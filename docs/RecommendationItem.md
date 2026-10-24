@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **status** | **str** |  | 
 **status_changed_at** | **datetime** |  | [optional] 
 **position** | **int** |  | 
-**metadata** | **Dict[str, object]** |  | [optional] 
+**metadata** | **Dict[str, object]** | Free-form details. Carries effort (low, medium or high) when the generator rated it, archive_reason (not_relevant, too_complex or competitor) on an item archived with a reason, and domain on PR &amp; Citation Building items. | [optional] 
 **created_at** | **datetime** |  | 
 **updated_at** | **datetime** |  | 
 **resolved_source_refs** | **List[Dict[str, object]]** | The evidence each source_refs code points to (prompt, citation or own page) | [optional] 

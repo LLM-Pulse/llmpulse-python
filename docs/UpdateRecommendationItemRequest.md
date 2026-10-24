@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **project_id** | **int** |  | 
 **status** | **str** | completed, archived, or active to restore the item | 
+**reason** | **str** | Optional, with status archived only. competitor only on a PR &amp; Citation Building item that targets a domain. | [optional] 
 
 ## Example
 
