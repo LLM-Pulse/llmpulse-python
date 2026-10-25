@@ -10,6 +10,9 @@ Name | Type | Description | Notes
 **skipped** | **int** |  | [optional] 
 **total_after** | **int** |  | [optional] 
 **prompts_available** | **int** |  | [optional] 
+**tracked** | **bool** | Whether scheduled runs include the project the prompts were added to. False when it is paused or beyond the plan&#39;s project limit, so the new prompts do not run until that changes | [optional] 
+**untracked_reason** | **str** | Why tracked is false: paused or project_limit. Null when tracked | [optional] 
+**warning** | **str** | What to do when tracked is false. Null when tracked | [optional] 
 **data** | [**List[PromptsCreateResponseDataInner]**](PromptsCreateResponseDataInner.md) |  | [optional] 
 **request_id** | **str** |  | [optional] 
 
