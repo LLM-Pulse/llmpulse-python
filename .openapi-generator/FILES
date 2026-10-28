@@ -179,6 +179,7 @@ docs/ProjectCreateResponseEmailSubscription.md
 docs/ProjectCreateResponseLimits.md
 docs/ProjectCreateResponsePrompts.md
 docs/ProjectCreateResponseSameDomainProjectsInner.md
+docs/ProjectDeleteResponse.md
 docs/ProjectDetails.md
 docs/ProjectDetailsAllOfAgentTraffic.md
 docs/ProjectDetailsAllOfAiTraffic.md
@@ -498,6 +499,7 @@ llmpulse/models/project_create_response_email_subscription.py
 llmpulse/models/project_create_response_limits.py
 llmpulse/models/project_create_response_prompts.py
 llmpulse/models/project_create_response_same_domain_projects_inner.py
+llmpulse/models/project_delete_response.py
 llmpulse/models/project_details.py
 llmpulse/models/project_details_all_of_agent_traffic.py
 llmpulse/models/project_details_all_of_ai_traffic.py
