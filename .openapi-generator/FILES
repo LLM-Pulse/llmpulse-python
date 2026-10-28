@@ -6,6 +6,7 @@
 README.md
 docs/AIAgentTrafficApi.md
 docs/AIModelInsightsApi.md
+docs/APIKeysApi.md
 docs/AccountApi.md
 docs/AccountCapacity.md
 docs/AccountQuota.md
@@ -28,6 +29,7 @@ docs/AnswerDetailsLocale.md
 docs/AnswersApi.md
 docs/ApiError.md
 docs/ApiErrorError.md
+docs/ApiKeyInfo.md
 docs/AssignPromptTagsRequest.md
 docs/CatalogProduct.md
 docs/CatalogPromptSuggestion.md
@@ -58,6 +60,8 @@ docs/CompetitorSuggestion.md
 docs/CompetitorSuggestionsResponse.md
 docs/CompetitorsApi.md
 docs/CreateAnnotationRequest.md
+docs/CreateApiKey201Response.md
+docs/CreateApiKeyRequest.md
 docs/CreateCollectionRequest.md
 docs/CreateCompetitorRequest.md
 docs/CreateProjectDraftRequest.md
@@ -118,6 +122,7 @@ docs/IntelligenceTaskUpdateRequest.md
 docs/IntelligenceTaskUpdateResponse.md
 docs/IntelligenceTasksResponse.md
 docs/LaunchRecommendationsRequest.md
+docs/ListApiKeys200Response.md
 docs/ListCompetitors200Response.md
 docs/ListProjects200Response.md
 docs/ListTeamInvitations200Response.md
@@ -216,6 +221,7 @@ docs/RecommendationsResponse.md
 docs/RemovePromptTagsRequest.md
 docs/RemoveTeamMember200Response.md
 docs/ReputationStudiesApi.md
+docs/RevokeApiKey200Response.md
 docs/RevokeTeamInvitation200Response.md
 docs/SampleWebhookPayloads200Response.md
 docs/SampleWebhookPayloads200ResponseDataInner.md
@@ -305,6 +311,7 @@ llmpulse/api/ai_agent_traffic_api.py
 llmpulse/api/ai_model_insights_api.py
 llmpulse/api/annotations_api.py
 llmpulse/api/answers_api.py
+llmpulse/api/api_keys_api.py
 llmpulse/api/collections_tags_api.py
 llmpulse/api/competitors_api.py
 llmpulse/api/custom_reports_api.py
@@ -350,6 +357,7 @@ llmpulse/models/answer_details.py
 llmpulse/models/answer_details_locale.py
 llmpulse/models/api_error.py
 llmpulse/models/api_error_error.py
+llmpulse/models/api_key_info.py
 llmpulse/models/assign_prompt_tags_request.py
 llmpulse/models/catalog_product.py
 llmpulse/models/catalog_prompt_suggestion.py
@@ -378,6 +386,8 @@ llmpulse/models/competitor_mentions_response.py
 llmpulse/models/competitor_suggestion.py
 llmpulse/models/competitor_suggestions_response.py
 llmpulse/models/create_annotation_request.py
+llmpulse/models/create_api_key201_response.py
+llmpulse/models/create_api_key_request.py
 llmpulse/models/create_collection_request.py
 llmpulse/models/create_competitor_request.py
 llmpulse/models/create_project_draft_request.py
@@ -434,6 +444,7 @@ llmpulse/models/intelligence_task_update_request.py
 llmpulse/models/intelligence_task_update_response.py
 llmpulse/models/intelligence_tasks_response.py
 llmpulse/models/launch_recommendations_request.py
+llmpulse/models/list_api_keys200_response.py
 llmpulse/models/list_competitors200_response.py
 llmpulse/models/list_projects200_response.py
 llmpulse/models/list_team_invitations200_response.py
@@ -525,6 +536,7 @@ llmpulse/models/recommendation_summary_summary.py
 llmpulse/models/recommendations_response.py
 llmpulse/models/remove_prompt_tags_request.py
 llmpulse/models/remove_team_member200_response.py
+llmpulse/models/revoke_api_key200_response.py
 llmpulse/models/revoke_team_invitation200_response.py
 llmpulse/models/sample_webhook_payloads200_response.py
 llmpulse/models/sample_webhook_payloads200_response_data_inner.py

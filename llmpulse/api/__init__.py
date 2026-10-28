@@ -3,6 +3,7 @@
 # import apis into api package
 from llmpulse.api.ai_model_insights_api import AIModelInsightsApi
 from llmpulse.api.ai_agent_traffic_api import AIAgentTrafficApi
+from llmpulse.api.api_keys_api import APIKeysApi
 from llmpulse.api.account_api import AccountApi
 from llmpulse.api.annotations_api import AnnotationsApi
 from llmpulse.api.answers_api import AnswersApi
