@@ -9,6 +9,7 @@ docs/AIModelInsightsApi.md
 docs/APIKeysApi.md
 docs/AccountApi.md
 docs/AccountCapacity.md
+docs/AccountPitchQuota.md
 docs/AccountQuota.md
 docs/Actor.md
 docs/AgentBot.md
@@ -184,6 +185,7 @@ docs/ProjectDetails.md
 docs/ProjectDetailsAllOfAgentTraffic.md
 docs/ProjectDetailsAllOfAiTraffic.md
 docs/ProjectDetailsAllOfDataCoverage.md
+docs/ProjectDetailsAllOfPitchRun.md
 docs/ProjectDetailsAllOfSearchConsole.md
 docs/ProjectDetailsAllOfStats.md
 docs/ProjectDetailsAllOfStatsPromptsByBrandKind.md
@@ -340,6 +342,7 @@ llmpulse/configuration.py
 llmpulse/exceptions.py
 llmpulse/models/__init__.py
 llmpulse/models/account_capacity.py
+llmpulse/models/account_pitch_quota.py
 llmpulse/models/account_quota.py
 llmpulse/models/actor.py
 llmpulse/models/agent_bot.py
@@ -504,6 +507,7 @@ llmpulse/models/project_details.py
 llmpulse/models/project_details_all_of_agent_traffic.py
 llmpulse/models/project_details_all_of_ai_traffic.py
 llmpulse/models/project_details_all_of_data_coverage.py
+llmpulse/models/project_details_all_of_pitch_run.py
 llmpulse/models/project_details_all_of_search_console.py
 llmpulse/models/project_details_all_of_stats.py
 llmpulse/models/project_details_all_of_stats_prompts_by_brand_kind.py
