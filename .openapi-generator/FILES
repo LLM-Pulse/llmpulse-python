@@ -9,6 +9,7 @@ docs/AIModelInsightsApi.md
 docs/APIKeysApi.md
 docs/AccountApi.md
 docs/AccountCapacity.md
+docs/AccountExecutionQuota.md
 docs/AccountPitchQuota.md
 docs/AccountQuota.md
 docs/Actor.md
@@ -363,6 +364,7 @@ llmpulse/configuration.py
 llmpulse/exceptions.py
 llmpulse/models/__init__.py
 llmpulse/models/account_capacity.py
+llmpulse/models/account_execution_quota.py
 llmpulse/models/account_pitch_quota.py
 llmpulse/models/account_quota.py
 llmpulse/models/actor.py
