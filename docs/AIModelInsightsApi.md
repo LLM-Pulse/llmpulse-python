@@ -10,11 +10,11 @@ Method | HTTP request | Description
 
 
 # **get_ai_model_insights_summary**
-> get_ai_model_insights_summary(project_id, range=range, var_from=var_from, to=to, granularity=granularity, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, competitors=competitors)
+> AiModelInsightsSummaryResponse get_ai_model_insights_summary(project_id, range=range, var_from=var_from, to=to, granularity=granularity, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, competitors=competitors)
 
 AI Model Insights summary
 
-Per-model mentions, citations, brand net sentiment with raw counts, weighted visibility totals/shares, plus actor matrices. All actor entries use the standard shape `{ type, id, competitor_id, name, domain }` with bare (scheme-less) domains.
+Per-model mentions, citations, brand net sentiment with raw counts, weighted visibility totals/shares, plus actor matrices. All actor entries use the standard shape `{ type, id, competitor_id, name, domain }` with bare (scheme-less) domains. Rows cover the AI models the account has enabled or that answered in the window. A share, net sentiment or market share value with nothing behind it is null; counts, totals and weighted visibility scores stay 0.
 
 ### Example
 
@@ -22,6 +22,7 @@ Per-model mentions, citations, brand net sentiment with raw counts, weighted vis
 
 ```python
 import llmpulse
+from llmpulse.models.ai_model_insights_summary_response import AiModelInsightsSummaryResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -59,7 +60,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # AI Model Insights summary
-        api_instance.get_ai_model_insights_summary(project_id, range=range, var_from=var_from, to=to, granularity=granularity, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, competitors=competitors)
+        api_response = api_instance.get_ai_model_insights_summary(project_id, range=range, var_from=var_from, to=to, granularity=granularity, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, competitors=competitors)
+        print("The response of AIModelInsightsApi->get_ai_model_insights_summary:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AIModelInsightsApi->get_ai_model_insights_summary: %s\n" % e)
 ```
@@ -85,7 +88,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AiModelInsightsSummaryResponse**](AiModelInsightsSummaryResponse.md)
 
 ### Authorization
 
@@ -94,7 +97,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
