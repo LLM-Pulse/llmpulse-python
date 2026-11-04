@@ -1,6 +1,6 @@
 # OwnedMediaKpiChanges
 
-Change against the previous period. Counts in percent, share_pct in percentage points; null when the previous period has nothing to compare with
+Change against the previous period. Counts in percent, share_pct and positive_pct in percentage points; null when the previous period has nothing to compare with
 
 ## Properties
 
@@ -11,6 +11,9 @@ Name | Type | Description | Notes
 **your_profile** | **float** |  | [optional] 
 **your_content** | **float** |  | [optional] 
 **share_pct** | **float** |  | [optional] 
+**unique_subreddits** | **float** | Percent change in unique subreddits; null when the previous value cannot be compared | [optional] 
+**unique_authors** | **float** | Percent change in unique authors; null when the previous value cannot be compared | [optional] 
+**positive_pct** | **float** | Percentage-point change in positive sentiment; null when the previous period has no citations | [optional] 
 
 ## Example
 
