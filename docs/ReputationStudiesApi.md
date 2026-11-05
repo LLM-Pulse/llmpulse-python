@@ -4,12 +4,97 @@ All URIs are relative to *https://api.llmpulse.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**create_reputation_report**](ReputationStudiesApi.md#create_reputation_report) | **POST** /reputation/reports | Start a reputation report
 [**get_reputation_report**](ReputationStudiesApi.md#get_reputation_report) | **GET** /reputation/reports/{id} | Get reputation report scores
 [**get_study**](ReputationStudiesApi.md#get_study) | **GET** /studies/{id} | Get a custom AI study
 [**get_study_report**](ReputationStudiesApi.md#get_study_report) | **GET** /studies/{id}/reports/{report_id} | Get custom study report scores
 [**list_reputation_reports**](ReputationStudiesApi.md#list_reputation_reports) | **GET** /reputation/reports | List reputation reports
 [**list_studies**](ReputationStudiesApi.md#list_studies) | **GET** /studies | List custom AI studies
 
+
+# **create_reputation_report**
+> ReputationReportCreateResponse create_reputation_report(create_reputation_report_request)
+
+Start a reputation report
+
+Starts this month's Brand Reputation report, like the Generate button on the Reputation page: 201 with the new report (status pending). When the month already holds a report that did not fail, whether it is still running or finished, nothing new starts and the answer is 200 with created false and that report. With recalculate true it uses the month's one manual recalculation instead (the Recalculate This Month button): a fresh run across every analyst model, 201 when it starts, 200 with created false while a report is still running, and ERR_LIMIT_REACHED once the month holds two reports. Generation runs in the background: poll GET /reputation/reports until status is completed, then read the scores with GET /reputation/reports/{id}. ERR_RATE_LIMITED (429, with Retry-After) means another request is starting a report for the same project; retry after a few seconds. recalculate must be true or false and unknown fields are refused (ERR_INVALID_PARAM). Requires reputation monitoring on the account, a `read_write` scope API key and, for team members, create permission on Reputation.
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import llmpulse
+from llmpulse.models.create_reputation_report_request import CreateReputationReportRequest
+from llmpulse.models.reputation_report_create_response import ReputationReportCreateResponse
+from llmpulse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.llmpulse.ai/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmpulse.Configuration(
+    host = "https://api.llmpulse.ai/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = llmpulse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmpulse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmpulse.ReputationStudiesApi(api_client)
+    create_reputation_report_request = llmpulse.CreateReputationReportRequest() # CreateReputationReportRequest | 
+
+    try:
+        # Start a reputation report
+        api_response = api_instance.create_reputation_report(create_reputation_report_request)
+        print("The response of ReputationStudiesApi->create_reputation_report:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ReputationStudiesApi->create_reputation_report: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_reputation_report_request** | [**CreateReputationReportRequest**](CreateReputationReportRequest.md)|  | 
+
+### Return type
+
+[**ReputationReportCreateResponse**](ReputationReportCreateResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Nothing new started; the report that already holds this month |  -  |
+**201** | The new report, status pending |  -  |
+**403** | API key lacks write permission |  -  |
+**404** | Resource not found |  -  |
+**422** | Invalid parameters |  -  |
+**429** | Another request is starting a report for this project; retry after a few seconds |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_reputation_report**
 > get_reputation_report(id, project_id, page=page, per_page=per_page, model=model, brand=brand, dimension=dimension, output=output)
