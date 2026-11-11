@@ -342,6 +342,7 @@ docs/TimeseriesResponse.md
 docs/TimeseriesSeries.md
 docs/TopSourcesResponse.md
 docs/TopSourcesResponseDataInner.md
+docs/TrustpilotReplies.md
 docs/UpdateAnnotationRequest.md
 docs/UpdateCollectionRequest.md
 docs/UpdateCompetitorRequest.md
@@ -701,6 +702,7 @@ llmpulse/models/timeseries_response.py
 llmpulse/models/timeseries_series.py
 llmpulse/models/top_sources_response.py
 llmpulse/models/top_sources_response_data_inner.py
+llmpulse/models/trustpilot_replies.py
 llmpulse/models/update_annotation_request.py
 llmpulse/models/update_collection_request.py
 llmpulse/models/update_competitor_request.py
