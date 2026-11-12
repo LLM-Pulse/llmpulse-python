@@ -5,10 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | rolling (the last range_days days) or previous_month (the previous calendar month) | 
-**range_days** | **int** | Length of a rolling window; null for previous_month | 
+**type** | **str** | rolling (the last range_days days), previous_month (the previous calendar month), previous_3_months (the 3 calendar months before the current one) or custom (fixed dates, custom_from to custom_to) | 
+**range_days** | **int** | Length of a rolling window; null for the other types | 
+**custom_from** | **date** | First day chosen for a custom range; null for the other types | 
+**custom_to** | **date** | Last day chosen for a custom range, which can be after today; null for the other types | 
 **var_from** | **date** | First day of the window as of now (detail only) | [optional] 
-**to** | **date** | Last day of the window as of now (detail only) | [optional] 
+**to** | **date** | Last day of the window as of now (detail only); a custom range stops at today | [optional] 
 **label** | **str** | The window as the report shows it (detail only) | [optional] 
 
 ## Example
