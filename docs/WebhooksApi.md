@@ -211,7 +211,7 @@ configuration = llmpulse.Configuration(
 with llmpulse.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = llmpulse.WebhooksApi(api_client)
-    project_id = 56 # int | Optional project filter (optional)
+    project_id = 56 # int | Optional project filter. An id that is not a plain number, or that names no project of the account, returns ERR_PROJECT_NOT_FOUND. (optional)
     page = 56 # int |  (optional)
     per_page = 56 # int | Max 100 (optional)
 
@@ -231,7 +231,7 @@ with llmpulse.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **int**| Optional project filter | [optional] 
+ **project_id** | **int**| Optional project filter. An id that is not a plain number, or that names no project of the account, returns ERR_PROJECT_NOT_FOUND. | [optional] 
  **page** | **int**|  | [optional] 
  **per_page** | **int**| Max 100 | [optional] 
 
@@ -255,6 +255,7 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **401** | Authentication failed |  -  |
 **403** | Endpoint requires a higher plan tier |  -  |
+**404** | Resource not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

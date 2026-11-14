@@ -49,7 +49,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = llmpulse.AIAgentTrafficApi(api_client)
     project_id = 56 # int | Project ID
-    range = 56 # int | Number of days to look back (alternative to from/to) (optional)
+    range = 56 # int | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. (optional)
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
     to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     bot = 'bot_example' # str | Filter by bot slug (e.g. gptbot, claudebot, perplexitybot) (optional)
@@ -74,7 +74,7 @@ with llmpulse.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
- **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
+ **range** | **int**| Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. | [optional] 
  **var_from** | **datetime**|  | [optional] 
  **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **bot** | **str**| Filter by bot slug (e.g. gptbot, claudebot, perplexitybot) | [optional] 
@@ -142,7 +142,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = llmpulse.AIAgentTrafficApi(api_client)
     project_id = 56 # int | Project ID
-    range = 56 # int | Number of days to look back (alternative to from/to) (optional)
+    range = 56 # int | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. (optional)
     var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
     to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
     source = 'source_example' # str | Filter by a single AI source slug (e.g. chatgpt, perplexity, gemini, claude) (optional)
@@ -163,7 +163,7 @@ with llmpulse.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
- **range** | **int**| Number of days to look back (alternative to from/to) | [optional] 
+ **range** | **int**| Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. | [optional] 
  **var_from** | **datetime**|  | [optional] 
  **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
  **source** | **str**| Filter by a single AI source slug (e.g. chatgpt, perplexity, gemini, claude) | [optional] 

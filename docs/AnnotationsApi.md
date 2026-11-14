@@ -209,7 +209,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     project_id = 56 # int | Project ID
     var_from = '2013-10-20' # date |  (optional)
     to = '2013-10-20' # date |  (optional)
-    annotation_category_id = 56 # int |  (optional)
+    annotation_category_id = 56 # int | Keep the annotations filed under this category, one of the project's or a system category. Any other id returns 422 ERR_INVALID_PARAM. (optional)
     page = 1 # int |  (optional) (default to 1)
     per_page = 20 # int |  (optional) (default to 20)
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
  **project_id** | **int**| Project ID | 
  **var_from** | **date**|  | [optional] 
  **to** | **date**|  | [optional] 
- **annotation_category_id** | **int**|  | [optional] 
+ **annotation_category_id** | **int**| Keep the annotations filed under this category, one of the project&#39;s or a system category. Any other id returns 422 ERR_INVALID_PARAM. | [optional] 
  **page** | **int**|  | [optional] [default to 1]
  **per_page** | **int**|  | [optional] [default to 20]
 

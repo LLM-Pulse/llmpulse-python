@@ -56,7 +56,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     api_instance = llmpulse.SearchConsoleApi(api_client)
     project_id = 56 # int | Project ID
     var_property = 'all' # str | Which Search Console properties to read; /search_console/properties lists them. Omit it for the primary property, or pass one property id (e.g. sc-domain:example.com) to read that one; both answer with property. A comma-separated list of ids, or all, combines several and answers with properties, excluded_properties and property_errors instead: excluded_properties are left out because another selected property already counts them (a URL-prefix property under a domain property), so no click is counted twice; property_errors are properties Google refused, left out of the figures and also named in the X-Search-Console-Property-Errors header. When Google refuses every property, the request fails as a single-property read would. (optional)
-    range = 56 # int | Number of days to look back, today included (alternative to from/to). At most 487, Google's retention. (optional)
+    range = 56 # int | Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google's retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. (optional)
     var_from = '2013-10-20' # date | Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
     to = '2013-10-20' # date | End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. (optional)
     min_impressions = 100 # int | Smallest impressions a query needs. (optional) (default to 100)
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
  **var_property** | **str**| Which Search Console properties to read; /search_console/properties lists them. Omit it for the primary property, or pass one property id (e.g. sc-domain:example.com) to read that one; both answer with property. A comma-separated list of ids, or all, combines several and answers with properties, excluded_properties and property_errors instead: excluded_properties are left out because another selected property already counts them (a URL-prefix property under a domain property), so no click is counted twice; property_errors are properties Google refused, left out of the figures and also named in the X-Search-Console-Property-Errors header. When Google refuses every property, the request fails as a single-property read would. | [optional] 
- **range** | **int**| Number of days to look back, today included (alternative to from/to). At most 487, Google&#39;s retention. | [optional] 
+ **range** | **int**| Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google&#39;s retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. | [optional] 
  **var_from** | **date**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] 
  **to** | **date**| End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. | [optional] 
  **min_impressions** | **int**| Smallest impressions a query needs. | [optional] [default to 100]
@@ -165,7 +165,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     api_instance = llmpulse.SearchConsoleApi(api_client)
     project_id = 56 # int | Project ID
     var_property = 'all' # str | Which Search Console properties to read; /search_console/properties lists them. Omit it for the primary property, or pass one property id (e.g. sc-domain:example.com) to read that one; both answer with property. A comma-separated list of ids, or all, combines several and answers with properties, excluded_properties and property_errors instead: excluded_properties are left out because another selected property already counts them (a URL-prefix property under a domain property), so no click is counted twice; property_errors are properties Google refused, left out of the figures and also named in the X-Search-Console-Property-Errors header. When Google refuses every property, the request fails as a single-property read would. (optional)
-    range = 56 # int | Number of days to look back, today included (alternative to from/to). At most 487, Google's retention. (optional)
+    range = 56 # int | Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google's retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. (optional)
     var_from = '2013-10-20' # date | Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
     to = '2013-10-20' # date | End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. (optional)
     search_type = 'web' # str | Which search surface to measure. Defaults to web. discover and googleNews carry no query dimension, so Google rejects /search_console/queries for them. (optional) (default to 'web')
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
  **var_property** | **str**| Which Search Console properties to read; /search_console/properties lists them. Omit it for the primary property, or pass one property id (e.g. sc-domain:example.com) to read that one; both answer with property. A comma-separated list of ids, or all, combines several and answers with properties, excluded_properties and property_errors instead: excluded_properties are left out because another selected property already counts them (a URL-prefix property under a domain property), so no click is counted twice; property_errors are properties Google refused, left out of the figures and also named in the X-Search-Console-Property-Errors header. When Google refuses every property, the request fails as a single-property read would. | [optional] 
- **range** | **int**| Number of days to look back, today included (alternative to from/to). At most 487, Google&#39;s retention. | [optional] 
+ **range** | **int**| Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google&#39;s retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. | [optional] 
  **var_from** | **date**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] 
  **to** | **date**| End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. | [optional] 
  **search_type** | **str**| Which search surface to measure. Defaults to web. discover and googleNews carry no query dimension, so Google rejects /search_console/queries for them. | [optional] [default to &#39;web&#39;]
@@ -264,7 +264,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     api_instance = llmpulse.SearchConsoleApi(api_client)
     project_id = 56 # int | Project ID
     var_property = 'all' # str | Which Search Console properties to read; /search_console/properties lists them. Omit it for the primary property, or pass one property id (e.g. sc-domain:example.com) to read that one; both answer with property. A comma-separated list of ids, or all, combines several and answers with properties, excluded_properties and property_errors instead: excluded_properties are left out because another selected property already counts them (a URL-prefix property under a domain property), so no click is counted twice; property_errors are properties Google refused, left out of the figures and also named in the X-Search-Console-Property-Errors header. When Google refuses every property, the request fails as a single-property read would. (optional)
-    range = 56 # int | Number of days to look back, today included (alternative to from/to). At most 487, Google's retention. (optional)
+    range = 56 # int | Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google's retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. (optional)
     var_from = '2013-10-20' # date | Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
     to = '2013-10-20' # date | End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. (optional)
     min_impressions = 100 # int | Smallest impressions a query needs. (optional) (default to 100)
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
  **var_property** | **str**| Which Search Console properties to read; /search_console/properties lists them. Omit it for the primary property, or pass one property id (e.g. sc-domain:example.com) to read that one; both answer with property. A comma-separated list of ids, or all, combines several and answers with properties, excluded_properties and property_errors instead: excluded_properties are left out because another selected property already counts them (a URL-prefix property under a domain property), so no click is counted twice; property_errors are properties Google refused, left out of the figures and also named in the X-Search-Console-Property-Errors header. When Google refuses every property, the request fails as a single-property read would. | [optional] 
- **range** | **int**| Number of days to look back, today included (alternative to from/to). At most 487, Google&#39;s retention. | [optional] 
+ **range** | **int**| Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google&#39;s retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. | [optional] 
  **var_from** | **date**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] 
  **to** | **date**| End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. | [optional] 
  **min_impressions** | **int**| Smallest impressions a query needs. | [optional] [default to 100]
@@ -373,7 +373,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     api_instance = llmpulse.SearchConsoleApi(api_client)
     project_id = 56 # int | Project ID
     var_property = 'all' # str | Which Search Console properties to read; /search_console/properties lists them. Omit it for the primary property, or pass one property id (e.g. sc-domain:example.com) to read that one; both answer with property. A comma-separated list of ids, or all, combines several and answers with properties, excluded_properties and property_errors instead: excluded_properties are left out because another selected property already counts them (a URL-prefix property under a domain property), so no click is counted twice; property_errors are properties Google refused, left out of the figures and also named in the X-Search-Console-Property-Errors header. When Google refuses every property, the request fails as a single-property read would. (optional)
-    range = 56 # int | Number of days to look back, today included (alternative to from/to). At most 487, Google's retention. (optional)
+    range = 56 # int | Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google's retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. (optional)
     var_from = '2013-10-20' # date | Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
     to = '2013-10-20' # date | End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. (optional)
     dimension = 'page' # str | Compare pages or queries. (optional) (default to 'page')
@@ -404,7 +404,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
  **var_property** | **str**| Which Search Console properties to read; /search_console/properties lists them. Omit it for the primary property, or pass one property id (e.g. sc-domain:example.com) to read that one; both answer with property. A comma-separated list of ids, or all, combines several and answers with properties, excluded_properties and property_errors instead: excluded_properties are left out because another selected property already counts them (a URL-prefix property under a domain property), so no click is counted twice; property_errors are properties Google refused, left out of the figures and also named in the X-Search-Console-Property-Errors header. When Google refuses every property, the request fails as a single-property read would. | [optional] 
- **range** | **int**| Number of days to look back, today included (alternative to from/to). At most 487, Google&#39;s retention. | [optional] 
+ **range** | **int**| Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google&#39;s retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. | [optional] 
  **var_from** | **date**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] 
  **to** | **date**| End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. | [optional] 
  **dimension** | **str**| Compare pages or queries. | [optional] [default to &#39;page&#39;]
@@ -482,7 +482,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     api_instance = llmpulse.SearchConsoleApi(api_client)
     project_id = 56 # int | Project ID
     var_property = 'all' # str | Which Search Console properties to read; /search_console/properties lists them. Omit it for the primary property, or pass one property id (e.g. sc-domain:example.com) to read that one; both answer with property. A comma-separated list of ids, or all, combines several and answers with properties, excluded_properties and property_errors instead: excluded_properties are left out because another selected property already counts them (a URL-prefix property under a domain property), so no click is counted twice; property_errors are properties Google refused, left out of the figures and also named in the X-Search-Console-Property-Errors header. When Google refuses every property, the request fails as a single-property read would. (optional)
-    range = 56 # int | Number of days to look back, today included (alternative to from/to). At most 487, Google's retention. (optional)
+    range = 56 # int | Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google's retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. (optional)
     var_from = '2013-10-20' # date | Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
     to = '2013-10-20' # date | End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. (optional)
     min_impressions = 100 # int | Smallest impressions a query needs. (optional) (default to 100)
@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
  **var_property** | **str**| Which Search Console properties to read; /search_console/properties lists them. Omit it for the primary property, or pass one property id (e.g. sc-domain:example.com) to read that one; both answer with property. A comma-separated list of ids, or all, combines several and answers with properties, excluded_properties and property_errors instead: excluded_properties are left out because another selected property already counts them (a URL-prefix property under a domain property), so no click is counted twice; property_errors are properties Google refused, left out of the figures and also named in the X-Search-Console-Property-Errors header. When Google refuses every property, the request fails as a single-property read would. | [optional] 
- **range** | **int**| Number of days to look back, today included (alternative to from/to). At most 487, Google&#39;s retention. | [optional] 
+ **range** | **int**| Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google&#39;s retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. | [optional] 
  **var_from** | **date**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] 
  **to** | **date**| End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. | [optional] 
  **min_impressions** | **int**| Smallest impressions a query needs. | [optional] [default to 100]
@@ -592,7 +592,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = llmpulse.SearchConsoleApi(api_client)
     project_id = 56 # int | Project ID
-    range = 56 # int | Number of days to look back, today included (alternative to from/to). At most 487, Google's retention. (optional)
+    range = 56 # int | Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google's retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. (optional)
     var_from = '2013-10-20' # date | Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
     to = '2013-10-20' # date | End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. (optional)
     sort = 'impressions' # str |  (optional) (default to 'impressions')
@@ -623,7 +623,7 @@ with llmpulse.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
- **range** | **int**| Number of days to look back, today included (alternative to from/to). At most 487, Google&#39;s retention. | [optional] 
+ **range** | **int**| Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google&#39;s retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. | [optional] 
  **var_from** | **date**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] 
  **to** | **date**| End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. | [optional] 
  **sort** | **str**|  | [optional] [default to &#39;impressions&#39;]
@@ -701,7 +701,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = llmpulse.SearchConsoleApi(api_client)
     project_id = 56 # int | Project ID
-    range = 56 # int | Number of days to look back, today included (alternative to from/to). At most 487, Google's retention. (optional)
+    range = 56 # int | Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google's retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. (optional)
     var_from = '2013-10-20' # date | Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
     to = '2013-10-20' # date | End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. (optional)
     sort = 'impressions' # str |  (optional) (default to 'impressions')
@@ -732,7 +732,7 @@ with llmpulse.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
- **range** | **int**| Number of days to look back, today included (alternative to from/to). At most 487, Google&#39;s retention. | [optional] 
+ **range** | **int**| Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google&#39;s retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. | [optional] 
  **var_from** | **date**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] 
  **to** | **date**| End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. | [optional] 
  **sort** | **str**|  | [optional] [default to &#39;impressions&#39;]
@@ -811,7 +811,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     api_instance = llmpulse.SearchConsoleApi(api_client)
     project_id = 56 # int | Project ID
     dimensions = 'page,query' # str | Comma-separated dimensions to group by, 1 to 3 of date, country, device, page, query, searchAppearance, property. Each becomes a field of every row; country and device values are lowercase. property is the Search Console property the row comes from (see the property parameter).
-    range = 56 # int | Number of days to look back, today included (alternative to from/to). At most 487, Google's retention. (optional)
+    range = 56 # int | Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google's retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. (optional)
     var_from = '2013-10-20' # date | Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
     to = '2013-10-20' # date | End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. (optional)
     sort = 'impressions' # str |  (optional) (default to 'impressions')
@@ -843,7 +843,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
  **dimensions** | **str**| Comma-separated dimensions to group by, 1 to 3 of date, country, device, page, query, searchAppearance, property. Each becomes a field of every row; country and device values are lowercase. property is the Search Console property the row comes from (see the property parameter). | 
- **range** | **int**| Number of days to look back, today included (alternative to from/to). At most 487, Google&#39;s retention. | [optional] 
+ **range** | **int**| Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google&#39;s retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. | [optional] 
  **var_from** | **date**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] 
  **to** | **date**| End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. | [optional] 
  **sort** | **str**|  | [optional] [default to &#39;impressions&#39;]
@@ -921,7 +921,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = llmpulse.SearchConsoleApi(api_client)
     project_id = 56 # int | Project ID
-    range = 56 # int | Number of days to look back, today included (alternative to from/to). At most 487, Google's retention. (optional)
+    range = 56 # int | Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google's retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. (optional)
     var_from = '2013-10-20' # date | Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
     to = '2013-10-20' # date | End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. (optional)
     dimension = 'dimension_example' # str | Optional breakdown aggregated over the range. country and device are lowercased; page and query keep the casing Google returns, because a page URL is case sensitive. property gives one row per property read (see the property parameter). (optional)
@@ -949,7 +949,7 @@ with llmpulse.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
- **range** | **int**| Number of days to look back, today included (alternative to from/to). At most 487, Google&#39;s retention. | [optional] 
+ **range** | **int**| Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google&#39;s retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. | [optional] 
  **var_from** | **date**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] 
  **to** | **date**| End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. | [optional] 
  **dimension** | **str**| Optional breakdown aggregated over the range. country and device are lowercased; page and query keep the casing Google returns, because a page URL is case sensitive. property gives one row per property read (see the property parameter). | [optional] 
@@ -1024,7 +1024,7 @@ with llmpulse.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = llmpulse.SearchConsoleApi(api_client)
     project_id = 56 # int | Project ID
-    range = 56 # int | Number of days to look back, today included (alternative to from/to). At most 487, Google's retention. (optional)
+    range = 56 # int | Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google's retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. (optional)
     var_from = '2013-10-20' # date | Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
     to = '2013-10-20' # date | End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. (optional)
     granularity = 'granularity_example' # str |  (optional)
@@ -1052,7 +1052,7 @@ with llmpulse.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
- **range** | **int**| Number of days to look back, today included (alternative to from/to). At most 487, Google&#39;s retention. | [optional] 
+ **range** | **int**| Number of days to look back, today included (alternative to from/to, which win when both are given). At most 487, Google&#39;s retention. A value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside from/to. | [optional] 
  **var_from** | **date**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] 
  **to** | **date**| End date (YYYY-MM-DD), inclusive. Defaults to today. Google publishes data with a 2-3 day lag, so data_through in the response says how far it reaches. | [optional] 
  **granularity** | **str**|  | [optional] 
