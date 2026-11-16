@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **competitor_id** | **int** | Null for the project, the competitor id otherwise | [optional] 
 **name** | **str** |  | [optional] 
 **domain** | **str** | Bare (scheme-less) domain. Null for the project actor when the project has no URL. | [optional] 
-**total_weighted_visibility_score** | **float** | The actor&#39;s AI Visibility Score across the enabled models, its points there divided by the project&#39;s days with answers in them, so actors compare | [optional] 
+**total_weighted_visibility_score** | **float** | The actor&#39;s AI Visibility Score across the enabled models, its points there divided by the project&#39;s tracking runs with answers in them, so actors compare | [optional] 
 **models** | [**Dict[str, AiModelWeightedVisibilityCell]**](AiModelWeightedVisibilityCell.md) | One cell per model, keyed by model | [optional] 
 
 ## Example
