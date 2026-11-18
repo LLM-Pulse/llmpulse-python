@@ -4,13 +4,267 @@ All URIs are relative to *https://api.llmpulse.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**add_url_list_entries**](SourcesCitationIntelligenceApi.md#add_url_list_entries) | **POST** /url_lists/{id}/entries | Add entries to a URL list
+[**create_url_list**](SourcesCitationIntelligenceApi.md#create_url_list) | **POST** /url_lists | Create a URL list
+[**delete_url_list**](SourcesCitationIntelligenceApi.md#delete_url_list) | **DELETE** /url_lists/{id} | Delete a URL list
 [**get_cited_url_content**](SourcesCitationIntelligenceApi.md#get_cited_url_content) | **GET** /citation_intelligence/urls/{url_sha256}/content | Cited URL cached content
 [**get_cited_url_detail**](SourcesCitationIntelligenceApi.md#get_cited_url_detail) | **GET** /citation_intelligence/urls/{url_sha256} | Cited URL detail
 [**get_mentions_by_citing_domain**](SourcesCitationIntelligenceApi.md#get_mentions_by_citing_domain) | **GET** /citation_intelligence/mentions_by_domain | Mention share by citing domain
+[**get_url_list**](SourcesCitationIntelligenceApi.md#get_url_list) | **GET** /url_lists/{id} | Get a URL list report
 [**list_citation_groups**](SourcesCitationIntelligenceApi.md#list_citation_groups) | **GET** /citation_intelligence/groups | Grouped citation intelligence
 [**list_cited_url_occurrences**](SourcesCitationIntelligenceApi.md#list_cited_url_occurrences) | **GET** /citation_intelligence/urls/{url_sha256}/occurrences | Cited URL occurrences
 [**list_sources**](SourcesCitationIntelligenceApi.md#list_sources) | **GET** /dimensions/sources | List source URLs
+[**list_url_lists**](SourcesCitationIntelligenceApi.md#list_url_lists) | **GET** /url_lists | List URL lists
+[**remove_url_list_entries**](SourcesCitationIntelligenceApi.md#remove_url_list_entries) | **POST** /url_lists/{id}/entries/remove | Remove entries from a URL list
+[**update_url_list**](SourcesCitationIntelligenceApi.md#update_url_list) | **PATCH** /url_lists/{id} | Update a URL list
 
+
+# **add_url_list_entries**
+> UrlListEntriesAddResponse add_url_list_entries(id, url_list_entries_add_request)
+
+Add entries to a URL list
+
+Adds entries, as POST /url_lists reads them. A rule the list already holds keeps its place and takes only the added_on, cost and channel this request sends for it. Values that do not parse come back in invalid_entries. Requires a `read_write` scope API key and the Growth plan.
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import llmpulse
+from llmpulse.models.url_list_entries_add_request import UrlListEntriesAddRequest
+from llmpulse.models.url_list_entries_add_response import UrlListEntriesAddResponse
+from llmpulse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.llmpulse.ai/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmpulse.Configuration(
+    host = "https://api.llmpulse.ai/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = llmpulse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmpulse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmpulse.SourcesCitationIntelligenceApi(api_client)
+    id = 56 # int | 
+    url_list_entries_add_request = llmpulse.UrlListEntriesAddRequest() # UrlListEntriesAddRequest | 
+
+    try:
+        # Add entries to a URL list
+        api_response = api_instance.add_url_list_entries(id, url_list_entries_add_request)
+        print("The response of SourcesCitationIntelligenceApi->add_url_list_entries:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesCitationIntelligenceApi->add_url_list_entries: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **url_list_entries_add_request** | [**UrlListEntriesAddRequest**](UrlListEntriesAddRequest.md)|  | 
+
+### Return type
+
+[**UrlListEntriesAddResponse**](UrlListEntriesAddResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Entries written |  -  |
+**403** | API key lacks write permission |  -  |
+**404** | Resource not found |  -  |
+**422** | Invalid parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_url_list**
+> UrlListCreateResponse create_url_list(url_list_create_request)
+
+Create a URL list
+
+Creates a URL list. Each entry is a string or an object with value, match_type, added_on (YYYY-MM-DD, default today), cost (in the list currency) and channel. Without a match_type, "acme.com/blog/*" is a prefix, a value with a path or query an exact URL and a bare host a domain. A list holds at most 1000 entries and a project at most 100 lists; the name is unique per project, case-insensitive. Refusals answer ERR_INVALID_PARAM with a reason token in error.meta.reason. Requires a `read_write` scope API key and the Growth plan.
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import llmpulse
+from llmpulse.models.url_list_create_request import UrlListCreateRequest
+from llmpulse.models.url_list_create_response import UrlListCreateResponse
+from llmpulse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.llmpulse.ai/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmpulse.Configuration(
+    host = "https://api.llmpulse.ai/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = llmpulse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmpulse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmpulse.SourcesCitationIntelligenceApi(api_client)
+    url_list_create_request = llmpulse.UrlListCreateRequest() # UrlListCreateRequest | 
+
+    try:
+        # Create a URL list
+        api_response = api_instance.create_url_list(url_list_create_request)
+        print("The response of SourcesCitationIntelligenceApi->create_url_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesCitationIntelligenceApi->create_url_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **url_list_create_request** | [**UrlListCreateRequest**](UrlListCreateRequest.md)|  | 
+
+### Return type
+
+[**UrlListCreateResponse**](UrlListCreateResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**403** | API key lacks write permission |  -  |
+**422** | Invalid parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_url_list**
+> UrlListDeleteResponse delete_url_list(project_id, id)
+
+Delete a URL list
+
+Deletes a URL list and its entries. Citation data is not affected. Requires a `read_write` scope API key and the Growth plan.
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import llmpulse
+from llmpulse.models.url_list_delete_response import UrlListDeleteResponse
+from llmpulse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.llmpulse.ai/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmpulse.Configuration(
+    host = "https://api.llmpulse.ai/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = llmpulse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmpulse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmpulse.SourcesCitationIntelligenceApi(api_client)
+    project_id = 56 # int | Project ID
+    id = 56 # int | 
+
+    try:
+        # Delete a URL list
+        api_response = api_instance.delete_url_list(project_id, id)
+        print("The response of SourcesCitationIntelligenceApi->delete_url_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesCitationIntelligenceApi->delete_url_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Project ID | 
+ **id** | **int**|  | 
+
+### Return type
+
+[**UrlListDeleteResponse**](UrlListDeleteResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Deleted |  -  |
+**403** | API key lacks write permission |  -  |
+**404** | Resource not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_cited_url_content**
 > get_cited_url_content(project_id, url_sha256)
@@ -282,6 +536,117 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Mention share per citing domain |  -  |
+**422** | Invalid parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_url_list**
+> UrlListDetailResponse get_url_list(id, project_id, status=status, order=order, direction=direction, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to, range=range)
+
+Get a URL list report
+
+The list, its summary (entries_count, cited_entries, citations, answers in the window, citation_rate, avg_citation_position, median_days_to_first_citation, total_cost, cost_per_cited_entry) and a page of its entries. An entry's status is cited (an answer cited it in the window), lost (cited before the window, not in it) or not_cited. first_cited_at reads the filtered answers up to the window's end. days_to_first_citation is null before the first citation or when the page was cited before it was added. brand_mentioned is set for exact URLs once their page was read, else null. Without from/to or range the window is all time. Requires the Growth plan.
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import llmpulse
+from llmpulse.models.url_list_detail_response import UrlListDetailResponse
+from llmpulse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.llmpulse.ai/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmpulse.Configuration(
+    host = "https://api.llmpulse.ai/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = llmpulse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmpulse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmpulse.SourcesCitationIntelligenceApi(api_client)
+    id = 56 # int | 
+    project_id = 56 # int | Project ID
+    status = 'status_example' # str | Only entries with this status. (optional)
+    order = 'citations' # str |  (optional) (default to 'citations')
+    direction = 'desc' # str |  (optional) (default to 'desc')
+    page = 1 # int |  (optional) (default to 1)
+    per_page = 20 # int |  (optional) (default to 20)
+    model = 'model_example' # str | Filter by one AI model. Only chatgpt, ai_overview, ai_mode, perplexity, gemini, naver_ai, baidu_ai, naver_ai_tab, qwen, doubao and bing_ai_mode are accepted: any other value, including another model enabled for the API key's user, returns 422 ERR_INVALID_PARAM (invalid model). One of those eleven that the user has not enabled also returns 422 ERR_INVALID_PARAM, with the valid values in the message. (optional)
+    collection_id = '12,34' # str | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
+    prompt = 56 # int | Filter by prompt ID. An id that is not a plain positive number, or that names no prompt of the project, returns 422 ERR_INVALID_PARAM. (optional)
+    brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
+    var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
+    range = 56 # int | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. (optional)
+
+    try:
+        # Get a URL list report
+        api_response = api_instance.get_url_list(id, project_id, status=status, order=order, direction=direction, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to, range=range)
+        print("The response of SourcesCitationIntelligenceApi->get_url_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesCitationIntelligenceApi->get_url_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **project_id** | **int**| Project ID | 
+ **status** | **str**| Only entries with this status. | [optional] 
+ **order** | **str**|  | [optional] [default to &#39;citations&#39;]
+ **direction** | **str**|  | [optional] [default to &#39;desc&#39;]
+ **page** | **int**|  | [optional] [default to 1]
+ **per_page** | **int**|  | [optional] [default to 20]
+ **model** | **str**| Filter by one AI model. Only chatgpt, ai_overview, ai_mode, perplexity, gemini, naver_ai, baidu_ai, naver_ai_tab, qwen, doubao and bing_ai_mode are accepted: any other value, including another model enabled for the API key&#39;s user, returns 422 ERR_INVALID_PARAM (invalid model). One of those eleven that the user has not enabled also returns 422 ERR_INVALID_PARAM, with the valid values in the message. | [optional] 
+ **collection_id** | **str**| One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
+ **prompt** | **int**| Filter by prompt ID. An id that is not a plain positive number, or that names no prompt of the project, returns 422 ERR_INVALID_PARAM. | [optional] 
+ **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
+ **var_from** | **datetime**|  | [optional] 
+ **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
+ **range** | **int**| Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. | [optional] 
+
+### Return type
+
+[**UrlListDetailResponse**](UrlListDetailResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | URL list report |  -  |
+**403** | Endpoint requires the Growth plan or above |  -  |
+**404** | Resource not found |  -  |
 **422** | Invalid parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -582,6 +947,272 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Paginated sources |  -  |
+**422** | Invalid parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_url_lists**
+> UrlListsResponse list_url_lists(project_id, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to, range=range)
+
+List URL lists
+
+A URL list is a named set of rules, each an exact URL (matched over http and https, with or without www), a URL prefix (every page under host/path) or a domain (the site and its subdomains). Its numbers count the AI answers to the prompts tracked in the project: cited_entries is the entries an answer cited in the window and citations the answers citing any entry, each once. Without from/to or range the window is all time. Requires the Growth plan; lower tiers receive ERR_PLAN_REQUIRED.
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import llmpulse
+from llmpulse.models.url_lists_response import UrlListsResponse
+from llmpulse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.llmpulse.ai/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmpulse.Configuration(
+    host = "https://api.llmpulse.ai/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = llmpulse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmpulse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmpulse.SourcesCitationIntelligenceApi(api_client)
+    project_id = 56 # int | Project ID
+    model = 'model_example' # str | Filter by one AI model. Only chatgpt, ai_overview, ai_mode, perplexity, gemini, naver_ai, baidu_ai, naver_ai_tab, qwen, doubao and bing_ai_mode are accepted: any other value, including another model enabled for the API key's user, returns 422 ERR_INVALID_PARAM (invalid model). One of those eleven that the user has not enabled also returns 422 ERR_INVALID_PARAM, with the valid values in the message. (optional)
+    collection_id = '12,34' # str | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. (optional)
+    country_code = 'country_code_example' # str | One ISO country code or a comma-separated list (e.g. US,GB,DE) (optional)
+    language_code = 'language_code_example' # str | One ISO language code or a comma-separated list (e.g. en,es,de) (optional)
+    prompt = 56 # int | Filter by prompt ID. An id that is not a plain positive number, or that names no prompt of the project, returns 422 ERR_INVALID_PARAM. (optional)
+    brand_kind = 'brand_kind_example' # str | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. (optional)
+    var_from = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    to = '2013-10-20T19:20:30+01:00' # datetime | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. (optional)
+    range = 56 # int | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. (optional)
+
+    try:
+        # List URL lists
+        api_response = api_instance.list_url_lists(project_id, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to, range=range)
+        print("The response of SourcesCitationIntelligenceApi->list_url_lists:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesCitationIntelligenceApi->list_url_lists: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **int**| Project ID | 
+ **model** | **str**| Filter by one AI model. Only chatgpt, ai_overview, ai_mode, perplexity, gemini, naver_ai, baidu_ai, naver_ai_tab, qwen, doubao and bing_ai_mode are accepted: any other value, including another model enabled for the API key&#39;s user, returns 422 ERR_INVALID_PARAM (invalid model). One of those eleven that the user has not enabled also returns 422 ERR_INVALID_PARAM, with the valid values in the message. | [optional] 
+ **collection_id** | **str**| One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. | [optional] 
+ **country_code** | **str**| One ISO country code or a comma-separated list (e.g. US,GB,DE) | [optional] 
+ **language_code** | **str**| One ISO language code or a comma-separated list (e.g. en,es,de) | [optional] 
+ **prompt** | **int**| Filter by prompt ID. An id that is not a plain positive number, or that names no prompt of the project, returns 422 ERR_INVALID_PARAM. | [optional] 
+ **brand_kind** | **str**| Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. | [optional] 
+ **var_from** | **datetime**|  | [optional] 
+ **to** | **datetime**| End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. | [optional] 
+ **range** | **int**| Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. | [optional] 
+
+### Return type
+
+[**UrlListsResponse**](UrlListsResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | URL lists |  -  |
+**403** | Endpoint requires the Growth plan or above |  -  |
+**422** | Invalid parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **remove_url_list_entries**
+> UrlListEntriesRemoveResponse remove_url_list_entries(id, url_list_entries_remove_request)
+
+Remove entries from a URL list
+
+Removes entries by id (from GET /url_lists/{id}) or by value as written ("https://acme.com/a", "acme.com/blog/*", "acme.com"). Sending neither answers ERR_INVALID_PARAM. Requires a `read_write` scope API key and the Growth plan.
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import llmpulse
+from llmpulse.models.url_list_entries_remove_request import UrlListEntriesRemoveRequest
+from llmpulse.models.url_list_entries_remove_response import UrlListEntriesRemoveResponse
+from llmpulse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.llmpulse.ai/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmpulse.Configuration(
+    host = "https://api.llmpulse.ai/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = llmpulse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmpulse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmpulse.SourcesCitationIntelligenceApi(api_client)
+    id = 56 # int | 
+    url_list_entries_remove_request = llmpulse.UrlListEntriesRemoveRequest() # UrlListEntriesRemoveRequest | 
+
+    try:
+        # Remove entries from a URL list
+        api_response = api_instance.remove_url_list_entries(id, url_list_entries_remove_request)
+        print("The response of SourcesCitationIntelligenceApi->remove_url_list_entries:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesCitationIntelligenceApi->remove_url_list_entries: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **url_list_entries_remove_request** | [**UrlListEntriesRemoveRequest**](UrlListEntriesRemoveRequest.md)|  | 
+
+### Return type
+
+[**UrlListEntriesRemoveResponse**](UrlListEntriesRemoveResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Entries removed |  -  |
+**403** | API key lacks write permission |  -  |
+**404** | Resource not found |  -  |
+**422** | Invalid parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_url_list**
+> UrlListUpdateResponse update_url_list(id, url_list_update_request)
+
+Update a URL list
+
+Changes the name, description or currency of a URL list. Entries are added with POST /url_lists/{id}/entries and removed with POST /url_lists/{id}/entries/remove. Requires a `read_write` scope API key and the Growth plan.
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import llmpulse
+from llmpulse.models.url_list_update_request import UrlListUpdateRequest
+from llmpulse.models.url_list_update_response import UrlListUpdateResponse
+from llmpulse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.llmpulse.ai/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmpulse.Configuration(
+    host = "https://api.llmpulse.ai/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = llmpulse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmpulse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmpulse.SourcesCitationIntelligenceApi(api_client)
+    id = 56 # int | 
+    url_list_update_request = llmpulse.UrlListUpdateRequest() # UrlListUpdateRequest | 
+
+    try:
+        # Update a URL list
+        api_response = api_instance.update_url_list(id, url_list_update_request)
+        print("The response of SourcesCitationIntelligenceApi->update_url_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesCitationIntelligenceApi->update_url_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **url_list_update_request** | [**UrlListUpdateRequest**](UrlListUpdateRequest.md)|  | 
+
+### Return type
+
+[**UrlListUpdateResponse**](UrlListUpdateResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated |  -  |
+**403** | API key lacks write permission |  -  |
+**404** | Resource not found |  -  |
 **422** | Invalid parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
