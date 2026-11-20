@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **filters** | [**AiModelInsightsFiltersEcho**](AiModelInsightsFiltersEcho.md) |  | [optional] 
 **models** | [**List[AiModelInsightsModel]**](AiModelInsightsModel.md) | The AI models the account has enabled or that answered in the window, in the in-app column order | [optional] 
 **summary** | [**AiModelInsightsSummaryResponseSummary**](AiModelInsightsSummaryResponseSummary.md) |  | [optional] 
+**plan_required_fields** | **List[str]** | The summary sections left out because they need a higher plan (brand_net_sentiment_by_model and sentiment_market_share below Growth); empty when none is | 
 **request_id** | **str** |  | [optional] 
 
 ## Example

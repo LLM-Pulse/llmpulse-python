@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **per_page** | **int** |  | [optional] 
 **total** | **int** |  | [optional] 
 **data** | [**List[PromptSummaryRow]**](PromptSummaryRow.md) |  | [optional] 
+**plan_required_fields** | **List[str]** | The row fields left out because they need a higher plan (the sentiment fields below Growth); empty when none is | 
 **request_id** | **str** |  | [optional] 
 
 ## Example
