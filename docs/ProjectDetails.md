@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **pitch_run** | [**ProjectDetailsAllOfPitchRun**](ProjectDetailsAllOfPitchRun.md) |  | [optional] 
 **data_coverage** | [**ProjectDetailsAllOfDataCoverage**](ProjectDetailsAllOfDataCoverage.md) |  | [optional] 
 **search_console** | [**ProjectDetailsAllOfSearchConsole**](ProjectDetailsAllOfSearchConsole.md) |  | [optional] 
+**bing_webmaster** | [**ProjectDetailsAllOfBingWebmaster**](ProjectDetailsAllOfBingWebmaster.md) |  | [optional] 
 **ai_traffic** | [**ProjectDetailsAllOfAiTraffic**](ProjectDetailsAllOfAiTraffic.md) |  | [optional] 
 **agent_traffic** | [**ProjectDetailsAllOfAgentTraffic**](ProjectDetailsAllOfAgentTraffic.md) |  | [optional] 
 **request_id** | **str** |  | [optional] 

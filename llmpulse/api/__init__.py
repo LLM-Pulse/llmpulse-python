@@ -7,6 +7,7 @@ from llmpulse.api.api_keys_api import APIKeysApi
 from llmpulse.api.account_api import AccountApi
 from llmpulse.api.annotations_api import AnnotationsApi
 from llmpulse.api.answers_api import AnswersApi
+from llmpulse.api.bing_webmaster_tools_api import BingWebmasterToolsApi
 from llmpulse.api.collections_tags_api import CollectionsTagsApi
 from llmpulse.api.competitors_api import CompetitorsApi
 from llmpulse.api.custom_reports_api import CustomReportsApi

@@ -61,6 +61,13 @@ docs/ApiError.md
 docs/ApiErrorError.md
 docs/ApiKeyInfo.md
 docs/AssignPromptTagsRequest.md
+docs/BingWebmasterListResponse.md
+docs/BingWebmasterListResponseDataInner.md
+docs/BingWebmasterMetrics.md
+docs/BingWebmasterSummaryResponse.md
+docs/BingWebmasterTimeseriesResponse.md
+docs/BingWebmasterTimeseriesResponseDataInner.md
+docs/BingWebmasterToolsApi.md
 docs/CatalogProduct.md
 docs/CatalogPromptSuggestion.md
 docs/CatalogPromptSuggestionIdsRequest.md
@@ -223,6 +230,7 @@ docs/ProjectDeleteResponse.md
 docs/ProjectDetails.md
 docs/ProjectDetailsAllOfAgentTraffic.md
 docs/ProjectDetailsAllOfAiTraffic.md
+docs/ProjectDetailsAllOfBingWebmaster.md
 docs/ProjectDetailsAllOfDataCoverage.md
 docs/ProjectDetailsAllOfPitchRun.md
 docs/ProjectDetailsAllOfSearchConsole.md
@@ -391,6 +399,7 @@ llmpulse/api/ai_model_insights_api.py
 llmpulse/api/annotations_api.py
 llmpulse/api/answers_api.py
 llmpulse/api/api_keys_api.py
+llmpulse/api/bing_webmaster_tools_api.py
 llmpulse/api/collections_tags_api.py
 llmpulse/api/competitors_api.py
 llmpulse/api/custom_reports_api.py
@@ -468,6 +477,12 @@ llmpulse/models/api_error.py
 llmpulse/models/api_error_error.py
 llmpulse/models/api_key_info.py
 llmpulse/models/assign_prompt_tags_request.py
+llmpulse/models/bing_webmaster_list_response.py
+llmpulse/models/bing_webmaster_list_response_data_inner.py
+llmpulse/models/bing_webmaster_metrics.py
+llmpulse/models/bing_webmaster_summary_response.py
+llmpulse/models/bing_webmaster_timeseries_response.py
+llmpulse/models/bing_webmaster_timeseries_response_data_inner.py
 llmpulse/models/catalog_product.py
 llmpulse/models/catalog_prompt_suggestion.py
 llmpulse/models/catalog_prompt_suggestion_ids_request.py
@@ -621,6 +636,7 @@ llmpulse/models/project_delete_response.py
 llmpulse/models/project_details.py
 llmpulse/models/project_details_all_of_agent_traffic.py
 llmpulse/models/project_details_all_of_ai_traffic.py
+llmpulse/models/project_details_all_of_bing_webmaster.py
 llmpulse/models/project_details_all_of_data_coverage.py
 llmpulse/models/project_details_all_of_pitch_run.py
 llmpulse/models/project_details_all_of_search_console.py
