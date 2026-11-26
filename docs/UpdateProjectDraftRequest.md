@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **industry** | **List[str]** |  | [optional] 
 **matching_names** | **List[str]** | Brand-name variants used to detect mentions (details step). At most 50 names of up to 100 characters each; the step stores the list as sent, and finalize refuses a longer list or name with ERR_INVALID_PARAM (422) | [optional] 
 **external_identifier** | **str** |  | [optional] 
-**prompts** | **List[str]** |  | [optional] 
+**prompts** | **List[str]** | Prompts step, each prompt up to 2,000 bytes of UTF-8 text (about 2,000 characters in English, fewer with accented letters or non-Latin scripts). A longer one returns ERR_INVALID_PARAM with error.meta.reason prompt_too_long and the step stays open | [optional] 
 **competitors** | **List[object]** | Competitors step: objects {domain, brand_name, matching_names}, capped by plan. Each competitor&#39;s matching_names takes at most 50 names of up to 100 characters, checked at finalize like POST /projects | [optional] 
 **youtube_channel_url** | **str** |  | [optional] 
 **instagram_profile_url** | **str** |  | [optional] 
