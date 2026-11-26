@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_reputation_report**
-> get_reputation_report(id, project_id, page=page, per_page=per_page, model=model, brand=brand, dimension=dimension, output=output)
+> ReputationReportScoresResponse get_reputation_report(id, project_id, page=page, per_page=per_page, model=model, brand=brand, dimension=dimension, output=output)
 
 Get reputation report scores
 
@@ -109,6 +109,7 @@ One reputation report's scores as flat rows: one row per analyst model, brand, d
 
 ```python
 import llmpulse
+from llmpulse.models.reputation_report_scores_response import ReputationReportScoresResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -143,7 +144,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Get reputation report scores
-        api_instance.get_reputation_report(id, project_id, page=page, per_page=per_page, model=model, brand=brand, dimension=dimension, output=output)
+        api_response = api_instance.get_reputation_report(id, project_id, page=page, per_page=per_page, model=model, brand=brand, dimension=dimension, output=output)
+        print("The response of ReputationStudiesApi->get_reputation_report:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ReputationStudiesApi->get_reputation_report: %s\n" % e)
 ```
@@ -166,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ReputationReportScoresResponse**](ReputationReportScoresResponse.md)
 
 ### Authorization
 
@@ -188,7 +191,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_study**
-> get_study(id)
+> StudyResponse get_study(id)
 
 Get a custom AI study
 
@@ -200,6 +203,7 @@ One study with its brief, the subjects it compares, the dimensions it scores the
 
 ```python
 import llmpulse
+from llmpulse.models.study_response import StudyResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -227,7 +231,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Get a custom AI study
-        api_instance.get_study(id)
+        api_response = api_instance.get_study(id)
+        print("The response of ReputationStudiesApi->get_study:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ReputationStudiesApi->get_study: %s\n" % e)
 ```
@@ -243,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**StudyResponse**](StudyResponse.md)
 
 ### Authorization
 
@@ -264,7 +270,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_study_report**
-> get_study_report(id, report_id, page=page, per_page=per_page, model=model, subject=subject, dimension=dimension, output=output)
+> StudyReportScoresResponse get_study_report(id, report_id, page=page, per_page=per_page, model=model, subject=subject, dimension=dimension, output=output)
 
 Get custom study report scores
 
@@ -276,6 +282,7 @@ One custom-study report's scores as flat rows: one row per analyst model, subjec
 
 ```python
 import llmpulse
+from llmpulse.models.study_report_scores_response import StudyReportScoresResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -310,7 +317,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Get custom study report scores
-        api_instance.get_study_report(id, report_id, page=page, per_page=per_page, model=model, subject=subject, dimension=dimension, output=output)
+        api_response = api_instance.get_study_report(id, report_id, page=page, per_page=per_page, model=model, subject=subject, dimension=dimension, output=output)
+        print("The response of ReputationStudiesApi->get_study_report:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ReputationStudiesApi->get_study_report: %s\n" % e)
 ```
@@ -333,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**StudyReportScoresResponse**](StudyReportScoresResponse.md)
 
 ### Authorization
 
@@ -355,7 +364,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_reputation_reports**
-> list_reputation_reports(project_id, page=page, per_page=per_page, output=output)
+> ReputationReportsResponse list_reputation_reports(project_id, page=page, per_page=per_page, output=output)
 
 List reputation reports
 
@@ -367,6 +376,7 @@ The monthly multi-model analyst reports scoring the tracked brand and its compet
 
 ```python
 import llmpulse
+from llmpulse.models.reputation_reports_response import ReputationReportsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -397,7 +407,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List reputation reports
-        api_instance.list_reputation_reports(project_id, page=page, per_page=per_page, output=output)
+        api_response = api_instance.list_reputation_reports(project_id, page=page, per_page=per_page, output=output)
+        print("The response of ReputationStudiesApi->list_reputation_reports:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ReputationStudiesApi->list_reputation_reports: %s\n" % e)
 ```
@@ -416,7 +428,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ReputationReportsResponse**](ReputationReportsResponse.md)
 
 ### Authorization
 
@@ -425,7 +437,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -436,7 +448,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_studies**
-> list_studies(project_id=project_id, status=status, page=page, per_page=per_page, output=output)
+> StudiesResponse list_studies(project_id=project_id, status=status, page=page, per_page=per_page, output=output)
 
 List custom AI studies
 
@@ -448,6 +460,7 @@ The custom AI studies defined on the account: analyst reports over any set of su
 
 ```python
 import llmpulse
+from llmpulse.models.studies_response import StudiesResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -479,7 +492,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List custom AI studies
-        api_instance.list_studies(project_id=project_id, status=status, page=page, per_page=per_page, output=output)
+        api_response = api_instance.list_studies(project_id=project_id, status=status, page=page, per_page=per_page, output=output)
+        print("The response of ReputationStudiesApi->list_studies:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ReputationStudiesApi->list_studies: %s\n" % e)
 ```
@@ -499,7 +514,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**StudiesResponse**](StudiesResponse.md)
 
 ### Authorization
 
@@ -508,7 +523,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 

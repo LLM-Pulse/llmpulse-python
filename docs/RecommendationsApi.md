@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **get_recommendation**
-> get_recommendation(project_id, id, item_status=item_status, resolve_source_refs=resolve_source_refs)
+> RecommendationDetailResponse get_recommendation(project_id, id, item_status=item_status, resolve_source_refs=resolve_source_refs)
 
 Get recommendation run with items
 
@@ -21,6 +21,7 @@ Get recommendation run with items
 
 ```python
 import llmpulse
+from llmpulse.models.recommendation_detail_response import RecommendationDetailResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -51,7 +52,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Get recommendation run with items
-        api_instance.get_recommendation(project_id, id, item_status=item_status, resolve_source_refs=resolve_source_refs)
+        api_response = api_instance.get_recommendation(project_id, id, item_status=item_status, resolve_source_refs=resolve_source_refs)
+        print("The response of RecommendationsApi->get_recommendation:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling RecommendationsApi->get_recommendation: %s\n" % e)
 ```
@@ -70,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**RecommendationDetailResponse**](RecommendationDetailResponse.md)
 
 ### Authorization
 
@@ -91,7 +94,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **launch_recommendations**
-> launch_recommendations(launch_recommendations_request)
+> RecommendationLaunchResponse launch_recommendations(launch_recommendations_request)
 
 Launch a recommendations generation
 
@@ -104,6 +107,7 @@ Launches a full-scope recommendations generation (async job, 1-3 minutes; poll G
 ```python
 import llmpulse
 from llmpulse.models.launch_recommendations_request import LaunchRecommendationsRequest
+from llmpulse.models.recommendation_launch_response import RecommendationLaunchResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -131,7 +135,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Launch a recommendations generation
-        api_instance.launch_recommendations(launch_recommendations_request)
+        api_response = api_instance.launch_recommendations(launch_recommendations_request)
+        print("The response of RecommendationsApi->launch_recommendations:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling RecommendationsApi->launch_recommendations: %s\n" % e)
 ```
@@ -147,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**RecommendationLaunchResponse**](RecommendationLaunchResponse.md)
 
 ### Authorization
 

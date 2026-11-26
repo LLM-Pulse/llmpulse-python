@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_annotation**
-> delete_annotation(project_id, id)
+> AnnotationDeleteResponse delete_annotation(project_id, id)
 
 Delete a timeline annotation
 
@@ -104,6 +104,7 @@ Deletes an annotation. Same ownership rule as PATCH. Available on every plan and
 
 ```python
 import llmpulse
+from llmpulse.models.annotation_delete_response import AnnotationDeleteResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -132,7 +133,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Delete a timeline annotation
-        api_instance.delete_annotation(project_id, id)
+        api_response = api_instance.delete_annotation(project_id, id)
+        print("The response of AnnotationsApi->delete_annotation:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AnnotationsApi->delete_annotation: %s\n" % e)
 ```
@@ -149,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AnnotationDeleteResponse**](AnnotationDeleteResponse.md)
 
 ### Authorization
 
@@ -171,7 +174,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_annotations**
-> list_annotations(project_id, var_from=var_from, to=to, annotation_category_id=annotation_category_id, page=page, per_page=per_page)
+> AnnotationsResponse list_annotations(project_id, var_from=var_from, to=to, annotation_category_id=annotation_category_id, page=page, per_page=per_page)
 
 List timeline annotations
 
@@ -183,6 +186,7 @@ Lists project timeline annotations, newest first. Rows can come from manual note
 
 ```python
 import llmpulse
+from llmpulse.models.annotations_response import AnnotationsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -215,7 +219,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List timeline annotations
-        api_instance.list_annotations(project_id, var_from=var_from, to=to, annotation_category_id=annotation_category_id, page=page, per_page=per_page)
+        api_response = api_instance.list_annotations(project_id, var_from=var_from, to=to, annotation_category_id=annotation_category_id, page=page, per_page=per_page)
+        print("The response of AnnotationsApi->list_annotations:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AnnotationsApi->list_annotations: %s\n" % e)
 ```
@@ -236,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AnnotationsResponse**](AnnotationsResponse.md)
 
 ### Authorization
 
@@ -257,7 +263,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_annotation**
-> update_annotation(id, update_annotation_request)
+> AnnotationUpdateResponse update_annotation(id, update_annotation_request)
 
 Update a timeline annotation
 
@@ -269,6 +275,7 @@ Updates title, description, annotation_date, color and/or annotation_category_id
 
 ```python
 import llmpulse
+from llmpulse.models.annotation_update_response import AnnotationUpdateResponse
 from llmpulse.models.update_annotation_request import UpdateAnnotationRequest
 from llmpulse.rest import ApiException
 from pprint import pprint
@@ -298,7 +305,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Update a timeline annotation
-        api_instance.update_annotation(id, update_annotation_request)
+        api_response = api_instance.update_annotation(id, update_annotation_request)
+        print("The response of AnnotationsApi->update_annotation:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AnnotationsApi->update_annotation: %s\n" % e)
 ```
@@ -315,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AnnotationUpdateResponse**](AnnotationUpdateResponse.md)
 
 ### Authorization
 

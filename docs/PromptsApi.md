@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_prompt**
-> delete_prompt(project_id, id)
+> PromptDeleteResponse delete_prompt(project_id, id)
 
 Delete a prompt
 
@@ -276,6 +276,7 @@ Deletes a prompt (irreversible). The prompt disappears immediately and frees a p
 
 ```python
 import llmpulse
+from llmpulse.models.prompt_delete_response import PromptDeleteResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -304,7 +305,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Delete a prompt
-        api_instance.delete_prompt(project_id, id)
+        api_response = api_instance.delete_prompt(project_id, id)
+        print("The response of PromptsApi->delete_prompt:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling PromptsApi->delete_prompt: %s\n" % e)
 ```
@@ -321,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**PromptDeleteResponse**](PromptDeleteResponse.md)
 
 ### Authorization
 
@@ -715,7 +718,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_query_fan_outs**
-> list_query_fan_outs(project_id, page=page, per_page=per_page, view=view, order=order, direction=direction, query=query, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
+> QueryFanOutsResponse list_query_fan_outs(project_id, page=page, per_page=per_page, view=view, order=order, direction=direction, query=query, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
 
 List query fan-out
 
@@ -727,6 +730,7 @@ The sub-queries a model actually issued when answering your tracked prompts. vie
 
 ```python
 import llmpulse
+from llmpulse.models.query_fan_outs_response import QueryFanOutsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -771,7 +775,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List query fan-out
-        api_instance.list_query_fan_outs(project_id, page=page, per_page=per_page, view=view, order=order, direction=direction, query=query, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
+        api_response = api_instance.list_query_fan_outs(project_id, page=page, per_page=per_page, view=view, order=order, direction=direction, query=query, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
+        print("The response of PromptsApi->list_query_fan_outs:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling PromptsApi->list_query_fan_outs: %s\n" % e)
 ```
@@ -804,7 +810,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**QueryFanOutsResponse**](QueryFanOutsResponse.md)
 
 ### Authorization
 

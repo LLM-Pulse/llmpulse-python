@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_collection**
-> delete_collection(project_id, id)
+> CollectionDeleteResponse delete_collection(project_id, id)
 
 Delete a tag
 
@@ -188,6 +188,7 @@ Deletes a tag/collection. The prompts inside it are NOT deleted; only the groupi
 
 ```python
 import llmpulse
+from llmpulse.models.collection_delete_response import CollectionDeleteResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -216,7 +217,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Delete a tag
-        api_instance.delete_collection(project_id, id)
+        api_response = api_instance.delete_collection(project_id, id)
+        print("The response of CollectionsTagsApi->delete_collection:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling CollectionsTagsApi->delete_collection: %s\n" % e)
 ```
@@ -233,7 +236,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CollectionDeleteResponse**](CollectionDeleteResponse.md)
 
 ### Authorization
 
@@ -492,7 +495,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_collection**
-> update_collection(id, update_collection_request)
+> CollectionUpdateResponse update_collection(id, update_collection_request)
 
 Update a tag
 
@@ -504,6 +507,7 @@ Renames a tag/collection or changes its description. Prompt membership is manage
 
 ```python
 import llmpulse
+from llmpulse.models.collection_update_response import CollectionUpdateResponse
 from llmpulse.models.update_collection_request import UpdateCollectionRequest
 from llmpulse.rest import ApiException
 from pprint import pprint
@@ -533,7 +537,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Update a tag
-        api_instance.update_collection(id, update_collection_request)
+        api_response = api_instance.update_collection(id, update_collection_request)
+        print("The response of CollectionsTagsApi->update_collection:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling CollectionsTagsApi->update_collection: %s\n" % e)
 ```
@@ -550,7 +556,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CollectionUpdateResponse**](CollectionUpdateResponse.md)
 
 ### Authorization
 

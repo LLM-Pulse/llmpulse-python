@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_project_draft**
-> create_project_draft(create_project_draft_request)
+> ProjectDraftResponse create_project_draft(create_project_draft_request)
 
 Start a project draft (wizard step 1)
 
@@ -113,6 +113,7 @@ Start the multi-step project-creation wizard. Returns a draft_id plus AI suggest
 ```python
 import llmpulse
 from llmpulse.models.create_project_draft_request import CreateProjectDraftRequest
+from llmpulse.models.project_draft_response import ProjectDraftResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -140,7 +141,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Start a project draft (wizard step 1)
-        api_instance.create_project_draft(create_project_draft_request)
+        api_response = api_instance.create_project_draft(create_project_draft_request)
+        print("The response of ProjectsApi->create_project_draft:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ProjectsApi->create_project_draft: %s\n" % e)
 ```
@@ -156,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ProjectDraftResponse**](ProjectDraftResponse.md)
 
 ### Authorization
 
@@ -419,7 +422,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_draft**
-> get_project_draft(id, include_suggestions=include_suggestions)
+> ProjectDraftResponse get_project_draft(id, include_suggestions=include_suggestions)
 
 Read a project draft
 
@@ -429,6 +432,7 @@ Read a project draft
 
 ```python
 import llmpulse
+from llmpulse.models.project_draft_response import ProjectDraftResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -457,7 +461,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Read a project draft
-        api_instance.get_project_draft(id, include_suggestions=include_suggestions)
+        api_response = api_instance.get_project_draft(id, include_suggestions=include_suggestions)
+        print("The response of ProjectsApi->get_project_draft:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ProjectsApi->get_project_draft: %s\n" % e)
 ```
@@ -474,7 +480,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ProjectDraftResponse**](ProjectDraftResponse.md)
 
 ### Authorization
 
@@ -812,7 +818,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_project_draft**
-> update_project_draft(id, update_project_draft_request)
+> ProjectDraftResponse update_project_draft(id, update_project_draft_request)
 
 Submit a wizard step
 
@@ -824,6 +830,7 @@ Submit one step (details, prompts, competitors, owned_media). Strict forward gat
 
 ```python
 import llmpulse
+from llmpulse.models.project_draft_response import ProjectDraftResponse
 from llmpulse.models.update_project_draft_request import UpdateProjectDraftRequest
 from llmpulse.rest import ApiException
 from pprint import pprint
@@ -853,7 +860,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Submit a wizard step
-        api_instance.update_project_draft(id, update_project_draft_request)
+        api_response = api_instance.update_project_draft(id, update_project_draft_request)
+        print("The response of ProjectsApi->update_project_draft:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ProjectsApi->update_project_draft: %s\n" % e)
 ```
@@ -870,7 +879,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ProjectDraftResponse**](ProjectDraftResponse.md)
 
 ### Authorization
 

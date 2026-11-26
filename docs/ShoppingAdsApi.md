@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **list_ads**
-> list_ads(project_id, page=page, per_page=per_page, view=view, owned=owned, order=order, direction=direction, query=query, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
+> AdsResponse list_ads(project_id, page=page, per_page=per_page, view=view, owned=owned, order=order, direction=direction, query=query, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
 
 List AI ad placements
 
@@ -22,6 +22,7 @@ Paid placements returned inside AI answers. view=advertisers (default) returns o
 
 ```python
 import llmpulse
+from llmpulse.models.ads_response import AdsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -67,7 +68,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List AI ad placements
-        api_instance.list_ads(project_id, page=page, per_page=per_page, view=view, owned=owned, order=order, direction=direction, query=query, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
+        api_response = api_instance.list_ads(project_id, page=page, per_page=per_page, view=view, owned=owned, order=order, direction=direction, query=query, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
+        print("The response of ShoppingAdsApi->list_ads:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ShoppingAdsApi->list_ads: %s\n" % e)
 ```
@@ -101,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AdsResponse**](AdsResponse.md)
 
 ### Authorization
 
@@ -235,7 +238,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_shopping**
-> list_shopping(project_id, page=page, per_page=per_page, view=view, owned=owned, order=order, direction=direction, query=query, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
+> ShoppingResponse list_shopping(project_id, page=page, per_page=per_page, view=view, owned=owned, order=order, direction=direction, query=query, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
 
 List shopping results
 
@@ -247,6 +250,7 @@ Product cards returned inside AI answers. view=products (default) returns one ro
 
 ```python
 import llmpulse
+from llmpulse.models.shopping_response import ShoppingResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -292,7 +296,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List shopping results
-        api_instance.list_shopping(project_id, page=page, per_page=per_page, view=view, owned=owned, order=order, direction=direction, query=query, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
+        api_response = api_instance.list_shopping(project_id, page=page, per_page=per_page, view=view, owned=owned, order=order, direction=direction, query=query, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
+        print("The response of ShoppingAdsApi->list_shopping:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ShoppingAdsApi->list_shopping: %s\n" % e)
 ```
@@ -326,7 +332,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ShoppingResponse**](ShoppingResponse.md)
 
 ### Authorization
 

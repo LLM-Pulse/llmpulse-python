@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_answers**
-> list_answers(project_id, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, mention_filter=mention_filter, citation_filter=citation_filter, competitors=competitors, var_from=var_from, to=to, page=page, per_page=per_page, query=query, no_result=no_result)
+> AnswersResponse list_answers(project_id, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, mention_filter=mention_filter, citation_filter=citation_filter, competitors=competitors, var_from=var_from, to=to, page=page, per_page=per_page, query=query, no_result=no_result)
 
 List AI responses
 
@@ -104,6 +104,7 @@ Successful prompt-execution responses with truncated content (max 10,000 chars).
 
 ```python
 import llmpulse
+from llmpulse.models.answers_response import AnswersResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -147,7 +148,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List AI responses
-        api_instance.list_answers(project_id, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, mention_filter=mention_filter, citation_filter=citation_filter, competitors=competitors, var_from=var_from, to=to, page=page, per_page=per_page, query=query, no_result=no_result)
+        api_response = api_instance.list_answers(project_id, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, prompt_type=prompt_type, brand_kind=brand_kind, mention_filter=mention_filter, citation_filter=citation_filter, competitors=competitors, var_from=var_from, to=to, page=page, per_page=per_page, query=query, no_result=no_result)
+        print("The response of AnswersApi->list_answers:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AnswersApi->list_answers: %s\n" % e)
 ```
@@ -179,7 +182,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AnswersResponse**](AnswersResponse.md)
 
 ### Authorization
 

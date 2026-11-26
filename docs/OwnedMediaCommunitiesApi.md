@@ -411,7 +411,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_reddit_citations**
-> list_reddit_citations(project_id, page=page, per_page=per_page, view=view, subreddit=subreddit, author=author, status=status, owned=owned, brand=brand, order=order, direction=direction, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
+> RedditResponse list_reddit_citations(project_id, page=page, per_page=per_page, view=view, subreddit=subreddit, author=author, status=status, owned=owned, brand=brand, order=order, direction=direction, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
 
 List cited Reddit content
 
@@ -423,6 +423,7 @@ Which Reddit content AI answers cite for your tracked prompts. view=subreddits (
 
 ```python
 import llmpulse
+from llmpulse.models.reddit_response import RedditResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -469,7 +470,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List cited Reddit content
-        api_instance.list_reddit_citations(project_id, page=page, per_page=per_page, view=view, subreddit=subreddit, author=author, status=status, owned=owned, brand=brand, order=order, direction=direction, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
+        api_response = api_instance.list_reddit_citations(project_id, page=page, per_page=per_page, view=view, subreddit=subreddit, author=author, status=status, owned=owned, brand=brand, order=order, direction=direction, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, brand_kind=brand_kind, range=range, var_from=var_from, to=to, output=output)
+        print("The response of OwnedMediaCommunitiesApi->list_reddit_citations:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling OwnedMediaCommunitiesApi->list_reddit_citations: %s\n" % e)
 ```
@@ -504,7 +507,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**RedditResponse**](RedditResponse.md)
 
 ### Authorization
 

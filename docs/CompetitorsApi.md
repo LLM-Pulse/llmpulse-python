@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_competitor**
-> delete_competitor(project_id, id)
+> CompetitorDeleteResponse delete_competitor(project_id, id)
 
 Delete a competitor
 
@@ -106,6 +106,7 @@ Deletes a competitor (irreversible). It disappears immediately and frees a compe
 
 ```python
 import llmpulse
+from llmpulse.models.competitor_delete_response import CompetitorDeleteResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -134,7 +135,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Delete a competitor
-        api_instance.delete_competitor(project_id, id)
+        api_response = api_instance.delete_competitor(project_id, id)
+        print("The response of CompetitorsApi->delete_competitor:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling CompetitorsApi->delete_competitor: %s\n" % e)
 ```
@@ -151,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CompetitorDeleteResponse**](CompetitorDeleteResponse.md)
 
 ### Authorization
 
@@ -420,7 +423,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_competitor**
-> update_competitor(id, update_competitor_request)
+> CompetitorUpdateResponse update_competitor(id, update_competitor_request)
 
 Update a competitor
 
@@ -432,6 +435,7 @@ Updates brand_name, the competitor website domain or host, matching_names (full 
 
 ```python
 import llmpulse
+from llmpulse.models.competitor_update_response import CompetitorUpdateResponse
 from llmpulse.models.update_competitor_request import UpdateCompetitorRequest
 from llmpulse.rest import ApiException
 from pprint import pprint
@@ -461,7 +465,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Update a competitor
-        api_instance.update_competitor(id, update_competitor_request)
+        api_response = api_instance.update_competitor(id, update_competitor_request)
+        print("The response of CompetitorsApi->update_competitor:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling CompetitorsApi->update_competitor: %s\n" % e)
 ```
@@ -478,7 +484,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CompetitorUpdateResponse**](CompetitorUpdateResponse.md)
 
 ### Authorization
 

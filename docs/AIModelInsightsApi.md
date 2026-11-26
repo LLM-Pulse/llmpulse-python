@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ai_model_position_distribution**
-> get_ai_model_position_distribution(project_id, range=range, var_from=var_from, to=to, granularity=granularity, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, model=model, brand1=brand1, brand2=brand2)
+> AiModelPositionDistributionResponse get_ai_model_position_distribution(project_id, range=range, var_from=var_from, to=to, granularity=granularity, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, model=model, brand1=brand1, brand2=brand2)
 
 Position distribution comparison
 
@@ -119,6 +119,7 @@ Position distribution comparison
 
 ```python
 import llmpulse
+from llmpulse.models.ai_model_position_distribution_response import AiModelPositionDistributionResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -158,7 +159,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Position distribution comparison
-        api_instance.get_ai_model_position_distribution(project_id, range=range, var_from=var_from, to=to, granularity=granularity, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, model=model, brand1=brand1, brand2=brand2)
+        api_response = api_instance.get_ai_model_position_distribution(project_id, range=range, var_from=var_from, to=to, granularity=granularity, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, model=model, brand1=brand1, brand2=brand2)
+        print("The response of AIModelInsightsApi->get_ai_model_position_distribution:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AIModelInsightsApi->get_ai_model_position_distribution: %s\n" % e)
 ```
@@ -186,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AiModelPositionDistributionResponse**](AiModelPositionDistributionResponse.md)
 
 ### Authorization
 
@@ -195,7 +198,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -206,7 +209,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ai_overview_results**
-> get_ai_overview_results(project_id, range=range, var_from=var_from, to=to, granularity=granularity, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, page=page, per_page=per_page)
+> AiOverviewResultsResponse get_ai_overview_results(project_id, range=range, var_from=var_from, to=to, granularity=granularity, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, page=page, per_page=per_page)
 
 Google AI Overview result availability
 
@@ -216,6 +219,7 @@ Google AI Overview result availability
 
 ```python
 import llmpulse
+from llmpulse.models.ai_overview_results_response import AiOverviewResultsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -254,7 +258,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Google AI Overview result availability
-        api_instance.get_ai_overview_results(project_id, range=range, var_from=var_from, to=to, granularity=granularity, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, page=page, per_page=per_page)
+        api_response = api_instance.get_ai_overview_results(project_id, range=range, var_from=var_from, to=to, granularity=granularity, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, page=page, per_page=per_page)
+        print("The response of AIModelInsightsApi->get_ai_overview_results:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AIModelInsightsApi->get_ai_overview_results: %s\n" % e)
 ```
@@ -281,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AiOverviewResultsResponse**](AiOverviewResultsResponse.md)
 
 ### Authorization
 
@@ -290,7 +296,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 

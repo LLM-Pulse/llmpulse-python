@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_sentiment_categories**
-> list_sentiment_categories(project_id, output=output)
+> SentimentCategoriesResponse list_sentiment_categories(project_id, output=output)
 
 List sentiment categories (Growth plan or above)
 
@@ -251,6 +251,7 @@ Sentiment metric keys + labels + colors. For records, use /sentiments. Requires 
 
 ```python
 import llmpulse
+from llmpulse.models.sentiment_categories_response import SentimentCategoriesResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -279,7 +280,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List sentiment categories (Growth plan or above)
-        api_instance.list_sentiment_categories(project_id, output=output)
+        api_response = api_instance.list_sentiment_categories(project_id, output=output)
+        print("The response of SentimentsApi->list_sentiment_categories:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling SentimentsApi->list_sentiment_categories: %s\n" % e)
 ```
@@ -296,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SentimentCategoriesResponse**](SentimentCategoriesResponse.md)
 
 ### Authorization
 

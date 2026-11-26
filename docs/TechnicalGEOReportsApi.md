@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create_technical_geo_reports**
-> create_technical_geo_reports(create_technical_geo_reports_request)
+> TechnicalGeoReportsCreateResponse create_technical_geo_reports(create_technical_geo_reports_request)
 
 Run technical GEO analysis
 
@@ -25,6 +25,7 @@ Launches the full nine-report technical GEO analysis bundle for a URL + country.
 ```python
 import llmpulse
 from llmpulse.models.create_technical_geo_reports_request import CreateTechnicalGeoReportsRequest
+from llmpulse.models.technical_geo_reports_create_response import TechnicalGeoReportsCreateResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -52,7 +53,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Run technical GEO analysis
-        api_instance.create_technical_geo_reports(create_technical_geo_reports_request)
+        api_response = api_instance.create_technical_geo_reports(create_technical_geo_reports_request)
+        print("The response of TechnicalGEOReportsApi->create_technical_geo_reports:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling TechnicalGEOReportsApi->create_technical_geo_reports: %s\n" % e)
 ```
@@ -68,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**TechnicalGeoReportsCreateResponse**](TechnicalGeoReportsCreateResponse.md)
 
 ### Authorization
 
@@ -90,7 +93,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_technical_geo_report**
-> get_technical_geo_report(project_id, report_type, id)
+> TechnicalGeoReportResponse get_technical_geo_report(project_id, report_type, id)
 
 Get a technical GEO report
 
@@ -102,6 +105,7 @@ Returns the current status and the full result_data once the report is completed
 
 ```python
 import llmpulse
+from llmpulse.models.technical_geo_report_response import TechnicalGeoReportResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -131,7 +135,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Get a technical GEO report
-        api_instance.get_technical_geo_report(project_id, report_type, id)
+        api_response = api_instance.get_technical_geo_report(project_id, report_type, id)
+        print("The response of TechnicalGEOReportsApi->get_technical_geo_report:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling TechnicalGEOReportsApi->get_technical_geo_report: %s\n" % e)
 ```
@@ -149,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**TechnicalGeoReportResponse**](TechnicalGeoReportResponse.md)
 
 ### Authorization
 
@@ -171,7 +177,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_technical_geo_reports**
-> list_technical_geo_reports(project_id, report_type, status=status, batch_id=batch_id, page=page, per_page=per_page)
+> TechnicalGeoReportsResponse list_technical_geo_reports(project_id, report_type, status=status, batch_id=batch_id, page=page, per_page=per_page)
 
 List technical GEO reports
 
@@ -183,6 +189,7 @@ Lists reports of one technical GEO type for a project, newest first. Use agent_r
 
 ```python
 import llmpulse
+from llmpulse.models.technical_geo_reports_response import TechnicalGeoReportsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -215,7 +222,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List technical GEO reports
-        api_instance.list_technical_geo_reports(project_id, report_type, status=status, batch_id=batch_id, page=page, per_page=per_page)
+        api_response = api_instance.list_technical_geo_reports(project_id, report_type, status=status, batch_id=batch_id, page=page, per_page=per_page)
+        print("The response of TechnicalGEOReportsApi->list_technical_geo_reports:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling TechnicalGEOReportsApi->list_technical_geo_reports: %s\n" % e)
 ```
@@ -236,7 +245,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**TechnicalGeoReportsResponse**](TechnicalGeoReportsResponse.md)
 
 ### Authorization
 

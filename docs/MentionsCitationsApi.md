@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **list_all_citations**
-> list_all_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
+> AllCitationsResponse list_all_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
 
 List all citations (brand + competitor)
 
@@ -25,6 +25,7 @@ Unified citations stream with an `actor_type` field on each record. Includes vis
 
 ```python
 import llmpulse
+from llmpulse.models.all_citations_response import AllCitationsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -66,7 +67,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List all citations (brand + competitor)
-        api_instance.list_all_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
+        api_response = api_instance.list_all_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
+        print("The response of MentionsCitationsApi->list_all_citations:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling MentionsCitationsApi->list_all_citations: %s\n" % e)
 ```
@@ -96,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AllCitationsResponse**](AllCitationsResponse.md)
 
 ### Authorization
 
@@ -105,7 +108,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -116,7 +119,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_all_mentions**
-> list_all_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
+> AllMentionsResponse list_all_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
 
 List all mentions (brand + competitor)
 
@@ -128,6 +131,7 @@ Unified mentions stream. Each record has an `actor_type` field (`project` or `co
 
 ```python
 import llmpulse
+from llmpulse.models.all_mentions_response import AllMentionsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -169,7 +173,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List all mentions (brand + competitor)
-        api_instance.list_all_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
+        api_response = api_instance.list_all_mentions(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
+        print("The response of MentionsCitationsApi->list_all_mentions:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling MentionsCitationsApi->list_all_mentions: %s\n" % e)
 ```
@@ -199,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AllMentionsResponse**](AllMentionsResponse.md)
 
 ### Authorization
 
@@ -208,7 +214,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -323,7 +329,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_competitor_citations**
-> list_competitor_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
+> CompetitorCitationsResponse list_competitor_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
 
 List competitor citations
 
@@ -335,6 +341,7 @@ Includes visible citations and background source references. Background referenc
 
 ```python
 import llmpulse
+from llmpulse.models.competitor_citations_response import CompetitorCitationsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -376,7 +383,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List competitor citations
-        api_instance.list_competitor_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
+        api_response = api_instance.list_competitor_citations(project_id, competitors=competitors, page=page, per_page=per_page, model=model, collection_id=collection_id, prompt=prompt, var_from=var_from, to=to, output=output, country_code=country_code, language_code=language_code, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
+        print("The response of MentionsCitationsApi->list_competitor_citations:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling MentionsCitationsApi->list_competitor_citations: %s\n" % e)
 ```
@@ -406,7 +415,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CompetitorCitationsResponse**](CompetitorCitationsResponse.md)
 
 ### Authorization
 
@@ -415,7 +424,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 

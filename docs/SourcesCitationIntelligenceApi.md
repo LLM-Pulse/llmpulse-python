@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_cited_url_content**
-> get_cited_url_content(project_id, url_sha256)
+> CitedUrlContentResponse get_cited_url_content(project_id, url_sha256)
 
 Cited URL cached content
 
@@ -279,6 +279,7 @@ Unavailable page content keeps the cited URL and citation metrics. Page metadata
 
 ```python
 import llmpulse
+from llmpulse.models.cited_url_content_response import CitedUrlContentResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -307,7 +308,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Cited URL cached content
-        api_instance.get_cited_url_content(project_id, url_sha256)
+        api_response = api_instance.get_cited_url_content(project_id, url_sha256)
+        print("The response of SourcesCitationIntelligenceApi->get_cited_url_content:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling SourcesCitationIntelligenceApi->get_cited_url_content: %s\n" % e)
 ```
@@ -324,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CitedUrlContentResponse**](CitedUrlContentResponse.md)
 
 ### Authorization
 
@@ -345,7 +348,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_cited_url_detail**
-> get_cited_url_detail(project_id, url_sha256, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to, source_type=source_type, sentiment=sentiment, content_gap=content_gap, include_series=include_series)
+> CitedUrlDetailsResponse get_cited_url_detail(project_id, url_sha256, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to, source_type=source_type, sentiment=sentiment, content_gap=content_gap, include_series=include_series)
 
 Cited URL detail
 
@@ -357,6 +360,7 @@ Unavailable page content keeps the cited URL and citation metrics. Page metadata
 
 ```python
 import llmpulse
+from llmpulse.models.cited_url_details_response import CitedUrlDetailsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -397,7 +401,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Cited URL detail
-        api_instance.get_cited_url_detail(project_id, url_sha256, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to, source_type=source_type, sentiment=sentiment, content_gap=content_gap, include_series=include_series)
+        api_response = api_instance.get_cited_url_detail(project_id, url_sha256, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to, source_type=source_type, sentiment=sentiment, content_gap=content_gap, include_series=include_series)
+        print("The response of SourcesCitationIntelligenceApi->get_cited_url_detail:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling SourcesCitationIntelligenceApi->get_cited_url_detail: %s\n" % e)
 ```
@@ -426,7 +432,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CitedUrlDetailsResponse**](CitedUrlDetailsResponse.md)
 
 ### Authorization
 
@@ -448,7 +454,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_mentions_by_citing_domain**
-> get_mentions_by_citing_domain(project_id, domains, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to)
+> CitingDomainMentionShareResponse get_mentions_by_citing_domain(project_id, domains, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to)
 
 Mention share by citing domain
 
@@ -460,6 +466,7 @@ For the responses where each given source domain is cited, returns the share of 
 
 ```python
 import llmpulse
+from llmpulse.models.citing_domain_mention_share_response import CitingDomainMentionShareResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -496,7 +503,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Mention share by citing domain
-        api_instance.get_mentions_by_citing_domain(project_id, domains, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to)
+        api_response = api_instance.get_mentions_by_citing_domain(project_id, domains, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to)
+        print("The response of SourcesCitationIntelligenceApi->get_mentions_by_citing_domain:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling SourcesCitationIntelligenceApi->get_mentions_by_citing_domain: %s\n" % e)
 ```
@@ -521,7 +530,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CitingDomainMentionShareResponse**](CitingDomainMentionShareResponse.md)
 
 ### Authorization
 
@@ -653,7 +662,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_citation_groups**
-> list_citation_groups(project_id, view=view, page=page, per_page=per_page, order=order, direction=direction, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to, key=key, include_series=include_series, query=query, source_type=source_type, sentiment=sentiment, content_gap=content_gap)
+> CitationGroupsResponse list_citation_groups(project_id, view=view, page=page, per_page=per_page, order=order, direction=direction, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to, key=key, include_series=include_series, query=query, source_type=source_type, sentiment=sentiment, content_gap=content_gap)
 
 Grouped citation intelligence
 
@@ -665,6 +674,7 @@ Grouped citation intelligence by url / domain / host with per-model breakdown, c
 
 ```python
 import llmpulse
+from llmpulse.models.citation_groups_response import CitationGroupsResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -711,7 +721,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Grouped citation intelligence
-        api_instance.list_citation_groups(project_id, view=view, page=page, per_page=per_page, order=order, direction=direction, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to, key=key, include_series=include_series, query=query, source_type=source_type, sentiment=sentiment, content_gap=content_gap)
+        api_response = api_instance.list_citation_groups(project_id, view=view, page=page, per_page=per_page, order=order, direction=direction, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, brand_kind=brand_kind, var_from=var_from, to=to, key=key, include_series=include_series, query=query, source_type=source_type, sentiment=sentiment, content_gap=content_gap)
+        print("The response of SourcesCitationIntelligenceApi->list_citation_groups:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling SourcesCitationIntelligenceApi->list_citation_groups: %s\n" % e)
 ```
@@ -746,7 +758,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CitationGroupsResponse**](CitationGroupsResponse.md)
 
 ### Authorization
 
@@ -768,7 +780,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_cited_url_occurrences**
-> list_cited_url_occurrences(project_id, url_sha256, page=page, per_page=per_page, sentiment=sentiment)
+> CitedUrlOccurrencesResponse list_cited_url_occurrences(project_id, url_sha256, page=page, per_page=per_page, sentiment=sentiment)
 
 Cited URL occurrences
 
@@ -778,6 +790,7 @@ Cited URL occurrences
 
 ```python
 import llmpulse
+from llmpulse.models.cited_url_occurrences_response import CitedUrlOccurrencesResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -809,7 +822,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # Cited URL occurrences
-        api_instance.list_cited_url_occurrences(project_id, url_sha256, page=page, per_page=per_page, sentiment=sentiment)
+        api_response = api_instance.list_cited_url_occurrences(project_id, url_sha256, page=page, per_page=per_page, sentiment=sentiment)
+        print("The response of SourcesCitationIntelligenceApi->list_cited_url_occurrences:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling SourcesCitationIntelligenceApi->list_cited_url_occurrences: %s\n" % e)
 ```
@@ -829,7 +844,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CitedUrlOccurrencesResponse**](CitedUrlOccurrencesResponse.md)
 
 ### Authorization
 
@@ -851,7 +866,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_sources**
-> list_sources(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, source_type=source_type, mention_filter=mention_filter, competitors=competitors, output=output, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
+> SourcesResponse list_sources(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, source_type=source_type, mention_filter=mention_filter, competitors=competitors, output=output, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
 
 List source URLs
 
@@ -861,6 +876,7 @@ List source URLs
 
 ```python
 import llmpulse
+from llmpulse.models.sources_response import SourcesResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -904,7 +920,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # List source URLs
-        api_instance.list_sources(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, source_type=source_type, mention_filter=mention_filter, competitors=competitors, output=output, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
+        api_response = api_instance.list_sources(project_id, page=page, per_page=per_page, model=model, collection_id=collection_id, country_code=country_code, language_code=language_code, prompt=prompt, var_from=var_from, to=to, source_type=source_type, mention_filter=mention_filter, competitors=competitors, output=output, prompt_type=prompt_type, brand_kind=brand_kind, range=range)
+        print("The response of SourcesCitationIntelligenceApi->list_sources:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling SourcesCitationIntelligenceApi->list_sources: %s\n" % e)
 ```
@@ -936,7 +954,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SourcesResponse**](SourcesResponse.md)
 
 ### Authorization
 

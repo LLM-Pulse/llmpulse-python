@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ai_traffic**
-> get_ai_traffic(project_id, range=range, var_from=var_from, to=to, source=source, granularity=granularity)
+> AiTrafficResponse get_ai_traffic(project_id, range=range, var_from=var_from, to=to, source=source, granularity=granularity)
 
 AI referral traffic (Scale plan or above)
 
@@ -118,6 +118,7 @@ AI referral traffic for a project: human visits arriving from AI assistants (Cha
 
 ```python
 import llmpulse
+from llmpulse.models.ai_traffic_response import AiTrafficResponse
 from llmpulse.rest import ApiException
 from pprint import pprint
 
@@ -150,7 +151,9 @@ with llmpulse.ApiClient(configuration) as api_client:
 
     try:
         # AI referral traffic (Scale plan or above)
-        api_instance.get_ai_traffic(project_id, range=range, var_from=var_from, to=to, source=source, granularity=granularity)
+        api_response = api_instance.get_ai_traffic(project_id, range=range, var_from=var_from, to=to, source=source, granularity=granularity)
+        print("The response of AIAgentTrafficApi->get_ai_traffic:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AIAgentTrafficApi->get_ai_traffic: %s\n" % e)
 ```
@@ -171,7 +174,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AiTrafficResponse**](AiTrafficResponse.md)
 
 ### Authorization
 
